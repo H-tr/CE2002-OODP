@@ -1,9 +1,9 @@
-public class staff extends person {
+public class Staff extends Person {
 
 	private int employeeId;
 	private String jobTitle;
 	
-	public staff(String name, String gender, int employeeId, String jobtitle )
+	public Staff(String name, String gender, int employeeId, String jobtitle )
 	{
 		super(name, gender);
 		this.employeeId = employeeId;

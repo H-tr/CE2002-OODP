@@ -1,10 +1,10 @@
-public class customer extends person {
+public class Customer extends Person {
 
 	private boolean isMember;
 	private int contNum;
 	//private boolean isActive;
 
-	public customer(String name, String gender, boolean isMember, int contNum)
+	public Customer(String name, String gender, boolean isMember, int contNum)
 	{
 		super(name, gender);
 		this.isMember = isMember;

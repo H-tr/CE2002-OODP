@@ -1,4 +1,4 @@
-public class item {
+public class Item {
 
 	private int itemID;
 	private String name;

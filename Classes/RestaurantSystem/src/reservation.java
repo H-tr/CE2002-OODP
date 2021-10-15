@@ -1,13 +1,13 @@
 import java.util.Date;
 
-public class reservation {
+public class Reservation {
 
 	private Date reserveData;
 	private Date reserveTime;
 	private int pax;
-	private customer cust;
+	private Customer cust;
 
-	public reservation() {
+	public Reservation() {
 		// TODO - implement reservation.reservation
 		throw new UnsupportedOperationException();
 	}
@@ -50,7 +50,7 @@ public class reservation {
 		throw new UnsupportedOperationException();
 	}
 
-	public customer getCust() {
+	public Customer getCust() {
 		return this.cust;
 	}
 
@@ -58,7 +58,7 @@ public class reservation {
 	 * 
 	 * @param cust
 	 */
-	public void setCust(customer cust) {
+	public void setCust(Customer cust) {
 		this.cust = cust;
 	}
 

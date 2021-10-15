@@ -1,23 +1,14 @@
-public class menu {
-
-	/**
-	 * 
-	 * @param item
-	 */
-	public void addItem(item item) {
+public class Menu {
+	public void addItem(Item item) {
 		// TODO - implement menu.addItem
 		throw new UnsupportedOperationException();
 	}
 
-	public item removeItem() {
+	public Item removeItem() {
 		// TODO - implement menu.removeItem
 		throw new UnsupportedOperationException();
 	}
-
-	/**
-	 * 
-	 * @param package_add
-	 */
+	
 	public void addPackage(Package package_add) {
 		// TODO - implement menu.addPackage
 		throw new UnsupportedOperationException();

@@ -3,7 +3,7 @@ import java.util.*;
 public class Package {
 
 	private double price;
-	private item item;
+	private Item item;
 
 	public String getDescriptions() {
 		// TODO - implement package.getDescriptions
@@ -18,11 +18,11 @@ public class Package {
 		this.price = price;
 	}
 
-	public item getItem() {
+	public Item getItem() {
 		return this.item;
 	}
 
-	public void setItem(item item) {
+	public void setItem(Item item) {
 		this.item = item;
 	}
 

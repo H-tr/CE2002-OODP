@@ -1,10 +1,10 @@
 import java.util.*;
-public class restaurant {
+public class Restaurant {
 
-	private order[] order;
-	private staff[] staffs;
+	private Order[] order;
+	private Staff[] staffs;
 
-	public table[] getEmptyTable() {
+	public Table[] getEmptyTable() {
 		return null;
 		// TODO - implement restaurant.getEmptyTable
 	}
@@ -37,7 +37,7 @@ public class restaurant {
 	 * @param items
 	 * @param packages
 	 */
-	public void setOrder(int pax, int staffId, item items, Package packages) {
+	public void setOrder(int pax, int staffId, Item items, Package packages) {
 		// TODO - implement restaurant.setOrder
 	}
 

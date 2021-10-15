@@ -1,2 +1,2 @@
-public class mainCourse extends item {
+public class MainCourse extends Item {
 }

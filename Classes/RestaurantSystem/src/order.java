@@ -1,9 +1,9 @@
 import java.util.*;
-public class order {
+public class Order {
 
-	private item[] orderItems;
+	private Item[] orderItems;
 	private Package[] orderPackage;
-	private staff staff;
+	private Staff staff;
 	private boolean isMember;
 	private Date date;
 	private Date time;
@@ -12,12 +12,12 @@ public class order {
 	 * 
 	 * @param item
 	 */
-	public void addItem(item item) {
+	public void addItem(Item item) {
 		// TODO - implement order.addItem
 		throw new UnsupportedOperationException();
 	}
 
-	public item removeItem() {
+	public Item removeItem() {
 		// TODO - implement order.removeItem
 		throw new UnsupportedOperationException();
 	}

@@ -1,2 +1,2 @@
-public class dessert extends item {
+public class Dessert extends Item {
 }

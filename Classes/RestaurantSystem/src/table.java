@@ -1,4 +1,4 @@
-public class table {
+public class Table {
 
 	private int seatingCapacity;
 	private int tableId;

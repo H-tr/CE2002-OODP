@@ -1,5 +1,3 @@
-package Classes.RestaurantSystem.src;
-
 public class Item {
 
 	private int itemID;

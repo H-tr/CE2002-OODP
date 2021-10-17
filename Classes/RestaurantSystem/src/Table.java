@@ -1,4 +1,3 @@
-package Classes.RestaurantSystem.src;
 public class Table {
 
 	private int seatingCapacity;

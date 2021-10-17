@@ -1,3 +1,5 @@
+package Classes.RestaurantSystem.src;
+
 public class Customer extends Person {
 
 	private boolean isMember;

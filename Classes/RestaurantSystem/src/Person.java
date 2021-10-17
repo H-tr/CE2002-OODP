@@ -1,3 +1,4 @@
+package Classes.RestaurantSystem.src;
 public class Person {
 
 	private String name;

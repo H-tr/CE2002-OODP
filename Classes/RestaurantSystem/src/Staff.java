@@ -1,3 +1,4 @@
+package Classes.RestaurantSystem.src;
 public class Staff extends Person {
 
 	private int employeeId;

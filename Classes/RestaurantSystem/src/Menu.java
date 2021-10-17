@@ -1,3 +1,5 @@
+package Classes.RestaurantSystem.src;
+
 public class Menu {
 	public void addItem(Item item) {
 		// TODO - implement menu.addItem

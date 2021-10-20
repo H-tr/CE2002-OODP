@@ -5,6 +5,7 @@ public class Reservation {
 	private Date reserveDate;
 	private Date reserveTime;
 	private int pax;
+	private String custName;
 	private Customer cust;
 
 	public Reservation() 
@@ -77,14 +78,14 @@ public class Reservation {
 		System.out.println("Pax: " + this.pax);
 	}
 
-	public Customer getCust() 
+	public String getCustName() 
 	{
-		return this.cust;
+		return this.custName;
 	}
 
-	public void setCust(Customer cust) 
+	public void setCustName(Customer cust) 
 	{
-		this.cust = cust;
+		this.custName = cust.getName();
 	}
 
 }

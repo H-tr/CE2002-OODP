@@ -2,64 +2,102 @@ import java.util.Date;
 
 public class Reservation {
 
-	private Date reserveData;
+	private Date reserveDate;
 	private Date reserveTime;
 	private int pax;
 	private Customer cust;
 
-	public Reservation() {
+	public Reservation() 
+	{
 		// TODO - implement reservation.reservation
-		throw new UnsupportedOperationException();
+		this.reserveDate = null;
+		this.reserveTime = null;
+		this.pax = 0;
 	}
 
-	public void setReserveDate() {
+	public void setReserveDate() 
+	{
 		// TODO - implement reservation.setReserveDate
-		throw new UnsupportedOperationException();
+		long millis = System.currentTimeMillis();  
+		java.sql.Date date = new java.sql.Date(millis);  
+		
+		this.reserveDate = date;
+		
+		//System.out.println(this.reserveDate);  
 	}
 
-	public Date getReserveTime() {
+	public Date getReserveTime() 
+	{
 		return this.reserveTime;
 	}
 
-	public void setReserveTime() {
+	public void setReserveTime() 
+	{
 		// TODO - implement reservation.setReserveTime
-		throw new UnsupportedOperationException();
+		long millis = System.currentTimeMillis();  
+		java.sql.Time time = new java.sql.Time(millis);
+		
+		this.reserveTime = time;
+		
+		//System.out.println(this.reserveTime);
 	}
 
-	public Date getReserveDate() {
+	public Date getReserveDate() 
+	{
 		// TODO - implement reservation.getReserveDate
-		throw new UnsupportedOperationException();
+		return this.reserveDate;
 	}
 
-	public void setPax() {
+	public void setPax(int pax) 
+	{
 		// TODO - implement reservation.setPax
-		throw new UnsupportedOperationException();
+		this.pax = pax;
 	}
 
-	public int getPax() {
+	public int getPax() 
+	{
 		return this.pax;
 	}
 
-	public void removeReservation() {
+	public void removeReservation() 
+	{
 		// TODO - implement reservation.removeReservation
-		throw new UnsupportedOperationException();
+		this.reserveDate = null;
+		this.reserveTime = null;
+		this.pax = 0;
+		System.out.println("Reservation is removed.");
 	}
 
-	public void checkReservation() {
+	public void checkReservation() 
+	{
 		// TODO - implement reservation.checkReservation
-		throw new UnsupportedOperationException();
+		System.out.println("Reservation by " + this.cust.getName());
+		System.out.println("Reserved Date: " + this.reserveDate);
+		System.out.println("Reserved Time: " + this.reserveTime);
+		System.out.println("Pax: " + this.pax);
 	}
 
-	public Customer getCust() {
+	public Customer getCust() 
+	{
 		return this.cust;
 	}
 
-	/**
-	 * 
-	 * @param cust
-	 */
-	public void setCust(Customer cust) {
+	public void setCust(Customer cust) 
+	{
 		this.cust = cust;
 	}
 
 }
+
+
+// //Reservation()
+// //setReserveDate() 
+// //getReserveTime()
+// //setReserveTime()
+// //getReserveDate()
+// //setPax()
+// //getPax() 
+// //removeReservation()
+// //checkReservation()
+// //getCust() : Customer
+// //setCust - cust:Customer

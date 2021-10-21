@@ -64,4 +64,11 @@ public class Restaurant {
 		// TODO - implement restaurant.RevenueReport
 	}
 
+	public Restaurant()
+	{
+		order = null;
+		staffs = null;
+
+	}
+
 }

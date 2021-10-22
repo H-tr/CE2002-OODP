@@ -18,12 +18,7 @@ public class Order {
 	}
 
 	public void addItem() {
-		Scanner sc = new Scanner(System.in);
-		Menu.showItems();
-		System.out.println("Please enter the item you want to add");
-		int itemID = sc.nextInt();
-
-		orderItems[itemcnt++] = Menu.getItem(itemID);
+		orderItems[itemcnt++] = Menu.getItem();
 	}
 
 	public Item removeItem() {
@@ -36,16 +31,12 @@ public class Order {
 			orderItems[i] = orderItems[i+1];
 		
 		itemcnt--;
+		sc.close();
 		return rt;
 	}
 
 	public void addPackage(Package package_add) {
-		Scanner sc = new Scanner(System.in);
-		Menu.showPackage();
-		System.out.println("Please enter the package you want to add");
-		int packageID = sc.nextInt();
-
-		orderPackage[paccnt++] = Menu.getPackage(packageID);
+		orderPackage[paccnt++] = Menu.getPackage();
 	}
 
 	public Package removePackage() {
@@ -58,6 +49,7 @@ public class Order {
 			orderPackage[i] = orderPackage[i+1];
 		
 		paccnt--;
+		sc.close();
 		return rt;
 	}
 
@@ -70,7 +62,7 @@ public class Order {
 
 		System.out.println("The packages are: ");
 		for (int i = 0; i < paccnt; ++i)
-			System.out.println(i + ":\t" + orderPackage[i].getDescriptions()
+			System.out.println(i + ":\t" + orderPackage[i].getDescription()
 				+ ":\tprince: " + orderPackage[i].getPrice()
 				+ ":\titems: " + orderPackage[i].getItem());
 	}
@@ -86,7 +78,7 @@ public class Order {
 			totalPay += orderItems[i].getPrice();
 		}
 		for (int i = 0; i < paccnt; ++i) {
-			System.out.println(orderPackage[i].getDescriptions() + "\t\t" + orderPackage[i].getPrice());
+			System.out.println(orderPackage[i].getDescription() + "\t\t" + orderPackage[i].getPrice());
 			totalPay += orderPackage[i].getPrice();
 		}
 		System.out.println("****************************************************");

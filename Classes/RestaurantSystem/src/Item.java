@@ -1,73 +1,38 @@
-public class Item {
-
-	private int itemID;
+public abstract class Item {
 	private String name;
-	private String Description;
-	private double Price;
-	private String type;
-
-	public int getItemID() {
-		return this.itemID;
-	}
-
-	/**
-	 * 
-	 * @param itemID
-	 */
-	public void setItemID(int itemID) {
-		this.itemID = itemID;
+	private String description;
+	private double price;
+	
+	public Item(String name, String description,double price) {
+		this.name = name;
+		this.description = description;
+		this.price = price;
 	}
 
 	public String getName() {
 		return this.name;
 	}
 
-	/**
-	 * 
-	 * @param name
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	public String getDescription() {
-		// TODO - implement item.getDescription
-		throw new UnsupportedOperationException();
+		return this.description;
 	}
-
-	/**
-	 * 
-	 * @param Description
-	 */
-	public void setDescription(String Description) {
-		// TODO - implement item.setDescription
-		throw new UnsupportedOperationException();
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public double getPrice() {
-		// TODO - implement item.getPrice
-		throw new UnsupportedOperationException();
+		return this.price;
 	}
 
-	/**
-	 * 
-	 * @param Price
-	 */
-	public void setPrice(double Price) {
-		// TODO - implement item.setPrice
-		throw new UnsupportedOperationException();
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
-	public String getType() {
-		return this.type;
-	}
-
-	/**
-	 * 
-	 * @param type
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-
+	public abstract String getType();
+	
 }

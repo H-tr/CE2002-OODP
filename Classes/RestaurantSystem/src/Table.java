@@ -17,6 +17,8 @@ public class Table {
 		// TODO - implement reservation.reservation
 		this.numOfTables = 20;
 		int size[] = {2, 4, 8};
+
+		Order order = new Order();
 		
 		for (int i = 0; i < numOfTables; i++)
 		{

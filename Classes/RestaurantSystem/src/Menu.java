@@ -14,7 +14,7 @@ public class Menu {
 	private static int dessertCnt = 0; // used to point the first empty slot of item menu
 	private static int pacCnt = 0; // used to point the first empty slot of the package menu
 
-	public static void main(String[] args) {
+	public static void menu_interface() {
 		System.out.println("Create a menu.");
 		Scanner sc = new Scanner(System.in);
 		int choice;

@@ -9,6 +9,7 @@ public class App {
 
         Restaurant restaurant = new Restaurant();
 
+
         System.out.println("Welcome to Restaurant Reservation and Point of Sale System (RRPSS)");
         System.out.println("Please input your staff ID: ");
 
@@ -38,63 +39,59 @@ public class App {
         while(!exit)
         {
             System.out.println("Choose one of the 10 options: ");
-            System.out.println("1. Create/Update/Remove menu item ");
-            System.out.println("2. Create/Update/Remove promotion ");
-            System.out.println("3. Create order ");
-            System.out.println("4. View order ");
-            System.out.println("5. Add/Remove order item/s to/from order ");
-            System.out.println("6. Create reservation booking ");
-            System.out.println("7. Check/Remove reservation booking ");
-            System.out.println("8. Check table availability ");
-            System.out.println("9. Print order invoice ");
-            System.out.println("10. Print sale revenue report by period (eg day or month)");
-            System.out.println("11. Exit System");
+            System.out.println("1. Access menu item ");
+            //System.out.println("2. Create/Update/Remove promotion ");
+            System.out.println("2. Create order ");
+            System.out.println("3. View order ");
+            System.out.println("4. Add/Remove order item/s to/from order ");
+            System.out.println("5. Create reservation booking ");
+            System.out.println("6. Check/Remove reservation booking ");
+            System.out.println("7. Check table availability ");
+            System.out.println("8. Print order invoice ");
+            System.out.println("9. Print sale revenue report by period (eg day or month)");
+            System.out.println("10. Exit System");
             
 
             int choice = sc.nextInt();
 
             switch(choice){
                 case 1:
-                    //Create/Update/Remove menu item
+                    Menu.menu_interface();
                     break;
 
                 case 2:
-                    //Create/Update/Remove promotion
-                    break;
-
-                case 3:
                     //Create order
                     break;
 
-                case 4:
+                case 3:
                     //View order
                     break;
 
-                case 5:
+                case 4:
                     //Add/Remove order item/s to/from order
                     break;
 
-                case 6:
+                case 5:
                     //Create reservation booking
                     break;
 
-                case 7:
+                case 6:
                     //Check/Remove reservation booking
                     break;
 
-                case 8:
+                case 7:
                     //Check table availability
                     break;
 
-                case 9:
+                case 8:
                     //Print order invoice
                     break;
 
-                case 10:
+                case 9:
                     //Print sale revenue report by period (eg day or month)
                     break;
 
-                case 11:
+                case 10:
                     exit = true;        //Exit Switch Case
                     break;
             }

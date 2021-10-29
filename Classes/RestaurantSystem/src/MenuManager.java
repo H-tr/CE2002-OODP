@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class MenuManager {
     public static void main(String[] args) throws IOException {
 		ItemMenu.getItemList();
+		PackageMenu.getPacList();
 		System.out.println("Create a menu.");
 		Scanner sc = new Scanner(System.in);
 		int choice;
@@ -15,7 +16,7 @@ public class MenuManager {
 			System.out.println("[5] remove a package");
 			System.out.println("[6] diaplay the packages");
 			System.out.println("[7] store menu list");
-			System.out.println("[8] get menu list");
+			System.out.println("[8] save");
 			System.out.println("[9] package manage");
 			System.out.println("[10] exit");
 			System.out.printf("Please enter your choice: ");
@@ -42,6 +43,7 @@ public class MenuManager {
 					break;
 				case 7:
 					ItemMenu.storeItemList();
+					PackageMenu.storePacList();
 					break;
 				case 8:
 					ItemMenu.getItemList();

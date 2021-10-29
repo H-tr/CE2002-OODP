@@ -1,7 +1,6 @@
 import java.util.Scanner;
 public class Package {
 
-
 	public Package(String description, double price) {
 		this.description = description;
 		this.price = price;
@@ -9,7 +8,7 @@ public class Package {
 	
 	private double price;
 	private Item[] item = new Item[max];
-	private static final int max = 10;
+	private static final int max = 20;
 	private String description;
 
 	private int itemCnt = 0;
@@ -30,8 +29,11 @@ public class Package {
 	}
 
 	public void addItem() {
-		Item temp = ItemMenu.getItem();
-		item[itemCnt++] = temp;
+		item[itemCnt++] = ItemMenu.getItem();
+	}
+
+	public void addItem(int i, int j) {		// used when adding items from plain file
+		item[itemCnt++] = ItemMenu.getItem(i, j);
 	}
 
 	public void removeItem() {
@@ -47,9 +49,9 @@ public class Package {
 
 	public void setDescription() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Please enter the new description: \n");
+		System.out.println("Please enter the new description: ");
+		//String dummychar = sc.next();
 		this.description = sc.nextLine();
-		sc.close();
 	}
 
 	public String getDescription() {
@@ -64,12 +66,36 @@ public class Package {
 		this.price = sc.nextDouble();
 	}
 
+	public int getItemCnt() {
+		return itemCnt;
+	}
+
 	public String getItem() {
 		String temp = "";
 		for (int i = 0; i < itemCnt; ++i) {
 			temp += item[i].getName();
-			temp += " ";
+			temp += ", ";
 		}
 		return temp;
+	}
+
+	public Item getItem(int i) {
+		return item[i];
+	}
+
+	public int getInfo(int j) {
+		int info = 0;
+		switch (item[j].getType()) {
+			case "Main Course":
+				info = 0;
+				break;
+			case "Drinks":
+				info = 1;
+				break;
+			case "Dessert":
+				info = 2;
+				break;
+		}
+		return info;
 	}
 }

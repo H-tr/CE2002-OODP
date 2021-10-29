@@ -3,4 +3,10 @@ chicken rice
 3.0
 good good
 Drink
+water
+3.0
+very nice
+soup
+2.0
+very nice
 Dessert

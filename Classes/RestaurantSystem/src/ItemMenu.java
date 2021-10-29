@@ -108,30 +108,30 @@ public class ItemMenu {
 	}
 
 	public static void showItems() {
-		System.out.println("\t\tThe main course list:");
+		System.out.println("\n\t\tThe main course list:");
 		showMainCourse();
-		System.out.println("\t\tThe drink list:");
+		System.out.println("\n\t\tThe drink list:");
 		showDrinks();
-		System.out.println("\t\tThe dessert list:");
+		System.out.println("\n\t\tThe dessert list:");
 		showDessert();
 	}
 
 	static void showMainCourse() {
 		for (int i = 0; i < mainCourseCnt; ++i)
 			System.out.println(i + ":\t" + mainCourseMenu[i].getName() + "\n\tprince: " + mainCourseMenu[i].getPrice()
-					+ "\n\ttype: " + mainCourseMenu[i].getType());
+					+ "\n\ttype: " + mainCourseMenu[i].getDescription() + "\n");
 	}
 
 	private static void showDrinks() {
 		for (int i = 0; i < drinksCnt; ++i)
 			System.out.println(i + ":\t" + drinksMenu[i].getName() + "\n\tprince: " + drinksMenu[i].getPrice()
-					+ "\n\ttype: " + drinksMenu[i].getType());
+					+ "\n\ttype: " + drinksMenu[i].getDescription() + "\n");
 	}
 
 	private static void showDessert() {
 		for (int i = 0; i < dessertCnt; ++i)
 			System.out.println(i + ":\t" + dessertMenu[i].getName() + "\n\tprince: " + dessertMenu[i].getPrice()
-					+ "\n\ttype: " + dessertMenu[i].getType());
+					+ "\n\ttype: " + dessertMenu[i].getDescription() + "\n");
 	}
 
 	public static Item getItem() {
@@ -169,6 +169,22 @@ public class ItemMenu {
 		return rt;
 	}
 
+	public static Item getItem(int i, int j) {
+		Item rt = null;
+		switch (i) { // ** requires initialization of the item class **
+		case 0:
+			rt = mainCourseMenu[j];
+			break;
+		case 1:
+			rt = drinksMenu[j];
+			break;
+		case 2:
+			rt = dessertMenu[j];
+			break;
+		}
+		return rt;
+	}
+
 	static void getItemList() throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader("ItemMenu.txt"));
 		try {
@@ -180,7 +196,7 @@ public class ItemMenu {
 				switch (line) {
 				case "MainCourse" :
 					line = br.readLine();
-					if (!line.equals("Drink")) {
+					while (!line.equals("Drink")) {
 						name = line;
 						pr = br.readLine();
 						price = Double.parseDouble(pr);
@@ -191,7 +207,7 @@ public class ItemMenu {
 					break;
 				case "Drink" :
 					line = br.readLine();
-					if (!line.equals("Dessert")) {
+					while (!line.equals("Dessert")) {
 						name = line;
 						pr = br.readLine();
 						price = Double.parseDouble(pr);
@@ -202,7 +218,7 @@ public class ItemMenu {
 					break;
 				case "Dessert" :
 					line = br.readLine();
-					if (line != null) {
+					while (line != null) {
 						name = line;
 						pr = br.readLine();
 						price = Double.parseDouble(pr);
@@ -235,5 +251,26 @@ public class ItemMenu {
 			writer.write(dessertMenu[i].getName() + "\n" + dessertMenu[i].getPrice()
 					+ "\n" + dessertMenu[i].getDescription() + "\n");
 		writer.close();
+	}
+
+	static int getInfo(Item item) {
+		switch (item.getType()) {
+			case "Main Course":
+				for (int i = 0; i < mainCourseCnt; ++i)
+					if (item == mainCourseMenu[i])
+						return i;
+				break;
+			case "Drinks":
+				for (int i = 0; i < drinksCnt; ++i)
+					if (item == drinksMenu[i])
+						return i;
+				break;
+			case "Dessert":
+				for (int i = 0; i < dessertCnt; ++i)
+					if (item == dessertMenu[i])
+						return i;
+				break;
+		}
+		return -1;
 	}
 }

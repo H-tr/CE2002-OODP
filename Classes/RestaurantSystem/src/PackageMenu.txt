@@ -1,0 +1,39 @@
+Package
+Set A for Single Person
+25.0
+0 0
+1 0
+2 0
+Package
+Set B for Single Person
+26.0
+0 1
+1 13
+2 3
+Package
+Set C for Two People
+50.0
+0 4
+1 17
+1 18
+2 2
+2 0
+Package
+Set D for Four People
+100.0
+0 5
+0 6
+0 7
+1 13
+1 13
+1 14
+1 14
+2 0
+2 3
+2 2
+Package
+Children Set
+20.0
+0 0
+1 4
+2 3

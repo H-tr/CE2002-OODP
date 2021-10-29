@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class PackageMenu {
@@ -6,12 +10,17 @@ public class PackageMenu {
     private static Package[] packageMenu = new Package[maxPackageNum]; // package menu
 
     public static void addPackage() { // ** requires initialization of the package class **
-		packageMenu[pacCnt++] = new Package();
+		Scanner sc = new Scanner(System.in);
+		Package temp = packageMenu[pacCnt++] = new Package();
+		System.out.println("Please enter the number of items: ");
+		int num = sc.nextInt();
+		for (int i = 0; i < num; ++i)
+			temp.addItem();
 	}
 
 	public static Package removePackage() {
 		Scanner sc = new Scanner(System.in);
-		ItemMenu.showItems();
+		PackageMenu.showPackage();
 		System.out.println("Enter the number of package you want to remove: ");
 		int packageNum = sc.nextInt(); // packageNum is the index of package you want to remove in the list
 		Package rt = packageMenu[packageNum];
@@ -49,6 +58,8 @@ public class PackageMenu {
 			System.out.println("[4] reset the description");
 			System.out.println("[5] reset the price");
 			System.out.println("[6] exit");
+			System.out.println("Please enter your choice: ");
+			ch = sc.nextInt();
 			switch (ch) {
 				case 1:
 					temp.displayPackage();
@@ -69,11 +80,42 @@ public class PackageMenu {
 		} while (ch < 6);
 	}
 
-    public static void storePacList() {
-
+    public static void storePacList() throws IOException {
+		FileWriter writer = new FileWriter("PackageMenu.txt");
+		for (int i = 0; i < pacCnt; ++i) {
+			writer.write("Package\n");
+			writer.write(packageMenu[i].getDescription() + "\n");
+			writer.write(packageMenu[i].getPrice() + "\n");
+			for (int j = 0; j < packageMenu[i].getItemCnt(); ++j) {
+				writer.write(packageMenu[i].getInfo(j) + " " + ItemMenu.getInfo(packageMenu[i].getItem(j)) + "\n");
+			}
+		}
+		writer.close();
     }
 
-    public static void getPacList() {
-
+    public static void getPacList() throws IOException {
+		BufferedReader br = new BufferedReader(new FileReader("PackageMenu.txt"));
+		try {
+			String line = br.readLine();
+			String pr;
+			double price;
+			String description;
+			while (line != null) {
+				description = br.readLine();
+				pr = br.readLine();
+				price = Double.parseDouble(pr);
+				Package temp = packageMenu[pacCnt++] = new Package(description, price);
+				line = br.readLine();
+				while (line != null && !line.equals("Package")) {
+					String[] parts = line.split(" ");
+					int i = Integer.parseInt(parts[0]);
+					int j = Integer.parseInt(parts[1]);
+					temp.addItem(i, j);
+					line = br.readLine();
+				};
+			}
+		} finally {
+			br.close();
+		}
     }
 }

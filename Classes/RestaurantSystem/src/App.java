@@ -63,6 +63,8 @@ public class App {
                     break;
 
                 case 3:
+                    Order or = new Order(false, new Staff(name, gender, 3, jobtitle));
+                    int ch = sc.nextInt();
                     //Create order
                     break;
 

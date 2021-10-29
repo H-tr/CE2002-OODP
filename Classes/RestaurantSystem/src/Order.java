@@ -1,6 +1,11 @@
 import java.util.*;
 public class Order {
 
+	public Order(boolean isMember, Staff staff) {
+		this.isMember = isMember;
+		this.staff = staff;
+	}
+
 	private final int maxItemNum = 50;
 	private final int maxPacNum = 50;
 
@@ -13,12 +18,8 @@ public class Order {
 	private int itemcnt = 0;	// point to the first empty slot in item list
 	private int paccnt = 0;		// point to the first package slot in package list
 
-	public void addStaff(Staff staff) {
-		this.staff = staff;
-	}
-
 	public void addItem() {
-		orderItems[itemcnt++] = Menu.getItem();
+		orderItems[itemcnt++] = ItemMenu.getItem();
 	}
 
 	public Item removeItem() {
@@ -36,7 +37,7 @@ public class Order {
 	}
 
 	public void addPackage(Package package_add) {
-		orderPackage[paccnt++] = Menu.getPackage();
+		orderPackage[paccnt++] = PackageMenu.getPackage();
 	}
 
 	public Package removePackage() {
@@ -91,6 +92,8 @@ public class Order {
 		}
 		System.out.println("****************************************************");
 		System.out.println("Total\t\t" + totalPay);
+
+		clean();
 	}
 
 	public boolean getIsMember() {
@@ -109,4 +112,10 @@ public class Order {
 		this.date = date;
 	}
 
+	private void clean() {
+		itemcnt = 0;
+		paccnt = 0;
+	}
+
 }
+

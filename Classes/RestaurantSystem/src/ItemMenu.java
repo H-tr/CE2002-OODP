@@ -1,58 +1,19 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
-public class Menu {
+public class ItemMenu {
 	private static final int maxItemNum = 500; // max item menu size
-	private static final int maxPackageNum = 50; // max package menu size
 
 	private static Item[] mainCourseMenu = new Item[maxItemNum]; // main course menu
 	private static Item[] drinksMenu = new Item[maxItemNum]; // drinks menu
 	private static Item[] dessertMenu = new Item[maxItemNum]; // dessert menu
-	private static Package[] packageMenu = new Package[maxPackageNum]; // package menu
 
 	private static int mainCourseCnt = 0; // used to point the first empty slot of item menu
 	private static int drinksCnt = 0; // used to point the first empty slot of item menu
 	private static int dessertCnt = 0; // used to point the first empty slot of item menu
-	private static int pacCnt = 0; // used to point the first empty slot of the package menu
-
-	public static void main(String[] args) {
-		System.out.println("Create a menu.");
-		Scanner sc = new Scanner(System.in);
-		int choice;
-		do {
-			System.out.println("[1] add an item to the menu");
-			System.out.println("[2] remove an item");
-			System.out.println("[3] display the items");
-			System.out.println("[4] add a package");
-			System.out.println("[5] remove a package");
-			System.out.println("[6] diaplay the packages");
-			System.out.println("[7] exit");
-			System.out.printf("Please enter your choice: ");
-			choice = sc.nextInt();
-
-			switch (choice) {
-				case 1:
-					addItem();
-					break;
-				case 2:
-					removeItem();
-					break;
-				case 3:
-					showItems();
-					break;
-				case 4:
-					addPackage();
-					break;
-				case 5:
-					removePackage();
-					break;
-				case 6:
-					showPackage();
-					break;
-			}
-		} while (choice < 7);
-		
-		sc.close();
-	}
 
 	public static void addItem() {
 		String dummychar; // make sure scan works well
@@ -79,9 +40,9 @@ public class Menu {
 			case "drinks":
 				System.out.println("Please enter name of the drinks:");
 				dummychar = sc.nextLine();
-				name = sc.next();
+				name = sc.nextLine();
 				System.out.println("Please enter description of this item:");
-				description = sc.next();
+				description = sc.nextLine();
 				System.out.println("Please enter the price:");
 				price = sc.nextDouble();
 				drinksMenu[drinksCnt++] = new Drinks(name, description, price);
@@ -146,24 +107,6 @@ public class Menu {
 		return rt;
 	}
 
-	public static void addPackage() { // ** requires initialization of the package class **
-		showItems();
-		packageMenu[pacCnt++] = new Package();
-	}
-
-	public static Package removePackage() {
-		Scanner sc = new Scanner(System.in);
-		showItems();
-		System.out.println("Enter the number of package you want to remove: ");
-		int packageNum = sc.nextInt(); // packageNum is the index of package you want to remove in the list
-		Package rt = packageMenu[packageNum];
-		for (int i = packageNum; i < pacCnt; ++i)
-			packageMenu[i] = packageMenu[i + 1];
-
-		pacCnt--;
-		return rt;
-	}
-
 	public static void showItems() {
 		System.out.println("\t\tThe main course list:");
 		showMainCourse();
@@ -173,7 +116,7 @@ public class Menu {
 		showDessert();
 	}
 
-	private static void showMainCourse() {
+	static void showMainCourse() {
 		for (int i = 0; i < mainCourseCnt; ++i)
 			System.out.println(i + ":\t" + mainCourseMenu[i].getName() + "\n\tprince: " + mainCourseMenu[i].getPrice()
 					+ "\n\ttype: " + mainCourseMenu[i].getType());
@@ -226,17 +169,71 @@ public class Menu {
 		return rt;
 	}
 
-	public static void showPackage() {
-		for (int i = 0; i < pacCnt; ++i)
-			System.out.println(i + ":\t" + packageMenu[i].getDescription() + ":\tprince: " + packageMenu[i].getPrice()
-					+ ":\titems: " + packageMenu[i].getItem());
+	static void getItemList() throws IOException {
+		BufferedReader br = new BufferedReader(new FileReader("ItemMenu.txt"));
+		try {
+			String line = br.readLine();
+			String name, pr;
+			double price;
+			String description;
+			while (line != null) {
+				switch (line) {
+				case "MainCourse" :
+					line = br.readLine();
+					if (!line.equals("Drink")) {
+						name = line;
+						pr = br.readLine();
+						price = Double.parseDouble(pr);
+						description = br.readLine();
+						mainCourseMenu[mainCourseCnt++] = new MainCourse(name, description, price);
+						line = br.readLine();
+					}
+					break;
+				case "Drink" :
+					line = br.readLine();
+					if (!line.equals("Dessert")) {
+						name = line;
+						pr = br.readLine();
+						price = Double.parseDouble(pr);
+						description = br.readLine();
+						drinksMenu[drinksCnt++] = new Drinks(name, description, price);
+						line = br.readLine();
+					}
+					break;
+				case "Dessert" :
+					line = br.readLine();
+					if (line != null) {
+						name = line;
+						pr = br.readLine();
+						price = Double.parseDouble(pr);
+						description = br.readLine();
+						dessertMenu[dessertCnt++] = new Dessert(name, description, price);
+						line = br.readLine();
+					}
+					break;
+				}
+			}
+		} finally {
+			br.close();
+		}
 	}
 
-	public static Package getPackage() {
-		Scanner sc = new Scanner(System.in);
-		showPackage();
-		System.out.println("Enter the id of package you want to get: ");
-		int PackageID = sc.nextInt();
-		return packageMenu[PackageID];
+	static void storeItemList() throws IOException {
+		FileWriter writer = new FileWriter("ItemMenu.txt");
+		writer.write("MainCourse\n");
+		for (int i = 0; i < mainCourseCnt; ++i)
+			writer.write(mainCourseMenu[i].getName() + "\n" + mainCourseMenu[i].getPrice()
+					+ "\n" + mainCourseMenu[i].getDescription() + "\n");
+
+		writer.write("Drink\n");
+		for (int i = 0; i < drinksCnt; ++i)
+			writer.write(drinksMenu[i].getName() + "\n" + drinksMenu[i].getPrice()
+					+ "\n" + drinksMenu[i].getDescription() + "\n");
+
+		writer.write("Dessert\n");
+		for (int i = 0; i < dessertCnt; ++i)
+			writer.write(dessertMenu[i].getName() + "\n" + dessertMenu[i].getPrice()
+					+ "\n" + dessertMenu[i].getDescription() + "\n");
+		writer.close();
 	}
 }

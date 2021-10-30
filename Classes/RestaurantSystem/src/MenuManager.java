@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuManager {
-    public static void main(String[] args) throws IOException {
+    public static void menuMange() throws IOException {
 		ItemMenu.getItemList();
 		PackageMenu.getPacList();
 		System.out.println("Create a menu.");

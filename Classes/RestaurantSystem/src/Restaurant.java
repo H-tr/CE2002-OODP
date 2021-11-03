@@ -1,74 +1,77 @@
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
+
+import javax.naming.spi.ResolveResult;
+
+
 public class Restaurant {
 
-	private Order[] order;
-	private Staff[] staffs;
+	private final int maxEventNum = 500;
+	private int eventCounter = 0;
 
-	public Table[] getEmptyTable() {
-		return null;
-		// TODO - implement restaurant.getEmptyTable
-	}
+	private Event[] events = new Event[maxEventNum];
+	Scanner sc = new Scanner(System.in);
 
-	/**
-	 * 
-	 * @param pax
-	 * @param custName
-	 */
-	public int assignTable(int pax, String custName) {
-		return pax;
-		// TODO - implement restaurant.assignTable
-	}
-
-	/**
-	 * 
-	 * @param time
-	 * @param pax
-	 * @param custName
-	 * @param contact
-	 */
-	public void setReservation(Date time, int pax, String custName, String contact) {
-		// TODO - implement restaurant.setReservation
-	}
-
-	/**
-	 * 
-	 * @param pax
-	 * @param staffId
-	 * @param items
-	 * @param packages
-	 */
-	public void setOrder(int pax, int staffId, Item items, Package packages) {
-		// TODO - implement restaurant.setOrder
-	}
-
-	/**
-	 * 
-	 * @param custID
-	 */
-	public void removeReservation(int custID) {
-		// TODO - implement restaurant.removeReservation
-		throw new UnsupportedOperationException();
-	}
-
-	private void addOrder() {
-		// TODO - implement restaurant.addOrder
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param start
-	 * @param end
-	 */
-	public void RevenueReport(Date start, Date end) {
-		// TODO - implement restaurant.RevenueReport
-	}
-
-	public Restaurant()
+	public Event createOrder() throws IOException
 	{
-		order = null;
-		staffs = null;
+
+		System.out.println("Input PAX: ");
+		int pax = sc.nextInt();
+		System.out.println("Input Customer's Name: ");
+		String custName = sc.next();
+		
+		Table table = new Table();
+		//Get Table reference
+
+
+
+		Order O = new Order(pax, custName, table);
+		OrderManager OM = new OrderManager(O);
+
+		OM.addToOrder();
+
+		OM.viewOrder();
+		events[eventCounter] = OM.getOrder();
+
+		return OM.getOrder();
+	}
+
+	public Event createReservation()
+	{
+		System.out.println("Input PAX: ");
+		int pax = sc.nextInt();
+		System.out.println("Input Customer's Name: ");
+		String custName = sc.next();
+
+		Table table = new Table();
+		//Get Table reference
+
+
+
+		Reservation R = new Reservation(pax, custName, table);
+		ReservationManager RM = new ReservationManager(R);
+		RM.addReservation();
+
+
+		return RM.getReservation();
 
 	}
+
+	//public Event searchEvent(Table table)
+	//{
+
+	//}
+
+	//public Event editOrder()
+	//{
+		
+	//}
+
+	//public Event editReservation()
+	//{
+
+	//}
 
 }

@@ -1,93 +1,49 @@
-import java.util.Date;
+import java.util.Calendar;
+import java.util.*;
 
-public class Reservation {
+public class Reservation extends Event{
 
-	private Date reserveDate;
-	private Date reserveTime;
-	private int pax;
-	private String custName;
-	private Customer cust;
+	private Calendar reserveDate;
 
-	public Reservation() 
+	public Reservation(int pax, String custName, Table table)
 	{
-		// TODO - implement reservation.reservation
-		this.reserveDate = null;
-		this.reserveTime = null;
-		this.pax = 0;
+		super.setCustName(custName);
+		super.setPax(pax);
+		super.setTable(table);
 	}
 
-	public void setReserveDate() 
-	{
-		// TODO - implement reservation.setReserveDate
-		long millis = System.currentTimeMillis();  
-		java.sql.Date date = new java.sql.Date(millis);  
-		
-		this.reserveDate = date;
-		
-		//System.out.println(this.reserveDate);  
+	public Calendar getReserveDate() {
+		return reserveDate;
 	}
 
-	public Date getReserveTime() 
-	{
-		return this.reserveTime;
+	public void setReserveDate(int month, int day, int hour, boolean am) {
+
+		Calendar c = Calendar.getInstance();
+       //Date d1 = new Date();
+      //System.out.println("Current date is " + d1);
+       
+       //c.set(Calendar.YEAR, Calendar.NOVEMBER, 15, 13, 50, 00);
+		c.set(Calendar.MONTH, month);
+		c.set(Calendar.DATE, day);
+		c.set(Calendar.HOUR, hour);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
+		if (am)
+		{
+			c.set(Calendar.AM_PM, 0);
+		}
+		else
+		{
+			c.set(Calendar.AM_PM, 1);
+		}
+
+		this.reserveDate = c;
 	}
 
-	public void setReserveTime() 
+	public String returnType()
 	{
-		// TODO - implement reservation.setReserveTime
-		long millis = System.currentTimeMillis();  
-		java.sql.Time time = new java.sql.Time(millis);
-		
-		this.reserveTime = time;
-		
-		//System.out.println(this.reserveTime);
+		return "Reservation";
 	}
-
-	public Date getReserveDate() 
-	{
-		// TODO - implement reservation.getReserveDate
-		return this.reserveDate;
-	}
-
-	public void setPax(int pax) 
-	{
-		// TODO - implement reservation.setPax
-		this.pax = pax;
-	}
-
-	public int getPax() 
-	{
-		return this.pax;
-	}
-
-	public void removeReservation() 
-	{
-		// TODO - implement reservation.removeReservation
-		this.reserveDate = null;
-		this.reserveTime = null;
-		this.pax = 0;
-		System.out.println("Reservation is removed.");
-	}
-
-	public void checkReservation() 
-	{
-		// TODO - implement reservation.checkReservation
-		System.out.println("Reservation by " + this.cust.getName());
-		System.out.println("Reserved Date: " + this.reserveDate);
-		System.out.println("Reserved Time: " + this.reserveTime);
-		System.out.println("Pax: " + this.pax);
-	}
-
-	public String getCustName() 
-	{
-		return this.custName;
-	}
-
-	public void setCustName(Customer cust) 
-	{
-		this.custName = cust.getName();
-	}
-
 }
 
 

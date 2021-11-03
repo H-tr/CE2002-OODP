@@ -1,7 +1,8 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException 
     {
         Scanner sc = new Scanner(System.in);
 
@@ -56,7 +57,7 @@ public class App {
 
             switch(choice){
                 case 1:
-                    //ItemMenu.menu_interface();
+                    MenuManager.menuMange();
                     break;
 
                 case 2:

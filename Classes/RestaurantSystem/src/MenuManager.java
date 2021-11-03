@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuManager {
-    public static void menuMange() throws IOException {
+    public static void menuManage() throws IOException {
 		ItemMenu.getItemList();
 		PackageMenu.getPacList();
 		System.out.println("Create a menu.");
@@ -52,7 +52,5 @@ public class MenuManager {
 					PackageMenu.packageManager();
 			}
 		} while (choice < 10);
-		
-		sc.close();
 	}
 }

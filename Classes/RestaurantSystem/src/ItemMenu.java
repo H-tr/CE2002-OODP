@@ -63,6 +63,10 @@ public class ItemMenu {
 		} while (!type.equals("maincourse") && !type.equals("drinks") && !type.equals("dessert"));
 	}
 
+	
+	/** 
+	 * @return Item
+	 */
 	public static Item removeItem() {
 		Scanner sc = new Scanner(System.in);
 		int itemNum;
@@ -134,6 +138,10 @@ public class ItemMenu {
 					+ "\n\ttype: " + dessertMenu[i].getDescription() + "\n");
 	}
 
+	
+	/** 
+	 * @return Item
+	 */
 	public static Item getItem() {
 		Scanner sc = new Scanner(System.in);
 		int itemNum;
@@ -169,6 +177,12 @@ public class ItemMenu {
 		return rt;
 	}
 
+	
+	/** 
+	 * @param i
+	 * @param j
+	 * @return Item
+	 */
 	public static Item getItem(int i, int j) {
 		Item rt = null;
 		switch (i) { // ** requires initialization of the item class **
@@ -185,6 +199,10 @@ public class ItemMenu {
 		return rt;
 	}
 
+	
+	/** 
+	 * @throws IOException
+	 */
 	static void getItemList() throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader("ItemMenu.txt"));
 		try {
@@ -234,6 +252,10 @@ public class ItemMenu {
 		}
 	}
 
+	
+	/** 
+	 * @throws IOException
+	 */
 	static void storeItemList() throws IOException {
 		FileWriter writer = new FileWriter("ItemMenu.txt");
 		writer.write("MainCourse\n");
@@ -253,6 +275,11 @@ public class ItemMenu {
 		writer.close();
 	}
 
+	
+	/** 
+	 * @param item
+	 * @return int
+	 */
 	static int getInfo(Item item) {
 		switch (item.getType()) {
 			case "Main Course":

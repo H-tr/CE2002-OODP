@@ -1,137 +1,78 @@
-import java.util.concurrent.ThreadLocalRandom;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Table {
-
-	private int seatingCapacity;
-	private int capacity;
-	private int numOfTables;
-	private int tableId;
-	private boolean isReserved;
-	private boolean isTaken;
-	
-	private Reservation reservation;
-	private Order order;
-	
-	public Table() 
-	{
-		// TODO - implement reservation.reservation
-			
-		this.tableId = 2;
-		this.capacity = 5;
-		this.isReserved = false;
-		this.isTaken = false;
-	}
-	
-	public boolean availability() 
-	{
-		// TODO - implement table.availability
-		
-		boolean available;
-		
-		if (isReserved || isTaken)
-		{
-			available = false;
-		}
-		
-		else
-			available = true;
-		
-		return available;
+	public Table (int seatCapacity) {
+		this.seatCapacity = seatCapacity;
 	}
 
-	public int getCapacity() 
-	{
-		// TODO - implement table.getCapacity
-		return this.capacity;
+	private int seatCapacity;
+	private Timing timeOccupied = null;
+
+	public void setSeatCapacity (int seatCapacity) {
+		this.seatCapacity =  seatCapacity;
 	}
 
-	public int getTableId() 
-	{
-		return this.tableId;
+	public int getSeatCapacity () {
+		return this.seatCapacity;
 	}
 
-	public int setTableId(int pax) 
-	{
-		// TODO - implement table.setTableId
-		for (int i = 0; i < this.numOfTables; i++)
-		{
-			if (this.capacity >= this.seatingCapacity)
-			{
-				return this.tableId;
+	public boolean checkAvailable(int Num, Timing time) {
+		removePastOccupy();
+		if (Num > this.seatCapacity)
+			return false;
+
+		for (Timing temp = timeOccupied; temp != null; temp = temp.next)
+			if (time.equal(temp))
+				return false;
+
+		return true;
+	}
+
+	public void addTimeOccupy(Timing time) {
+		if (timeOccupied == null)	// no item in the linked list
+			timeOccupied = time;
+		else {
+			Timing temp;
+			Timing pre = null;
+			for (temp = timeOccupied; temp != null && temp.smallerThan(time); temp = temp.next) { // temp is the first node greater than time
+				pre = temp;
+			}
+
+			if (pre == null) {	// time would be the first node in linked list
+				time.next = timeOccupied;
+				timeOccupied = time;
+			}
+			else {	// insert time into suitable place
+				time.next = temp;
+				pre.next = time;
 			}
 		}
-		
-		return -1;
 	}
 
-	public int getSeatingCapacity() 
-	{
-		return this.seatingCapacity;
+	public void removePastOccupy() {
+		Calendar cal = Calendar.getInstance(); // locale-specific
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		Date date = cal.getTime();  
+		for (Timing temp = timeOccupied; temp != null; temp = temp.next) {
+			if (date.compareTo(temp.date) > 0)
+				timeOccupied = temp.next;
+			else 
+				break;
+		}
 	}
 
-	public void setSeatingCapacity(int seatingCapacity) 
-	{
-		// TODO - implement table.setSeatingCapacity
-		this.seatingCapacity = seatingCapacity;
-	}
-
-	
-
-	public boolean getIsReserved() 
-	{
-		return this.isReserved;
-	}
-
-	public void setIsReserved(boolean isReserved) 
-	{
-		this.isReserved = isReserved;
-	}
-
-	public boolean getIsTaken() 
-	{
-		return this.isTaken;
-	}
-
-	public void setIsTaken(boolean isTaken) 
-	{
-		this.isTaken = isTaken;
-	}
-	
-	public Reservation getReservation()
-	{
-		return this.reservation;
-	}
-	
-	public void setReservation(Reservation reservation)
-	{
-		this.reservation = reservation;
-	}
-	
-	public Order getOrder()
-	{
-		return this.order;
-	}
-	
-	public void setOrder(Order order) 
-	{
-		this.order = order;
+	public void displayOccupiedTime() {
+		removePastOccupy();
+		for (Timing temp = timeOccupied; temp != null; temp = temp.next) {
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+            String strDate = dateFormat.format(temp.date);
+			System.out.printf(strDate + " " + temp.time + ", ");
+		}
 	}
 }
-
-
-// //availability
-// //getCapacity
-// //getTableId
-// setTableId
-// //getSeatingCapacity
-// //setSeatingCapacity
-// //viewOrder
-// //getIsReserved
-// //setIsReserved
-// //getIsTaken
-// //setIsTaken
-// //getReservation
-// //setReservation
-// //getOrder
-// //setOrder
-// //Table

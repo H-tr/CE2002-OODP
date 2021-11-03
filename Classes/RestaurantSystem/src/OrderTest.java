@@ -11,20 +11,15 @@ public class OrderTest {
 
         //ItemMenu.getItemList();
 		//PackageMenu.getPacList();
-
-        Table table = new Table();
         //Order O = new Order(2, "Ian", table);
 
         //OrderManager OM = new OrderManager(O);
 
+        Table table = new Table(1);
+
        //OM.addItem();
 
        //OM.viewOrder();
-
-        Reservation R = new Reservation(2, "Ian", table);
-        ReservationManager RM = new ReservationManager(R);
-
-        RM.addReservation();
 
     }
 

@@ -1,4 +1,6 @@
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class App {
@@ -35,68 +37,74 @@ public class App {
 
         /*----------------------------- Switch case for Functional Requirements--------------------------------*/
 
-        boolean exit = false;
+        int choice;
 
-        while(!exit)
-        {
-            System.out.println("Choose one of the 10 options: ");
-            System.out.println("1. Access menu item ");
+        do {
+            System.out.println("Choose one of the 3 options: ");
+            System.out.println("[1] Access menu item ");
             //System.out.println("2. Create/Update/Remove promotion ");
-            System.out.println("2. Create order ");
-            System.out.println("3. View order ");
-            System.out.println("4. Add/Remove order item/s to/from order ");
-            System.out.println("5. Create reservation booking ");
-            System.out.println("6. Check/Remove reservation booking ");
-            System.out.println("7. Check table availability ");
-            System.out.println("8. Print order invoice ");
-            System.out.println("9. Print sale revenue report by period (eg day or month)");
-            System.out.println("10. Exit System");
-            
+            System.out.println("[2] Manage the table in restaurant ");
+            System.out.println("[3] Serve for customer ");
 
-            int choice = sc.nextInt();
+            System.out.println("Please enter your choice: ");
+            choice = sc.nextInt();
 
             switch(choice){
                 case 1:
-                    MenuManager.menuMange();
+                    MenuManager.menuManage();
                     break;
-
                 case 2:
-                    //Create order
+                    TableManager.tableManage();
                     break;
-
                 case 3:
-                    //View order
-                    break;
+                    int ch;
+                    System.out.println("[1] Create an order");
+                    System.out.println("[2] Create a reservation");
+                    System.out.println("[3] Remove a reservation");
+                    System.out.println("[4] Finish an order");
+                    System.out.println("Please enter your choice: ");
+                    ch = sc.nextInt();
+                    switch(ch){
+                        case 1:
+                            System.out.println("Do you have a reservation? [1]yes [2]no");
+                            int hasRes = sc.nextInt();
+                            switch(hasRes) {
+                                case 1:
+                                    // TODO in the restaurant, find out the corresponding reservation, check whether it is valid (the time). If valid, change that event from reservation to order, otherwise, return error message
+                                    Event reservation = restaurant.searchReservation();
+                                    if (reservation == null){
+                                        System.out.println("No reservation was made under this name.");
+                                        break;
+                                    }
+                                    else{
+                                        restaurant.deleteReservation(reservation);
+                                        // TODO Reservation found and take the order
+                                        restaurant.createOrder_reserved(reservation);
 
-                case 4:
-                    //Add/Remove order item/s to/from order
-                    break;
-
-                case 5:
-                    //Create reservation booking
-                    break;
-
-                case 6:
-                    //Check/Remove reservation booking
-                    break;
-
-                case 7:
-                    //Check table availability
-                    break;
-
-                case 8:
-                    //Print order invoice
-                    break;
-
-                case 9:
-                    //Print sale revenue report by period (eg day or month)
-                    break;
-
-                case 10:
-                    exit = true;        //Exit Switch Case
+                                    }
+                                    break;
+                                case 2:
+                                    restaurant.createOrder_unreserved();
+                                    // DONE create the order in restaurant. Use the table(Table) and date(Timing)
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            // DONE create the reservation in restaurant. Use the table(Table) and time(Timing)
+                            restaurant.createReservation();
+                            break;
+                        case 3:
+                            Event reservation = restaurant.searchReservation();
+                            restaurant.deleteReservation(reservation);
+                            // DONE do it with restaurant
+                            break;
+                        case 4:
+                            // TODO do it with restaurant, finish every work like print invoice
+                    }
                     break;
             }
 
-        }
+        } while (choice < 4);
     }
+
 }

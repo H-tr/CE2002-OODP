@@ -12,33 +12,12 @@ public class ReservationManager {
 
     public void viewReservation()
     {
-        System.out.println(reservation.getReserveDate().getTime());
+        System.out.println(reservation.getReserveDate().toString());
     }
 
-    public Reservation addReservation()
+    public Reservation addReservation(Timing date)
     {
-        int hour1 = 12;
-        System.out.println("Input month: (0 = Jan, 11 = Dec) ");
-        int month = sc.nextInt();
-        System.out.println("Input date: ");
-        int date = sc.nextInt();
-        System.out.println("Input hour");
-        int hour = sc.nextInt();
-        boolean AM = false;
-        if (hour > 12)
-        {
-            hour1 = hour - 12;
-        }
-        else
-        {
-            hour1 = hour;
-            AM = true;
-        }
-
-        reservation.setReserveDate(month, date, hour1, AM);
-
-        System.out.println(reservation.getReserveDate().getTime());
-
+        reservation.setReserveDate(date);
         return reservation;
     }
 

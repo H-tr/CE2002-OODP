@@ -44,7 +44,7 @@ public class App {
             System.out.println("[1] Access menu item ");
             //System.out.println("2. Create/Update/Remove promotion ");
             System.out.println("[2] Manage the table in restaurant ");
-            System.out.println("[3] Serve for customer ");
+            System.out.println("[3] Serve the customer ");
 
             System.out.println("Please enter your choice: ");
             choice = sc.nextInt();
@@ -62,6 +62,10 @@ public class App {
                     System.out.println("[2] Create a reservation");
                     System.out.println("[3] Remove a reservation");
                     System.out.println("[4] Finish an order");
+                    System.out.println("[5] View reservations");
+                    System.out.println("[6] View orders");
+                    System.out.println("[7] edit reservation");
+                    System.out.println("[8] edit orders");
                     System.out.println("Please enter your choice: ");
                     ch = sc.nextInt();
                     switch(ch){
@@ -95,11 +99,44 @@ public class App {
                             break;
                         case 3:
                             Event reservation = restaurant.searchReservation();
+                            System.out.println(reservation.getCustName());
                             restaurant.deleteReservation(reservation);
                             // DONE do it with restaurant
                             break;
                         case 4:
+                            //Save order
+                            //Delete 
                             // TODO do it with restaurant, finish every work like print invoice
+                            break;
+                        case 5:
+                            restaurant.printReservations();
+                            break;
+                        case 6:
+                            restaurant.printOrders();
+                            break;
+
+                        case 7: //edit reservation
+                            Event reservation_1 = restaurant.searchReservation();
+                            if (reservation_1 == null)
+                            {
+                                System.out.println("No Reservation under this name was found.");
+                                break;
+                            }
+                            restaurant.editReservation(reservation_1);
+                            break;
+
+                            
+                        case 8: //edit Order
+                            Event reservation_2 = restaurant.searchOrder();
+                            if (reservation_2 == null)
+                            {
+                                System.out.println("No Order under this name was found.");
+                                break;
+                            }
+                            restaurant.editOrder(reservation_2);
+                            break;
+                            
+                        
                     }
                     break;
             }

@@ -32,4 +32,10 @@ public class Timing {
         }
         return smaller;
     }
+    public Date getDate() {
+        return date;
+    }
+    public MealTime getTime() {
+        return time;
+    }
 }

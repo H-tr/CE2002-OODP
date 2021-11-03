@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.rmi.server.ExportException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -16,7 +17,7 @@ public class Restaurant {
 
 	public void createOrder_reserved(Event reservation)
 	{
-
+		
 	}
 
 	public void createOrder_unreserved() throws IOException
@@ -24,7 +25,7 @@ public class Restaurant {
 		int ch;
 		System.out.println("Input Customer's Name: ");
 		String custName = sc.next();
-		System.out.println("Please enter the number of people");
+		System.out.println("Please enter the number of people:");
 		int peopleNum = sc.nextInt();
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -72,7 +73,7 @@ public class Restaurant {
 	public void createReservation()
 	{
 		int ch;
-		System.out.println("Please enter the number of people");
+		System.out.println("Please enter the number of people:");
 		int peopleNum = sc.nextInt();
 		System.out.println("Please enter the year of reservation:");
 		int year = sc.nextInt();
@@ -89,7 +90,7 @@ public class Restaurant {
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
 		Date date = cal.getTime();
-		System.out.println("Which meal? [1] breakfast [2] launch [3] dinner");
+		System.out.println("Which meal? [1] breakfast [2] lunch [3] dinner");
 		ch = sc.nextInt();
 		Timing time = null;
 		Table table = null;
@@ -118,11 +119,49 @@ public class Restaurant {
 		ReservationManager RM = new ReservationManager(R);
 		RM.addReservation(time);
 
-
 		events[eventCounter] = RM.getReservation();
+		
 		eventCounter++;
 		return;
 
+	}
+
+	public void printReservations()
+	{
+		int u;
+		int counter = 1;
+		for (u=0; u<eventCounter; u++)
+		{
+			if (events[u].returnType() == "Reservation")
+			{
+				System.out.println("Reservation "+ counter+ " :");
+				Reservation r = (Reservation) events[u];
+				ReservationManager RM = new ReservationManager(r);
+				RM.viewReservation();
+				counter++;
+			}
+		}
+		return;
+	}
+
+	public void printOrders()
+	{
+		int u;
+		int counter = 1;
+		for (u=0; u<eventCounter; u++)
+		{
+			if (events[u].returnType().equals("Order"))
+			{
+				System.out.println("============================");
+				System.out.println("Order "+ counter+ " :");
+				System.out.println("Customer Name: "+ events[u].getCustName());
+				Order o = (Order) events[u];
+				OrderManager OM = new OrderManager(o);
+				OM.viewOrder();
+				counter++;
+				System.out.println("============================");
+			}
+		}
 	}
 	
 
@@ -132,11 +171,12 @@ public class Restaurant {
 		String custName = sc.next();
 		Event target = null;
 		int u;
-		for (u=0; u<=eventCounter; u++)
+		for (u=0; u<eventCounter; u++)
 		{
+			
 			if (events[u].returnType() == "Reservation")
 			{
-				if (events[u].getCustName() == custName)
+				if (events[u].getCustName().equals(custName))
 				{
 					Reservation r = (Reservation) events[u];
 					ReservationManager RM = new ReservationManager(r);
@@ -145,18 +185,45 @@ public class Restaurant {
 				}
 			}
 		}
+		
 		return target;
 		
 	}
 
+	public Event searchOrder()
+	{
+		System.out.println("Please enter your name: ");
+		String custName = sc.next();
+		Event target = null;
+		int u;
+		for (u=0; u<eventCounter; u++)
+		{
+			
+			if (events[u].returnType() == "Order")
+			{
+				if (events[u].getCustName().equals(custName))
+				{
+					Order r = (Order) events[u];
+					OrderManager OM = new OrderManager(r);
+					target = events[u];
+					OM.viewOrder();
+				}
+			}
+		}
+		
+		return target;
+		
+	}
+
+
 	public void deleteReservation(Event event)
 	{
 		int u;
-		for (u = 0; u<=eventCounter; u++)
+		for (u = 0; u<eventCounter; u++)
 		{
 			if (events[u].returnType() == "Reservation")
 			{
-				if (events[u].getCustName() == event.getCustName())
+				if (events[u].getCustName().equals(event.getCustName()))
 				{
 					break;
 				}
@@ -174,14 +241,83 @@ public class Restaurant {
 		System.out.println("Reservation has been deleted!");
 	}
 
-	//public Event editOrder()
-	//{
+	public void editOrder(Event Order) throws IOException
+	{
+		Order o = (Order) Order;
+		OrderManager OM = new OrderManager(o);
 		
-	//}
+		boolean exit = false;
+		while (!exit)
+		{
+			System.out.println("What would you like to edit?");
+			System.out.println("[1] Remove Item");
+			System.out.println("[2] Remove Package");
+			System.out.println("[3] Add Order");
+			System.out.println("[4] Add Package");
+			System.out.println("[5] Exit");
+			int choice = sc.nextInt();
 
-	//public Event editReservation()
-	//{
+			switch (choice){
+				case 1:
+					OM.removeItem();
+					break;
+				case 2:
+					OM.removePackage();
+					break;
+				case 3:
+					OM.addToOrder();
+					break;
+				case 4:
+					OM.addPackage();
+					break;
+				default:
+					return;
+			}
+		}
+		return;
 
-	//}
+	}
+
+	public void editReservation(Event reservation)
+	{
+		Timing time = null;
+		int ch;
+		Reservation r = (Reservation) reservation;
+		ReservationManager RM = new ReservationManager(r);
+		RM.viewReservation();
+
+		System.out.println("Edit the details: ");
+		
+		System.out.println("Please enter the year of reservation:");
+		int year = sc.nextInt();
+		System.out.println("Please enter the month of reservation:");
+		int month = sc.nextInt();
+		System.out.println("Please enter the day of reservation: ");
+		int day = sc.nextInt();
+		Calendar cal = Calendar.getInstance();
+		cal.set(year, month-1, day);
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		Date date = cal.getTime();
+		System.out.println("Which meal? [1] breakfast [2] lunch [3] dinner");
+		ch = sc.nextInt();
+		switch (ch) {
+			case 1:
+				time = new Timing(date, Timing.MealTime.BREAKFAST);
+				break;
+			case 2:
+				time = new Timing(date, Timing.MealTime.LAUNCH);
+				break;
+			case 3:
+				time = new Timing(date, Timing.MealTime.DINNER);
+		}
+		
+		RM.addReservation(time);
+
+		System.out.println("New details: ");
+		RM.viewReservation();
+	}
 
 }

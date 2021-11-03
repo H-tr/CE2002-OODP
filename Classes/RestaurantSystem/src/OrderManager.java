@@ -43,12 +43,14 @@ public class OrderManager {
 
     public void addItem() throws IOException
     {
+		ItemMenu.getItemList();
         order.orderItems[order.itemCount] = ItemMenu.getItem();
         order.itemCount++;
     }
 
     public void addPackage() throws IOException
     {
+		PackageMenu.getPacList();
         order.orderPackages[order.packageCount] = PackageMenu.getPackage();
         order.packageCount++;
     }
@@ -57,7 +59,7 @@ public class OrderManager {
     {
         Scanner sc = new Scanner(System.in);
 		viewOrder();
-		System.out.println("Enter the number of the package you want to remove: ");
+		System.out.println("Enter the number of the items you want to remove: ");
 		int itemNum = sc.nextInt(); // packageNum is the index of package you want to remove in the list
 		Item rt = order.orderItems[itemNum];
 		for (int i = itemNum; i < order.orderItems.length; ++i)

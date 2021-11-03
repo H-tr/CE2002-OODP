@@ -5,11 +5,11 @@ public class Order extends Event{
 
 	private final int maxItemNum = 500;
 
-	public Item[] orderItems = new Item[maxItemNum];
-	public Package[] orderPackages = new Package[maxItemNum];
+	protected Item[] orderItems = new Item[maxItemNum];
+	protected Package[] orderPackages = new Package[maxItemNum];
 
-	public int itemCount = 0;
-	public int packageCount = 0;
+	protected int itemCount = 0;
+	protected int packageCount = 0;
 
 	public Order(int pax, String custName, Table table)
 	{
@@ -17,6 +17,7 @@ public class Order extends Event{
 		super.setPax(pax);
 		super.setTable(table);
 	}
+
 
 	public String returnType()
 	{

@@ -9,17 +9,14 @@ import java.util.*;
 public class OrderTest {
     public static void main(String[] args) throws IOException {
 
-        //ItemMenu.getItemList();
-		//PackageMenu.getPacList();
-        //Order O = new Order(2, "Ian", table);
-
-        //OrderManager OM = new OrderManager(O);
-
-        Table table = new Table(1);
-
-       //OM.addItem();
-
-       //OM.viewOrder();
+        Calendar cal = Calendar.getInstance();
+		cal.set(2021, 5, 30);
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		Date date = cal.getTime();
+        System.out.println(date);
 
     }
 

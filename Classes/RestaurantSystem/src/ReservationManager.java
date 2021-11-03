@@ -12,7 +12,13 @@ public class ReservationManager {
 
     public void viewReservation()
     {
-        System.out.println(reservation.getReserveDate().toString());
+        System.out.println("=================================================");
+        Timing time = reservation.getReserveDate();
+        System.out.println(reservation.getCustName() + "'s reservation : ");
+        System.out.println(time.getDate().toString());
+        System.out.println(time.getTime());
+        System.out.println("=================================================");
+        
     }
 
     public Reservation addReservation(Timing date)

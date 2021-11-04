@@ -74,15 +74,20 @@ public class App {
                             int hasRes = sc.nextInt();
                             switch(hasRes) {
                                 case 1:
-                                    // TODO in the restaurant, find out the corresponding reservation, check whether it is valid (the time). If valid, change that event from reservation to order, otherwise, return error message
+                                    // DONE in the restaurant, find out the corresponding reservation, check whether it is valid (the time). If valid, change that event from reservation to order, otherwise, return error message
                                     Event reservation = restaurant.searchReservation();
                                     if (reservation == null){
                                         System.out.println("No reservation was made under this name.");
                                         break;
                                     }
+                                    if (!restaurant.checkCurrentDate(reservation))      //Check if reservation for today
+                                    {
+                                        System.out.println("This reservation is not for today!");
+                                        break;
+                                    }
                                     else{
                                         restaurant.deleteReservation(reservation);
-                                        // TODO Reservation found and take the order
+                                        // DONE Reservation found and take the order
                                         restaurant.createOrder_reserved(reservation);
 
                                     }
@@ -99,7 +104,6 @@ public class App {
                             break;
                         case 3:
                             Event reservation = restaurant.searchReservation();
-                            System.out.println(reservation.getCustName());
                             restaurant.deleteReservation(reservation);
                             // DONE do it with restaurant
                             break;

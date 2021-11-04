@@ -15,9 +15,23 @@ public class Restaurant {
 	private Event[] events = new Event[maxEventNum];
 	Scanner sc = new Scanner(System.in);
 
-	public void createOrder_reserved(Event reservation)
+	public void createOrder_reserved(Event reservation) throws IOException
 	{
+		String custName = reservation.getCustName();
+		int pax = reservation.getPax();
+		Table table = reservation.getTable();
+
+
+		Order O = new Order(pax, custName, table);
+		OrderManager OM = new OrderManager(O);
 		
+		OM.addToOrder();
+
+		OM.viewOrder();
+		events[eventCounter] = OM.getOrder();
+		eventCounter++;
+		return;
+
 	}
 
 	public void createOrder_unreserved() throws IOException
@@ -90,6 +104,14 @@ public class Restaurant {
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
 		Date date = cal.getTime();
+
+		if (checkExpiry(date))
+		{
+			System.out.println("Please input a date that is after today!");
+			return;
+		}
+
+
 		System.out.println("Which meal? [1] breakfast [2] lunch [3] dinner");
 		ch = sc.nextInt();
 		Timing time = null;
@@ -130,16 +152,23 @@ public class Restaurant {
 	{
 		int u;
 		int counter = 1;
+		boolean check = false;
 		for (u=0; u<eventCounter; u++)
 		{
 			if (events[u].returnType() == "Reservation")
 			{
+				check = true;
 				System.out.println("Reservation "+ counter+ " :");
 				Reservation r = (Reservation) events[u];
 				ReservationManager RM = new ReservationManager(r);
 				RM.viewReservation();
 				counter++;
 			}
+		}
+
+		if (!check)
+		{
+			System.out.println("=====No reservations found=====");
 		}
 		return;
 	}
@@ -148,10 +177,12 @@ public class Restaurant {
 	{
 		int u;
 		int counter = 1;
+		boolean check = false;
 		for (u=0; u<eventCounter; u++)
 		{
 			if (events[u].returnType().equals("Order"))
 			{
+				check = true;
 				System.out.println("============================");
 				System.out.println("Order "+ counter+ " :");
 				System.out.println("Customer Name: "+ events[u].getCustName());
@@ -161,6 +192,11 @@ public class Restaurant {
 				counter++;
 				System.out.println("============================");
 			}
+		}
+
+		if (!check)
+		{
+			System.out.println("======No orders found======");
 		}
 	}
 	
@@ -218,6 +254,12 @@ public class Restaurant {
 
 	public void deleteReservation(Event event)
 	{
+
+		if (event == null)
+		{
+			System.out.println("There is no such reservation!");
+			return;
+		}	
 		int u;
 		for (u = 0; u<eventCounter; u++)
 		{
@@ -278,13 +320,46 @@ public class Restaurant {
 
 	}
 
+	public boolean checkExpiry(Date date)
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		Date cur_date  = cal.getTime();
+		return date.before(cur_date);
+	}
+
+	public boolean checkCurrentDate(Event event)
+	{
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		Date cur_date  = cal.getTime();
+
+		Reservation r = (Reservation) event;
+		Date date = r.getReserveDate().getDate();
+
+		if (!date.before(cur_date))
+		{
+			if (!date.after(cur_date))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public void editReservation(Event reservation)
 	{
 		Timing time = null;
 		int ch;
 		Reservation r = (Reservation) reservation;
 		ReservationManager RM = new ReservationManager(r);
-		RM.viewReservation();
 
 		System.out.println("Edit the details: ");
 		
@@ -301,6 +376,13 @@ public class Restaurant {
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
 		Date date = cal.getTime();
+
+		if (checkExpiry(date))
+		{
+			System.out.println("Please input a date that is after today!");
+			return;
+		}
+
 		System.out.println("Which meal? [1] breakfast [2] lunch [3] dinner");
 		ch = sc.nextInt();
 		switch (ch) {

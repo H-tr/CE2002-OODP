@@ -34,8 +34,6 @@ public class App {
 
         // Add Staff to Restaurant
 
-        TableManager.getList();
-
         /*----------------------------- Switch case for Functional Requirements--------------------------------*/
 
         int choice;

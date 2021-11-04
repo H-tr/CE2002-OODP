@@ -236,7 +236,6 @@ public class Restaurant {
 			return;
 		}
 		int u;
-<<<<<<< HEAD
 		for (u = 0; u<eventCounter; u++)
 		{
 			if (events[u].returnType() == "Reservation")
@@ -245,11 +244,6 @@ public class Restaurant {
 				{
 					Reservation R = (Reservation) events[u];
 					TableManager.removeTime(R.getTable(), R.getReserveDate());
-=======
-		for (u = 0; u < eventCounter; u++) {
-			if (events[u].returnType() == "Reservation") {
-				if (events[u].getCustName().equals(event.getCustName())) {
->>>>>>> 733ad04b3f2d20f2ba33761d44a324cd30e8b3c7
 					track = events[u];
 					break;
 				}
@@ -263,12 +257,8 @@ public class Restaurant {
 			events[u] = events[u + 1];
 		}
 		eventCounter--;
-<<<<<<< HEAD
 
 		System.out.println("Reservation for " + track.getCustName()+ " has been deleted!");
-=======
-		System.out.println("Reservation for " + track.getCustName() + " has been deleted!");
->>>>>>> 733ad04b3f2d20f2ba33761d44a324cd30e8b3c7
 	}
 
 	public void deleteOrder(Event event) {
@@ -293,12 +283,8 @@ public class Restaurant {
 			events[u] = events[u + 1];
 		}
 		eventCounter--;
-<<<<<<< HEAD
 
 		System.out.println("Order for " + track.getCustName()+ " has been deleted!");
-=======
-		System.out.println("Order for " + track.getCustName() + " has been deleted!");
->>>>>>> 733ad04b3f2d20f2ba33761d44a324cd30e8b3c7
 	}
 
 	public void editOrder(Event Order) throws IOException {
@@ -422,14 +408,7 @@ public class Restaurant {
 		if (choice == 1) {
 			isMember = true;
 		}
-<<<<<<< HEAD
-
-		
-
-		
-=======
 		OM.saveOrder();
->>>>>>> 733ad04b3f2d20f2ba33761d44a324cd30e8b3c7
 		OM.printOrderInvoice(isMember, staff);
 	}
 

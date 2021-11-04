@@ -1,3 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class TableManager {
@@ -7,7 +14,7 @@ public class TableManager {
     private static Table[] tableList = new Table[tableNum];
     private static int tableCnt = 0;
 
-    public static void tableManage() {
+    public static void tableManage() throws IOException {
         Scanner sc = new Scanner(System.in);
         int choice;
 
@@ -15,7 +22,9 @@ public class TableManager {
             System.out.println("[1] display table list");
             System.out.println("[2] add table");
             System.out.println("[3] remove table");
-            System.out.println("[4] exit");
+            System.out.println("[4] get list");
+            System.out.println("[5] save");
+            System.out.println("[6] exit");
 
             System.out.println("Please enter your choice:");
             choice = sc.nextInt();
@@ -31,8 +40,14 @@ public class TableManager {
                 case 3:
                     removeTable();
                     break;
+                case 4:
+                    getList();
+                    break;
+                case 5:
+                    storeList();
+                    break;
             }
-        } while (choice < 4);
+        } while (choice < 6);
     }
 
     public static void displayTableList() {
@@ -43,8 +58,9 @@ public class TableManager {
         }
     }
 
-    public static void addTable(int capacity) {
-        tableList[tableCnt++] = new Table(capacity);
+    public static Table addTable(int capacity) {
+        Table temp = tableList[tableCnt++] = new Table(capacity);
+        return temp;
     }
 
     public static void removeTable() {
@@ -78,5 +94,68 @@ public class TableManager {
         }
         tableList[id].addTimeOccupy(time);
         return tableList[id];
+    }
+
+    public static void removeTime(Table table, Timing time) {
+        table.removeTime(time);
+    }
+
+    public static void storeList() throws IOException {
+        FileWriter writer = new FileWriter("Table.txt");
+        for (int i = 0; i < tableCnt; ++i) {
+            writer.write("Table\n");
+            writer.write(tableList[i].getSeatCapacity() + "\n");
+            writer.write(tableList[i].timingList());
+        }
+        writer.close();
+    }
+
+    public static void getList() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("Table.txt"));
+		try {
+			String line = br.readLine();
+            Table temp = null;
+			while (line != null) {
+                if (line.equals("Table")) {
+                    line = br.readLine();
+                    temp = addTable(Integer.parseInt(line));
+                    line = br.readLine();
+                    while (line != null && !line.equals("Table")) {
+                        String[] con = line.split(" ");
+                        Calendar cal = Calendar.getInstance();
+                        int year = Integer.parseInt(con[0]);
+                        int month = Integer.parseInt(con[1]);
+                        int day = Integer.parseInt(con[2]);
+                        int ch = Integer.parseInt(con[3]);
+                        cal.set(year, month-1, day);
+                        cal.set(Calendar.HOUR_OF_DAY, 0);
+                        cal.set(Calendar.MINUTE, 0);
+                        cal.set(Calendar.SECOND, 0);
+                        cal.set(Calendar.MILLISECOND, 0);
+                        Date date = cal.getTime();
+                        Timing time = null;
+                        switch (ch) {
+                            case 1:
+                                time = new Timing(date, Timing.MealTime.BREAKFAST);
+                                break;
+                            case 2:
+                                time = new Timing(date, Timing.MealTime.LAUNCH);
+                                break;
+                            case 3:
+                                time = new Timing(date, Timing.MealTime.DINNER);
+                        }
+                        if (time == null) {
+                            System.out.println("Error input");
+                            return;
+                        }
+                        else
+                            temp.addTimeOccupy(time);
+                        line = br.readLine();
+                    }
+                }
+            }
+		} finally {
+			br.close();
+		}
     }
 }

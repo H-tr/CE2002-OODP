@@ -7,27 +7,24 @@ import java.util.*;
 
 import javax.naming.spi.ResolveResult;
 
-
 public class Restaurant {
 
 	private final int maxEventNum = 500;
 	private int eventCounter = 0;
 
 	private Event[] events = new Event[maxEventNum];
-	
+
 	Scanner sc = new Scanner(System.in);
 
-	public void createOrder_reserved(Event reservation, Staff staff) throws IOException
-	{
+	public void createOrder_reserved(Event reservation, Staff staff) throws IOException {
 		String custName = reservation.getCustName();
 		int pax = reservation.getPax();
 		Table table = reservation.getTable();
 
-
 		Order O = new Order(pax, custName, table);
 		O.setStaff(staff);
 		OrderManager OM = new OrderManager(O);
-		
+
 		OM.addToOrder();
 
 		OM.viewOrder();
@@ -37,8 +34,7 @@ public class Restaurant {
 
 	}
 
-	public void createOrder_unreserved(Staff staff) throws IOException
-	{
+	public void createOrder_unreserved(Staff staff) throws IOException {
 		int ch;
 		System.out.println("Input Customer's Name: ");
 		String custName = sc.next();
@@ -55,26 +51,25 @@ public class Restaurant {
 		Timing time = null;
 		Table table = null;
 		switch (ch) {
-			case 1:
-				time = new Timing(date, Timing.MealTime.BREAKFAST);
-				break;
-			case 2:
-				time = new Timing(date, Timing.MealTime.LAUNCH);
-				break;
-			case 3:
-				time = new Timing(date, Timing.MealTime.DINNER);
+		case 1:
+			time = new Timing(date, Timing.MealTime.BREAKFAST);
+			break;
+		case 2:
+			time = new Timing(date, Timing.MealTime.LAUNCH);
+			break;
+		case 3:
+			time = new Timing(date, Timing.MealTime.DINNER);
 		}
 		if (time == null) {
 			System.out.println("Error input");
 			return;
-		}
-		else
+		} else
 			table = TableManager.assignTable(peopleNum, time);
 		if (table == null) {
 			System.out.println("ERROR: There is no available table");
 			return;
 		}
-		
+
 		Order O = new Order(peopleNum, custName, table);
 		O.setStaff(staff);
 		OrderManager OM = new OrderManager(O);
@@ -88,8 +83,7 @@ public class Restaurant {
 		return;
 	}
 
-	public void createReservation()
-	{
+	public void createReservation() {
 		int ch;
 		System.out.println("Please enter the number of people:");
 		int peopleNum = sc.nextInt();
@@ -102,39 +96,36 @@ public class Restaurant {
 		System.out.println("Input Customer's Name: ");
 		String custName = sc.next();
 		Calendar cal = Calendar.getInstance();
-		cal.set(year, month-1, day);
+		cal.set(year, month - 1, day);
 		cal.set(Calendar.HOUR_OF_DAY, 0);
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
 		Date date = cal.getTime();
 
-		if (checkExpiry(date))
-		{
+		if (checkExpiry(date)) {
 			System.out.println("ERROR: input a date that is after today");
 			return;
 		}
-
 
 		System.out.println("Which meal? [1] breakfast [2] lunch [3] dinner");
 		ch = sc.nextInt();
 		Timing time = null;
 		Table table = null;
 		switch (ch) {
-			case 1:
-				time = new Timing(date, Timing.MealTime.BREAKFAST);
-				break;
-			case 2:
-				time = new Timing(date, Timing.MealTime.LAUNCH);
-				break;
-			case 3:
-				time = new Timing(date, Timing.MealTime.DINNER);
+		case 1:
+			time = new Timing(date, Timing.MealTime.BREAKFAST);
+			break;
+		case 2:
+			time = new Timing(date, Timing.MealTime.LAUNCH);
+			break;
+		case 3:
+			time = new Timing(date, Timing.MealTime.DINNER);
 		}
 		if (time == null) {
 			System.out.println("Error input");
 			return;
-		}
-		else
+		} else
 			table = TableManager.assignTable(peopleNum, time);
 		if (table == null) {
 			System.out.println("ERROR: There is no available table");
@@ -146,23 +137,20 @@ public class Restaurant {
 		RM.addReservation(time);
 
 		events[eventCounter] = RM.getReservation();
-		
+
 		eventCounter++;
 		return;
 
 	}
 
-	public void printReservations()
-	{
+	public void printReservations() {
 		int u;
 		int counter = 1;
 		boolean check = false;
-		for (u=0; u<eventCounter; u++)
-		{
-			if (events[u].returnType() == "Reservation")
-			{
+		for (u = 0; u < eventCounter; u++) {
+			if (events[u].returnType() == "Reservation") {
 				check = true;
-				System.out.println("Reservation "+ counter+ " :");
+				System.out.println("Reservation " + counter + " :");
 				Reservation r = (Reservation) events[u];
 				ReservationManager RM = new ReservationManager(r);
 				RM.viewReservation();
@@ -170,26 +158,22 @@ public class Restaurant {
 			}
 		}
 
-		if (!check)
-		{
+		if (!check) {
 			System.out.println("=====No reservations found=====");
 		}
 		return;
 	}
 
-	public void printOrders()
-	{
+	public void printOrders() {
 		int u;
 		int counter = 1;
 		boolean check = false;
-		for (u=0; u<eventCounter; u++)
-		{
-			if (events[u].returnType().equals("Order"))
-			{
+		for (u = 0; u < eventCounter; u++) {
+			if (events[u].returnType().equals("Order")) {
 				check = true;
 				System.out.println("============================");
-				System.out.println("Order "+ counter+ " :");
-				System.out.println("Customer Name: "+ events[u].getCustName());
+				System.out.println("Order " + counter + " :");
+				System.out.println("Customer Name: " + events[u].getCustName());
 				Order o = (Order) events[u];
 				OrderManager OM = new OrderManager(o);
 				OM.viewOrder();
@@ -198,26 +182,20 @@ public class Restaurant {
 			}
 		}
 
-		if (!check)
-		{
+		if (!check) {
 			System.out.println("======No orders found======");
 		}
 	}
-	
 
-	public Event searchReservation()
-	{
+	public Event searchReservation() {
 		System.out.println("Please enter your name: ");
 		String custName = sc.next();
 		Event target = null;
 		int u;
-		for (u=0; u<eventCounter; u++)
-		{
-			
-			if (events[u].returnType() == "Reservation")
-			{
-				if (events[u].getCustName().equals(custName))
-				{
+		for (u = 0; u < eventCounter; u++) {
+
+			if (events[u].returnType() == "Reservation") {
+				if (events[u].getCustName().equals(custName)) {
 					Reservation r = (Reservation) events[u];
 					ReservationManager RM = new ReservationManager(r);
 					target = events[u];
@@ -225,24 +203,20 @@ public class Restaurant {
 				}
 			}
 		}
-		
+
 		return target;
-		
+
 	}
 
-	public Event searchOrder()
-	{
+	public Event searchOrder() {
 		System.out.println("Please enter your name: ");
 		String custName = sc.next();
 		Event target = null;
 		int u;
-		for (u=0; u<eventCounter; u++)
-		{
-			
-			if (events[u].returnType() == "Order")
-			{
-				if (events[u].getCustName().equals(custName))
-				{
+		for (u = 0; u < eventCounter; u++) {
+
+			if (events[u].returnType() == "Order") {
+				if (events[u].getCustName().equals(custName)) {
 					Order r = (Order) events[u];
 					OrderManager OM = new OrderManager(r);
 					target = events[u];
@@ -250,21 +224,19 @@ public class Restaurant {
 				}
 			}
 		}
-		
+
 		return target;
-		
+
 	}
 
-
-	public void deleteReservation(Event event)
-	{
+	public void deleteReservation(Event event) {
 		Event track = null;
-		if (event == null)
-		{
+		if (event == null) {
 			System.out.println("ERROR: There is no such reservation!");
 			return;
-		}	
+		}
 		int u;
+<<<<<<< HEAD
 		for (u = 0; u<eventCounter; u++)
 		{
 			if (events[u].returnType() == "Reservation")
@@ -273,67 +245,68 @@ public class Restaurant {
 				{
 					Reservation R = (Reservation) events[u];
 					TableManager.removeTime(R.getTable(), R.getReserveDate());
+=======
+		for (u = 0; u < eventCounter; u++) {
+			if (events[u].returnType() == "Reservation") {
+				if (events[u].getCustName().equals(event.getCustName())) {
+>>>>>>> 733ad04b3f2d20f2ba33761d44a324cd30e8b3c7
 					track = events[u];
 					break;
 				}
 			}
 		}
-		if (u==eventCounter)
-		{
+		if (u == eventCounter) {
 			System.out.println("ERROR: There is not such reservation!");
 			return;
 		}
-		for ( int j = u ; j< eventCounter; j++)
-		{
-			events[u] = events[u+1];
+		for (int j = u; j < eventCounter; j++) {
+			events[u] = events[u + 1];
 		}
 		eventCounter--;
+<<<<<<< HEAD
 
 		System.out.println("Reservation for " + track.getCustName()+ " has been deleted!");
+=======
+		System.out.println("Reservation for " + track.getCustName() + " has been deleted!");
+>>>>>>> 733ad04b3f2d20f2ba33761d44a324cd30e8b3c7
 	}
 
-	public void deleteOrder(Event event)
-	{
+	public void deleteOrder(Event event) {
 		Event track = null;
-		if (event == null)
-		{
+		if (event == null) {
 			System.out.println("ERROR: There is no such Order!");
 			return;
-		}	
+		}
 		int u;
-		for (u = 0; u<eventCounter; u++)
-		{
-			if (events[u].returnType() == "Order")
-			{
-				if (events[u].getCustName().equals(event.getCustName()))
-				{
+		for (u = 0; u < eventCounter; u++) {
+			if (events[u].returnType() == "Order") {
+				if (events[u].getCustName().equals(event.getCustName())) {
 					track = events[u];
 					break;
 				}
 			}
 		}
-		if (u==eventCounter)
-		{
+		if (u == eventCounter) {
 			System.out.println("ERROR: There is no such Order!");
 		}
-		for ( int j = u ; j< eventCounter; j++)
-		{
-			events[u] = events[u+1];
+		for (int j = u; j < eventCounter; j++) {
+			events[u] = events[u + 1];
 		}
 		eventCounter--;
+<<<<<<< HEAD
 
 		System.out.println("Order for " + track.getCustName()+ " has been deleted!");
+=======
+		System.out.println("Order for " + track.getCustName() + " has been deleted!");
+>>>>>>> 733ad04b3f2d20f2ba33761d44a324cd30e8b3c7
 	}
 
-
-	public void editOrder(Event Order) throws IOException
-	{
+	public void editOrder(Event Order) throws IOException {
 		Order o = (Order) Order;
 		OrderManager OM = new OrderManager(o);
-		
+
 		boolean exit = false;
-		while (!exit)
-		{
+		while (!exit) {
 			System.out.println("What would you like to edit?");
 			System.out.println("[1] Remove Item");
 			System.out.println("[2] Remove Package");
@@ -342,70 +315,65 @@ public class Restaurant {
 			System.out.println("[5] Exit");
 			int choice = sc.nextInt();
 
-			switch (choice){
-				case 1:
-					OM.removeItem();
-					break;
-				case 2:
-					OM.removePackage();
-					break;
-				case 3:
-					OM.addToOrder();
-					break;
-				case 4:
-					OM.addPackage();
-					break;
-				default:
-					return;
+			switch (choice) {
+			case 1:
+				OM.removeItem();
+				break;
+			case 2:
+				OM.removePackage();
+				break;
+			case 3:
+				OM.addToOrder();
+				break;
+			case 4:
+				OM.addPackage();
+				break;
+			default:
+				return;
 			}
 		}
 		return;
 
 	}
 
-	public boolean checkExpiry(Date date)
-	{
+	public boolean checkExpiry(Date date) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.HOUR_OF_DAY, 0);
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
-		Date cur_date  = cal.getTime();
+		Date cur_date = cal.getTime();
 		return date.before(cur_date);
 	}
 
-	public boolean checkCurrentDate(Event event)
-	{
+	public boolean checkCurrentDate(Event event) {
 
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.HOUR_OF_DAY, 0);
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
-		Date cur_date  = cal.getTime();
+		Date cur_date = cal.getTime();
 
 		Reservation r = (Reservation) event;
 		Date date = r.getReserveDate().getDate();
 
-		if (!date.before(cur_date))
-		{
-			if (!date.after(cur_date))
-			{
+		if (!date.before(cur_date)) {
+			if (!date.after(cur_date)) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public void editReservation(Event reservation)
-	{
+	public void editReservation(Event reservation) {
 		Timing time = null;
 		int ch;
 		Reservation r = (Reservation) reservation;
 		ReservationManager RM = new ReservationManager(r);
 
 		System.out.println("Edit the details: ");
-		
+
 		System.out.println("Please enter the year of reservation:");
 		int year = sc.nextInt();
 		System.out.println("Please enter the month of reservation:");
@@ -413,15 +381,14 @@ public class Restaurant {
 		System.out.println("Please enter the day of reservation: ");
 		int day = sc.nextInt();
 		Calendar cal = Calendar.getInstance();
-		cal.set(year, month-1, day);
+		cal.set(year, month - 1, day);
 		cal.set(Calendar.HOUR_OF_DAY, 0);
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
 		Date date = cal.getTime();
 
-		if (checkExpiry(date))
-		{
+		if (checkExpiry(date)) {
 			System.out.println("ERROR: input a date that is after today");
 			return;
 		}
@@ -429,16 +396,15 @@ public class Restaurant {
 		System.out.println("Which meal? [1] breakfast [2] lunch [3] dinner");
 		ch = sc.nextInt();
 		switch (ch) {
-			case 1:
-				time = new Timing(date, Timing.MealTime.BREAKFAST);
-				break;
-			case 2:
-				time = new Timing(date, Timing.MealTime.LAUNCH);
-				break;
-			case 3:
-				time = new Timing(date, Timing.MealTime.DINNER);
+		case 1:
+			time = new Timing(date, Timing.MealTime.BREAKFAST);
+			break;
+		case 2:
+			time = new Timing(date, Timing.MealTime.LAUNCH);
+			break;
+		case 3:
+			time = new Timing(date, Timing.MealTime.DINNER);
 		}
-		
 
 		RM.addReservation(time);
 
@@ -446,49 +412,45 @@ public class Restaurant {
 		RM.viewReservation();
 	}
 
-	public void finaliseOrder(Event order, Staff staff)
-	{
+	public void finaliseOrder(Event order, Staff staff) throws IOException {
 		Order O = (Order) order;
 		OrderManager OM = new OrderManager(O);
 		boolean isMember = false;
 
 		System.out.println("Are you a member? [1] Yes  [2] No ");
 		int choice = sc.nextInt();
-		if (choice == 1)
-		{
+		if (choice == 1) {
 			isMember = true;
 		}
+<<<<<<< HEAD
 
 		
 
 		
+=======
+		OM.saveOrder();
+>>>>>>> 733ad04b3f2d20f2ba33761d44a324cd30e8b3c7
 		OM.printOrderInvoice(isMember, staff);
-
 	}
 
-	public void cleanReservation()
-	{
+	public void cleanReservation() {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.HOUR_OF_DAY, 0);
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
-		Date cur_date  = cal.getTime();
+		Date cur_date = cal.getTime();
 
 		int u;
-		for (u = 0; u<eventCounter; u++)
-		{
-			if (events[u].returnType() == "Reservation")
-			{
+		for (u = 0; u < eventCounter; u++) {
+			if (events[u].returnType() == "Reservation") {
 				Reservation r = (Reservation) events[u];
 				Date date = r.getReserveDate().date;
-				if (date.before(cur_date))
-				{
+				if (date.before(cur_date)) {
 					deleteReservation(events[u]);
 				}
 			}
 		}
 	}
-	
 
 }

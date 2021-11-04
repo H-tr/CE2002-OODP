@@ -63,8 +63,7 @@ public class ItemMenu {
 		} while (!type.equals("maincourse") && !type.equals("drinks") && !type.equals("dessert"));
 	}
 
-	
-	/** 
+	/**
 	 * @return Item
 	 */
 	public static Item removeItem() {
@@ -138,8 +137,7 @@ public class ItemMenu {
 					+ "\n\ttype: " + dessertMenu[i].getDescription() + "\n");
 	}
 
-	
-	/** 
+	/**
 	 * @return Item
 	 */
 	public static Item getItem() {
@@ -177,8 +175,7 @@ public class ItemMenu {
 		return rt;
 	}
 
-	
-	/** 
+	/**
 	 * @param i
 	 * @param j
 	 * @return Item
@@ -199,8 +196,7 @@ public class ItemMenu {
 		return rt;
 	}
 
-	
-	/** 
+	/**
 	 * @throws IOException
 	 */
 	static void getItemList() throws IOException {
@@ -212,7 +208,7 @@ public class ItemMenu {
 			String description;
 			while (line != null) {
 				switch (line) {
-				case "MainCourse" :
+				case "MainCourse":
 					line = br.readLine();
 					while (!line.equals("Drink")) {
 						name = line;
@@ -223,7 +219,7 @@ public class ItemMenu {
 						line = br.readLine();
 					}
 					break;
-				case "Drink" :
+				case "Drink":
 					line = br.readLine();
 					while (!line.equals("Dessert")) {
 						name = line;
@@ -234,7 +230,7 @@ public class ItemMenu {
 						line = br.readLine();
 					}
 					break;
-				case "Dessert" :
+				case "Dessert":
 					line = br.readLine();
 					while (line != null) {
 						name = line;
@@ -252,51 +248,49 @@ public class ItemMenu {
 		}
 	}
 
-	
-	/** 
+	/**
 	 * @throws IOException
 	 */
 	static void storeItemList() throws IOException {
 		FileWriter writer = new FileWriter("ItemMenu.txt");
 		writer.write("MainCourse\n");
 		for (int i = 0; i < mainCourseCnt; ++i)
-			writer.write(mainCourseMenu[i].getName() + "\n" + mainCourseMenu[i].getPrice()
-					+ "\n" + mainCourseMenu[i].getDescription() + "\n");
+			writer.write(mainCourseMenu[i].getName() + "\n" + mainCourseMenu[i].getPrice() + "\n"
+					+ mainCourseMenu[i].getDescription() + "\n");
 
 		writer.write("Drink\n");
 		for (int i = 0; i < drinksCnt; ++i)
-			writer.write(drinksMenu[i].getName() + "\n" + drinksMenu[i].getPrice()
-					+ "\n" + drinksMenu[i].getDescription() + "\n");
+			writer.write(drinksMenu[i].getName() + "\n" + drinksMenu[i].getPrice() + "\n"
+					+ drinksMenu[i].getDescription() + "\n");
 
 		writer.write("Dessert\n");
 		for (int i = 0; i < dessertCnt; ++i)
-			writer.write(dessertMenu[i].getName() + "\n" + dessertMenu[i].getPrice()
-					+ "\n" + dessertMenu[i].getDescription() + "\n");
+			writer.write(dessertMenu[i].getName() + "\n" + dessertMenu[i].getPrice() + "\n"
+					+ dessertMenu[i].getDescription() + "\n");
 		writer.close();
 	}
 
-	
-	/** 
+	/**
 	 * @param item
 	 * @return int
 	 */
 	static int getInfo(Item item) {
 		switch (item.getType()) {
-			case "Main Course":
-				for (int i = 0; i < mainCourseCnt; ++i)
-					if (item == mainCourseMenu[i])
-						return i;
-				break;
-			case "Drinks":
-				for (int i = 0; i < drinksCnt; ++i)
-					if (item == drinksMenu[i])
-						return i;
-				break;
-			case "Dessert":
-				for (int i = 0; i < dessertCnt; ++i)
-					if (item == dessertMenu[i])
-						return i;
-				break;
+		case "Main Course":
+			for (int i = 0; i < mainCourseCnt; ++i)
+				if (item == mainCourseMenu[i])
+					return i;
+			break;
+		case "Drinks":
+			for (int i = 0; i < drinksCnt; ++i)
+				if (item == drinksMenu[i])
+					return i;
+			break;
+		case "Dessert":
+			for (int i = 0; i < dessertCnt; ++i)
+				if (item == dessertMenu[i])
+					return i;
+			break;
 		}
 		return -1;
 	}

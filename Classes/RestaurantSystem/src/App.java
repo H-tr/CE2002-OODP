@@ -42,9 +42,9 @@ public class App {
         do {
             System.out.println("Choose one of the 3 options: ");
             System.out.println("[1] Access menu item ");
-            //System.out.println("2. Create/Update/Remove promotion ");
             System.out.println("[2] Manage the table in restaurant ");
             System.out.println("[3] Serve the customer ");
+            System.out.println("[4] Revernue report");
 
             System.out.println("Please enter your choice: ");
             choice = sc.nextInt();
@@ -153,10 +153,20 @@ public class App {
                             
                         
                     }
-                    break;
-            }
 
-        } while (choice < 4);
+
+                 case 4:
+                 
+                    //Retrieve Orders from Revenue report
+                    //Display individual sale items
+                    //Total revenue
+
+                    break;
+
+            }
+            
+
+        } while (choice < 5);
     }
 
 }

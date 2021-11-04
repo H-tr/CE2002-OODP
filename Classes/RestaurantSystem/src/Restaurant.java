@@ -13,6 +13,7 @@ public class Restaurant {
 	private int eventCounter = 0;
 
 	private Event[] events = new Event[maxEventNum];
+	
 	Scanner sc = new Scanner(System.in);
 
 	public void createOrder_reserved(Event reservation, Staff staff) throws IOException

@@ -52,6 +52,21 @@ public class Table {
 		}
 	}
 
+	public void removeTime(Timing time) {
+		Timing temp, pre = null;
+		for (temp = timeOccupied; temp != null && temp != time; temp = temp.next) {
+			pre = temp;
+		}
+		if (temp == time) {
+			if (temp == timeOccupied)
+				timeOccupied = temp.next;
+			else 
+				pre.next = temp.next;
+			System.out.println("Remove time successfally!");
+		} else if (temp == null)
+			System.out.println("No valid time in this table");
+	}
+
 	public void removePastOccupy() {
 		Calendar cal = Calendar.getInstance(); // locale-specific
 		cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -70,9 +85,31 @@ public class Table {
 	public void displayOccupiedTime() {
 		removePastOccupy();
 		for (Timing temp = timeOccupied; temp != null; temp = temp.next) {
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");  
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
             String strDate = dateFormat.format(temp.date);
 			System.out.printf(strDate + " " + temp.time + ", ");
 		}
+	}
+
+	public String timingList() {
+		String result = "";
+		for (Timing temp = timeOccupied; temp != null; temp = temp.next) {
+			DateFormat dateFormat = new SimpleDateFormat("yyyy MM dd");  
+            String strDate = dateFormat.format(temp.date);
+			result += strDate;
+			switch (temp.time) {
+			case BREAKFAST:
+				result += " 1";
+				break;
+			case LAUNCH:
+				result += " 2";
+				break;
+			case DINNER:
+				result += " 3";
+				break;
+			}
+			result += "\n";
+		}
+		return result;
 	}
 }

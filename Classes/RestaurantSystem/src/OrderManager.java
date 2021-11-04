@@ -53,6 +53,7 @@ public class OrderManager {
 
     public void addPackage() throws IOException
     {
+		ItemMenu.getItemList();
 		PackageMenu.getPacList();
         order.orderPackages[order.packageCount] = PackageMenu.getPackage();
         order.packageCount++;

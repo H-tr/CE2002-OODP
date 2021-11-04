@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.lang.annotation.Target;
 import java.rmi.server.ExportException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -270,6 +271,8 @@ public class Restaurant {
 			{
 				if (events[u].getCustName().equals(event.getCustName()))
 				{
+					Reservation R = (Reservation) events[u];
+					TableManager.removeTime(R.getTable(), R.getReserveDate());
 					track = events[u];
 					break;
 				}
@@ -285,6 +288,7 @@ public class Restaurant {
 			events[u] = events[u+1];
 		}
 		eventCounter--;
+
 		System.out.println("Reservation for " + track.getCustName()+ " has been deleted!");
 	}
 
@@ -317,6 +321,7 @@ public class Restaurant {
 			events[u] = events[u+1];
 		}
 		eventCounter--;
+
 		System.out.println("Order for " + track.getCustName()+ " has been deleted!");
 	}
 
@@ -453,6 +458,8 @@ public class Restaurant {
 		{
 			isMember = true;
 		}
+
+		
 
 		
 		OM.printOrderInvoice(isMember, staff);

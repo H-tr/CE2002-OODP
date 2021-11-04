@@ -22,9 +22,8 @@ public class TableManager {
             System.out.println("[1] display table list");
             System.out.println("[2] add table");
             System.out.println("[3] remove table");
-            System.out.println("[4] get list");
-            System.out.println("[5] save");
-            System.out.println("[6] exit");
+            System.out.println("[4] save");
+            System.out.println("[5] exit");
 
             System.out.println("Please enter your choice:");
             choice = sc.nextInt();
@@ -41,9 +40,6 @@ public class TableManager {
                     removeTable();
                     break;
                 case 4:
-                    getList();
-                    break;
-                case 5:
                     storeList();
                     break;
             }

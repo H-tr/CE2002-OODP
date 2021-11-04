@@ -32,6 +32,7 @@ public class App {
         String jobtitle =sc.next();
         
         Staff staff = new Staff(name, gender, staff_ID, jobtitle);
+        TableManager.getList();
 
         //Add Staff to Restaurant
 

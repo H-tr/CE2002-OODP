@@ -11,6 +11,8 @@ public class Order extends Event{
 	protected int itemCount = 0;
 	protected int packageCount = 0;
 
+	private Staff staff;
+
 	public Order(int pax, String custName, Table table)
 	{
 		super.setCustName(custName);
@@ -22,6 +24,14 @@ public class Order extends Event{
 	public String returnType()
 	{
 		return "Order";
+	}
+
+	public Staff getStaff() {
+		return staff;
+	}
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
 	}
 
 }

@@ -15,7 +15,7 @@ public class Restaurant {
 	private Event[] events = new Event[maxEventNum];
 	Scanner sc = new Scanner(System.in);
 
-	public void createOrder_reserved(Event reservation) throws IOException
+	public void createOrder_reserved(Event reservation, Staff staff) throws IOException
 	{
 		String custName = reservation.getCustName();
 		int pax = reservation.getPax();
@@ -23,6 +23,7 @@ public class Restaurant {
 
 
 		Order O = new Order(pax, custName, table);
+		O.setStaff(staff);
 		OrderManager OM = new OrderManager(O);
 		
 		OM.addToOrder();
@@ -34,7 +35,7 @@ public class Restaurant {
 
 	}
 
-	public void createOrder_unreserved() throws IOException
+	public void createOrder_unreserved(Staff staff) throws IOException
 	{
 		int ch;
 		System.out.println("Input Customer's Name: ");
@@ -73,6 +74,7 @@ public class Restaurant {
 		}
 		
 		Order O = new Order(peopleNum, custName, table);
+		O.setStaff(staff);
 		OrderManager OM = new OrderManager(O);
 
 		OM.addToOrder();
@@ -254,7 +256,7 @@ public class Restaurant {
 
 	public void deleteReservation(Event event)
 	{
-
+		Event track = null;
 		if (event == null)
 		{
 			System.out.println("ERROR: There is no such reservation!");
@@ -267,6 +269,7 @@ public class Restaurant {
 			{
 				if (events[u].getCustName().equals(event.getCustName()))
 				{
+					track = events[u];
 					break;
 				}
 			}
@@ -274,18 +277,19 @@ public class Restaurant {
 		if (u==eventCounter)
 		{
 			System.out.println("ERROR: There is not such reservation!");
+			return;
 		}
 		for ( int j = u ; j< eventCounter; j++)
 		{
 			events[u] = events[u+1];
 		}
 		eventCounter--;
-		System.out.println("Reservation has been deleted!");
+		System.out.println("Reservation for " + track.getCustName()+ " has been deleted!");
 	}
 
 	public void deleteOrder(Event event)
 	{
-
+		Event track = null;
 		if (event == null)
 		{
 			System.out.println("ERROR: There is no such Order!");
@@ -298,6 +302,7 @@ public class Restaurant {
 			{
 				if (events[u].getCustName().equals(event.getCustName()))
 				{
+					track = events[u];
 					break;
 				}
 			}
@@ -311,7 +316,7 @@ public class Restaurant {
 			events[u] = events[u+1];
 		}
 		eventCounter--;
-		System.out.println("Order has been deleted!");
+		System.out.println("Order for " + track.getCustName()+ " has been deleted!");
 	}
 
 
@@ -428,6 +433,7 @@ public class Restaurant {
 				time = new Timing(date, Timing.MealTime.DINNER);
 		}
 		
+
 		RM.addReservation(time);
 
 		System.out.println("New details: ");
@@ -450,6 +456,30 @@ public class Restaurant {
 		
 		OM.printOrderInvoice(isMember, staff);
 
+	}
+
+	public void cleanReservation()
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);
+		Date cur_date  = cal.getTime();
+
+		int u;
+		for (u = 0; u<eventCounter; u++)
+		{
+			if (events[u].returnType() == "Reservation")
+			{
+				Reservation r = (Reservation) events[u];
+				Date date = r.getReserveDate().date;
+				if (date.before(cur_date))
+				{
+					deleteReservation(events[u]);
+				}
+			}
+		}
 	}
 	
 

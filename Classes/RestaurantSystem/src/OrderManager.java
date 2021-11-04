@@ -86,6 +86,10 @@ public class OrderManager {
     
     public void viewOrder()
     {
+
+		System.out.printf("Order taken by: ");
+		System.out.println(order.getStaff().getJobTitle() + " "+ order.getStaff().getName());
+
         System.out.println("The items are: ");
 		for (int i = 0; i < order.itemCount; ++i)
 			System.out.println(i + ":\t" + order.orderItems[i].getName()

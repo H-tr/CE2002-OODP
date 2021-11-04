@@ -66,6 +66,7 @@ public class App {
                     System.out.println("[6] View orders");
                     System.out.println("[7] edit reservation");
                     System.out.println("[8] edit orders");
+                    System.out.println("[9] Remove past reservations");
                     System.out.println("Please enter your choice: ");
                     ch = sc.nextInt();
                     switch(ch){
@@ -88,12 +89,12 @@ public class App {
                                     else{
                                         restaurant.deleteReservation(reservation);
                                         // DONE Reservation found and take the order
-                                        restaurant.createOrder_reserved(reservation);
+                                        restaurant.createOrder_reserved(reservation, staff);
 
                                     }
                                     break;
                                 case 2:
-                                    restaurant.createOrder_unreserved();
+                                    restaurant.createOrder_unreserved(staff);
                                     // DONE create the order in restaurant. Use the table(Table) and date(Timing)
                                     break;
                             }
@@ -144,6 +145,10 @@ public class App {
                                 break;
                             }
                             restaurant.editOrder(reservation_2);
+                            break;
+
+                        case 9: //Remove past reservations that is past today
+                            restaurant.cleanReservation();
                             break;
                             
                         

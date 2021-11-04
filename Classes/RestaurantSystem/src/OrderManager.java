@@ -1,5 +1,8 @@
 import java.io.IOException;
-import java.util.Scanner;
+import java.text.DecimalFormat;
+import java.util.Calendar;
+import java.util.*;
+
 
 public class OrderManager {
 
@@ -97,8 +100,37 @@ public class OrderManager {
 	}
 
 
-    public void printOrderInvoice()
+    public void printOrderInvoice(boolean isMember, Staff staff)
     {
+		double totalPay = 0;
+		DecimalFormat f = new DecimalFormat("##.00");
+		Calendar cal = Calendar.getInstance();
+		Date date = cal.getTime();
+
+		System.out.println("\t\tRestaurant Bill");
+		System.out.println("****************************************************");
+		System.out.println("Staff: " + staff.getName() + "\tDate:" + date);
+		System.out.println("****************************************************");
+		for (int i = 0; i < order.itemCount; ++i) {
+			System.out.println(order.orderItems[i].getName() + "\t\t" + f.format(order.orderItems[i].getPrice()));
+			totalPay += order.orderItems[i].getPrice();
+		}
+		for (int i = 0; i < order.packageCount; ++i) {
+			System.out.println(order.orderPackages[i].getDescription() + "\t\t" + f.format(order.orderPackages[i].getPrice()));
+			totalPay += order.orderPackages[i].getPrice();
+		}
+		System.out.println("****************************************************");
+		System.out.println("Subtotal\t\t" + f.format(totalPay));
+		totalPay *= 1.1;
+		System.out.println("Tax(10%)\t\t" + f.format(totalPay));
+		if (isMember) {
+			totalPay *= 0.8;
+			System.out.println("Member discount(80%)\t" + f.format(totalPay));
+		}
+		System.out.println("****************************************************");
+		System.out.println("Total\t\t" + f.format(totalPay));
+
+
         return;
 	}
 }

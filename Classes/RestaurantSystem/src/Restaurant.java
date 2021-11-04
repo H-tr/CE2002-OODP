@@ -68,7 +68,7 @@ public class Restaurant {
 		else
 			table = TableManager.assignTable(peopleNum, time);
 		if (table == null) {
-			System.out.println("There is no available table");
+			System.out.println("ERROR: There is no available table");
 			return;
 		}
 		
@@ -107,7 +107,7 @@ public class Restaurant {
 
 		if (checkExpiry(date))
 		{
-			System.out.println("Please input a date that is after today!");
+			System.out.println("ERROR: input a date that is after today");
 			return;
 		}
 
@@ -133,7 +133,7 @@ public class Restaurant {
 		else
 			table = TableManager.assignTable(peopleNum, time);
 		if (table == null) {
-			System.out.println("There is no available table");
+			System.out.println("ERROR: There is no available table");
 			return;
 		}
 
@@ -257,7 +257,7 @@ public class Restaurant {
 
 		if (event == null)
 		{
-			System.out.println("There is no such reservation!");
+			System.out.println("ERROR: There is no such reservation!");
 			return;
 		}	
 		int u;
@@ -273,7 +273,7 @@ public class Restaurant {
 		}
 		if (u==eventCounter)
 		{
-			System.out.println("There is not such reservation!");
+			System.out.println("ERROR: There is not such reservation!");
 		}
 		for ( int j = u ; j< eventCounter; j++)
 		{
@@ -282,6 +282,38 @@ public class Restaurant {
 		eventCounter--;
 		System.out.println("Reservation has been deleted!");
 	}
+
+	public void deleteOrder(Event event)
+	{
+
+		if (event == null)
+		{
+			System.out.println("ERROR: There is no such Order!");
+			return;
+		}	
+		int u;
+		for (u = 0; u<eventCounter; u++)
+		{
+			if (events[u].returnType() == "Order")
+			{
+				if (events[u].getCustName().equals(event.getCustName()))
+				{
+					break;
+				}
+			}
+		}
+		if (u==eventCounter)
+		{
+			System.out.println("ERROR: There is no such Order!");
+		}
+		for ( int j = u ; j< eventCounter; j++)
+		{
+			events[u] = events[u+1];
+		}
+		eventCounter--;
+		System.out.println("Order has been deleted!");
+	}
+
 
 	public void editOrder(Event Order) throws IOException
 	{
@@ -379,7 +411,7 @@ public class Restaurant {
 
 		if (checkExpiry(date))
 		{
-			System.out.println("Please input a date that is after today!");
+			System.out.println("ERROR: input a date that is after today");
 			return;
 		}
 
@@ -401,5 +433,24 @@ public class Restaurant {
 		System.out.println("New details: ");
 		RM.viewReservation();
 	}
+
+	public void finaliseOrder(Event order, Staff staff)
+	{
+		Order O = (Order) order;
+		OrderManager OM = new OrderManager(O);
+		boolean isMember = false;
+
+		System.out.println("Are you a member? [1] Yes  [2] No ");
+		int choice = sc.nextInt();
+		if (choice == 1)
+		{
+			isMember = true;
+		}
+
+		
+		OM.printOrderInvoice(isMember, staff);
+
+	}
+	
 
 }

@@ -77,12 +77,12 @@ public class App {
                                     // DONE in the restaurant, find out the corresponding reservation, check whether it is valid (the time). If valid, change that event from reservation to order, otherwise, return error message
                                     Event reservation = restaurant.searchReservation();
                                     if (reservation == null){
-                                        System.out.println("No reservation was made under this name.");
+                                        System.out.println("ERROR: No reservation was made under this name.");
                                         break;
                                     }
                                     if (!restaurant.checkCurrentDate(reservation))      //Check if reservation for today
                                     {
-                                        System.out.println("This reservation is not for today!");
+                                        System.out.println("ERROR: This reservation is not for today!");
                                         break;
                                     }
                                     else{
@@ -108,9 +108,15 @@ public class App {
                             // DONE do it with restaurant
                             break;
                         case 4:
-                            //Save order
-                            //Delete 
-                            // TODO do it with restaurant, finish every work like print invoice
+                            Event order = restaurant.searchOrder();
+                            if (order == null)
+                            {
+                                System.out.println("=====Unable to find order!=====");
+                                break;
+                            }
+                            restaurant.finaliseOrder(order, staff);
+                            restaurant.deleteOrder(order);
+                            // TODO Save (Event) order into a text file somewhere (CHIAM CHUEN PLS)
                             break;
                         case 5:
                             restaurant.printReservations();
@@ -123,7 +129,7 @@ public class App {
                             Event reservation_1 = restaurant.searchReservation();
                             if (reservation_1 == null)
                             {
-                                System.out.println("No Reservation under this name was found.");
+                                System.out.println("ERROR: No Reservation under this name was found.");
                                 break;
                             }
                             restaurant.editReservation(reservation_1);

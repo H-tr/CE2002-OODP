@@ -74,4 +74,18 @@ public class Order extends Event {
 	public void setOrderedTime(Timing orderedTime) {
 		this.orderedTime = orderedTime;
 	}
+
+	public void removeItemPackage(String s, int index) {
+		if (s.equals("item")) {
+			for (int i = index; i < itemCount; i++) {
+				orderItems[i] = orderItems[i + 1];
+			}
+			itemCount -= 1;
+		} else if (s.equals("package")) {
+			for (int i = index; i < packageCount; i++) {
+				orderPackages[i] = orderPackages[i + 1];
+			}
+			packageCount -= 1;
+		}
+	}
 }

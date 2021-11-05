@@ -3,6 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Restaurant {
@@ -436,20 +437,22 @@ public class Restaurant {
 
 	public void revenueReport() throws ParseException, IOException {
 
-		Date start, end;
-		String strStart, strEnd;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		System.out.println("Enter the START date and time (yyyy-mm-dd hh:mm:ss): ");
-		strStart = sc.next();
-		strStart = strStart + " " + sc.next();
-		System.out.println("Enter the END date and time (yyyy-mm-dd hh:mm:ss): ");
-		strEnd = sc.next();
-		strEnd = strEnd + " " + sc.next();
-		start = dateFormat.parse(strStart);
-		end = dateFormat.parse(strEnd);
-		String[] report = new String[3];
-		BufferedReader br = new BufferedReader(new FileReader("Orders.txt"));
 		try {
+			Date start, end;
+			String strStart, strEnd;
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			DecimalFormat f = new DecimalFormat("##.00");
+
+			System.out.println("Enter the START date and time (yyyy-mm-dd hh:mm:ss): ");
+			strStart = sc.next();
+			strStart = strStart + " " + sc.next();
+			System.out.println("Enter the END date and time (yyyy-mm-dd hh:mm:ss): ");
+			strEnd = sc.next();
+			strEnd = strEnd + " " + sc.next();
+			start = dateFormat.parse(strStart);
+			end = dateFormat.parse(strEnd);
+			String[] report = new String[3];
+			BufferedReader br = new BufferedReader(new FileReader("Orders.txt"));
 			String line = br.readLine();
 			Date date;
 			int num;
@@ -515,13 +518,18 @@ public class Restaurant {
 			report[1] = stuff;
 			String totalPrice = String.valueOf(price);
 			report[2] = totalPrice;
-		} finally {
-			br.close();
-		}
-		System.out.println("==============Revenue Report==============");
-		for (int i = 0; i < 3; i++) {
-			System.out.println(report[i]);
+			System.out.println("==============Revenue Report==============");
+			System.out.println(report[0]);
 			System.out.println("==========================================");
+			System.out.println("______________Inventory Sold______________");
+			System.out.println(report[1]);
+			System.out.println("==========================================");
+			System.out.println("Total Revenue (inc. Discounts): SGD$" + f.format(Double.parseDouble(report[2])));
+			System.out.println("==========================================");
+			br.close();
+		} catch (ParseException e) {
+			System.out.println("Wrong Date Entry, please select [4] to try again!");
+			return;
 		}
 	}
 }

@@ -43,7 +43,7 @@ public class TableManager {
                 storeList();
                 break;
             }
-        } while (choice < 6);
+        } while (choice < 5);
     }
 
     public static void displayTableList() {

@@ -147,12 +147,12 @@ public class OrderManager {
 		writer.write("Customer: " + order.getCustName() + "\n");
 		writer.write("Pax: " + order.getPax() + "\n");
 		writer.write(order.getItemCount() + order.getPackageCount() + "\n");
-		if (itemList[0] != null) {
+		if (itemList.length != 0) {
 			for (int i = 0; i < order.itemCount; i++) {
 				writer.write(itemList[i] + "\n");
 			}
 		}
-		if (packageList[0] != null) {
+		if (packageList.length != 0) {
 			for (int i = 0; i < order.packageCount; i++) {
 				writer.write(packageList[i] + "\n");
 			}

@@ -37,3 +37,34 @@ Item: Sprite 3.8
 Item: Coke Zero 3.8
 Package: Beef Fillet with Black Pepper Sauce, Siam Coconut, Sweet Yam Paste with Gingko Nuts,  25.0
 61.95
+2021-11-05 15:51:30
+Staff: ian 1
+Customer: ian
+Pax: 4
+3
+Item: Live Boston Lobster Braised with Superior Broth 59.0
+Package: Live Red Tilapia Deep Fried with Nonya Sauce, Coke, Sprite, 'Chendol'-Shaved Ice with 'Gula Melaka', Sweet Yam Paste with Gingko Nuts,  50.0
+Package: Seafood Bacon Roll Tossed with Salad Cream, Donut with Seafood Paste, 'Mee Goreng' - Fried Noodles Malay Style, Tiger Beer, Tiger Beer, Heineken, Heineken, Sweet Yam Paste with Gingko Nuts, Mixed Fresh Fruits, 'Chendol'-Shaved Ice with 'Gula Melaka',  100.0
+229.90
+2021-11-05 15:58:14
+Staff: a 3
+Customer: ian
+Pax: 4
+1
+Item: Orange juice 5.8
+6.38
+2021-11-05 16:00:39
+Staff: a 3
+Customer: ian
+Pax: 4
+1
+Package: Baby Lamb Rack Grilled With Pepper and Honey Sauce, Tiger Beer, Mixed Fresh Fruits,  26.0
+28.60
+2021-11-05 16:03:46
+Staff: a 3
+Customer: ian
+Pax: 4
+2
+Item: Orange juice 5.8
+Package: Baby Lamb Rack Grilled With Pepper and Honey Sauce, Tiger Beer, Mixed Fresh Fruits,  26.0
+27.98

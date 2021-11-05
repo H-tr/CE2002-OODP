@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.lang.annotation.Target;
 import java.rmi.server.ExportException;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,8 +25,11 @@ public class Restaurant {
 		int pax = reservation.getPax();
 		Table table = reservation.getTable();
 
+		Reservation r = (Reservation) reservation;
+
 		Order O = new Order(pax, custName, table);
 		O.setStaff(staff);
+		O.setOrderedTime(r.getReserveDate());
 		OrderManager OM = new OrderManager(O);
 
 		OM.addToOrder();
@@ -75,6 +79,7 @@ public class Restaurant {
 
 		Order O = new Order(peopleNum, custName, table);
 		O.setStaff(staff);
+		O.setOrderedTime(time);
 		OrderManager OM = new OrderManager(O);
 
 		OM.addToOrder();
@@ -271,6 +276,9 @@ public class Restaurant {
 		for (u = 0; u < eventCounter; u++) {
 			if (events[u].returnType() == "Order") {
 				if (events[u].getCustName().equals(event.getCustName())) {
+					Order O = (Order) events[u];
+					TableManager.removeTime(O.getTable(), O.getOrderedTime());
+					track = events[u];
 					track = events[u];
 					break;
 				}
@@ -411,7 +419,6 @@ public class Restaurant {
 		String total;
 		total = OM.printOrderInvoice(isMember, staff);
 		OM.saveOrder(total);
-		sc.close();
 	}
 
 	public void cleanReservation() {

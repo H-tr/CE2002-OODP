@@ -11,6 +11,8 @@ public class Order extends Event {
 	protected int itemCount = 0;
 	protected int packageCount = 0;
 
+	private Timing orderedTime;
+
 	private Staff staff;
 
 	public Order(int pax, String custName, Table table) {
@@ -66,5 +68,13 @@ public class Order extends Event {
 			total += orderPackages[i].getPrice();
 		}
 		return total;
+	}
+
+	public Timing getOrderedTime() {
+		return orderedTime;
+	}
+
+	public void setOrderedTime(Timing orderedTime) {
+		this.orderedTime = orderedTime;
 	}
 }

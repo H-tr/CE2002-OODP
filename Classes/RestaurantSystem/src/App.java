@@ -67,6 +67,7 @@ public class App {
                 System.out.println("[7] edit reservation");
                 System.out.println("[8] edit orders");
                 System.out.println("[9] Remove past reservations");
+                System.out.println("[10] Exit");
                 System.out.println("Please enter your choice: ");
                 ch = sc.nextInt();
                 switch (ch) {
@@ -146,6 +147,10 @@ public class App {
 
                 case 9: // Remove past reservations that is past today
                     restaurant.cleanReservation();
+                    break;
+
+                default:
+                    System.out.println("Exiting Service Page...");
                     break;
 
                 }

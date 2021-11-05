@@ -56,7 +56,7 @@ public class Restaurant {
 			time = new Timing(date, Timing.MealTime.BREAKFAST);
 			break;
 		case 2:
-			time = new Timing(date, Timing.MealTime.LAUNCH);
+			time = new Timing(date, Timing.MealTime.LUNCH);
 			break;
 		case 3:
 			time = new Timing(date, Timing.MealTime.DINNER);
@@ -119,7 +119,7 @@ public class Restaurant {
 			time = new Timing(date, Timing.MealTime.BREAKFAST);
 			break;
 		case 2:
-			time = new Timing(date, Timing.MealTime.LAUNCH);
+			time = new Timing(date, Timing.MealTime.LUNCH);
 			break;
 		case 3:
 			time = new Timing(date, Timing.MealTime.DINNER);
@@ -387,7 +387,7 @@ public class Restaurant {
 			time = new Timing(date, Timing.MealTime.BREAKFAST);
 			break;
 		case 2:
-			time = new Timing(date, Timing.MealTime.LAUNCH);
+			time = new Timing(date, Timing.MealTime.LUNCH);
 			break;
 		case 3:
 			time = new Timing(date, Timing.MealTime.DINNER);

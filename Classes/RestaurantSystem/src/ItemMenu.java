@@ -121,19 +121,19 @@ public class ItemMenu {
 
 	static void showMainCourse() {
 		for (int i = 0; i < mainCourseCnt; ++i)
-			System.out.println(i + ":\t" + mainCourseMenu[i].getName() + "\n\tprince: " + mainCourseMenu[i].getPrice()
+			System.out.println(i + ":\t" + mainCourseMenu[i].getName() + "\n\tprice: " + mainCourseMenu[i].getPrice()
 					+ "\n\ttype: " + mainCourseMenu[i].getDescription() + "\n");
 	}
 
 	private static void showDrinks() {
 		for (int i = 0; i < drinksCnt; ++i)
-			System.out.println(i + ":\t" + drinksMenu[i].getName() + "\n\tprince: " + drinksMenu[i].getPrice()
+			System.out.println(i + ":\t" + drinksMenu[i].getName() + "\n\tprice: " + drinksMenu[i].getPrice()
 					+ "\n\ttype: " + drinksMenu[i].getDescription() + "\n");
 	}
 
 	private static void showDessert() {
 		for (int i = 0; i < dessertCnt; ++i)
-			System.out.println(i + ":\t" + dessertMenu[i].getName() + "\n\tprince: " + dessertMenu[i].getPrice()
+			System.out.println(i + ":\t" + dessertMenu[i].getName() + "\n\tprice: " + dessertMenu[i].getPrice()
 					+ "\n\ttype: " + dessertMenu[i].getDescription() + "\n");
 	}
 

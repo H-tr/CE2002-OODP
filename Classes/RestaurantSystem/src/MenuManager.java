@@ -14,6 +14,7 @@ public class MenuManager {
 		Scanner sc = new Scanner(System.in);
 		int choice;
 		do {
+			System.out.println("<<<<< EDIT MENU >>>>>");
 			System.out.println("[1] add an item to the menu");
 			System.out.println("[2] remove an item");
 			System.out.println("[3] display the items");

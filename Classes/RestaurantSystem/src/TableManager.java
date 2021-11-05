@@ -22,6 +22,7 @@ public class TableManager {
         int choice;
 
         do {
+            System.out.println("<<<<< TABLE MENU >>>>>");
             System.out.println("[1] display table list");
             System.out.println("[2] add table");
             System.out.println("[3] remove table");

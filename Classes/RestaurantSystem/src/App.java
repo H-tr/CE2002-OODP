@@ -44,6 +44,7 @@ public class App {
         int choice;
 
         do {
+            System.out.println("<<<<< MAIN MENU >>>>>");
             System.out.println("Choose one of the 3 options: ");
             System.out.println("[1] Access menu item ");
             System.out.println("[2] Manage the table in restaurant ");
@@ -56,6 +57,10 @@ public class App {
                 sc.next();
             }
             choice = sc.nextInt();
+            while (!(choice > 0 && choice < 5)) {
+                System.out.println("Please reenter your choice");
+                choice = sc.nextInt();
+            }
 
             switch (choice) {
             case 1:
@@ -66,6 +71,7 @@ public class App {
                 break;
             case 3:
                 int ch;
+                System.out.println("<<<<< SERVICE MENU >>>>>");
                 System.out.println("[1] Create an order");
                 System.out.println("[2] Create a reservation");
                 System.out.println("[3] Remove a reservation");

@@ -1,5 +1,0 @@
-Package
-chicken rice set
-4.5
-0 0
-1 1

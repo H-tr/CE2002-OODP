@@ -1,5 +1,0 @@
-2021-50-04 10:50:241
-Ian
-10
-Item [1]: chicken rice 3.0
-Package [1]: chicken rice, soup,  4.5

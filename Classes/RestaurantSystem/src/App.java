@@ -11,6 +11,7 @@ public class App {
         /*----------------------------- Getting info from Staff--------------------------------*/
 
         Restaurant restaurant = new Restaurant();
+        restaurant.cleanReservation();
 
         System.out.println("Welcome to Restaurant Reservation and Point of Sale System (RRPSS)");
         System.out.println("Please input your staff ID: ");

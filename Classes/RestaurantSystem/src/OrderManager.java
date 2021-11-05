@@ -19,10 +19,18 @@ public class OrderManager {
 
 	}
 
+	
+	/** 
+	 * @return Order
+	 */
 	public Order getOrder() {
 		return order;
 	}
 
+	
+	/** 
+	 * @throws IOException
+	 */
 	public void addToOrder() throws IOException {
 		Scanner sc = new Scanner(System.in);
 		boolean exit = false;
@@ -47,12 +55,20 @@ public class OrderManager {
 		}
 	}
 
+	
+	/** 
+	 * @throws IOException
+	 */
 	public void addItem() throws IOException {
 		ItemMenu.getItemList();
 		order.orderItems[order.itemCount] = ItemMenu.getItem();
 		order.itemCount++;
 	}
 
+	
+	/** 
+	 * @throws IOException
+	 */
 	public void addPackage() throws IOException {
 		ItemMenu.getItemList();
 		PackageMenu.getPacList();
@@ -60,6 +76,10 @@ public class OrderManager {
 		order.packageCount++;
 	}
 
+	
+	/** 
+	 * @return Item
+	 */
 	public Item removeItem() {
 		Scanner sc = new Scanner(System.in);
 		viewOrder();
@@ -72,6 +92,10 @@ public class OrderManager {
 		return rt;
 	}
 
+	
+	/** 
+	 * @return Package
+	 */
 	public Package removePackage() {
 		Scanner sc = new Scanner(System.in);
 		viewOrder();
@@ -100,6 +124,12 @@ public class OrderManager {
 					+ order.orderPackages[i].getPrice() + ":\titems: " + order.orderPackages[i].getItem());
 	}
 
+	
+	/** 
+	 * @param isMember
+	 * @param staff
+	 * @return String
+	 */
 	public String printOrderInvoice(boolean isMember, Staff staff) {
 		double totalPay = 0;
 		DecimalFormat f = new DecimalFormat("##.00");
@@ -132,6 +162,11 @@ public class OrderManager {
 		return f.format(totalPay);
 	}
 
+	
+	/** 
+	 * @param total
+	 * @throws IOException
+	 */
 	public void saveOrder(String total) throws IOException {
 		String[] itemList = order.getItems();
 		String[] packageList = order.getPackages();

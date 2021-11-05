@@ -68,3 +68,11 @@ Pax: 4
 Item: Orange juice 5.8
 Package: Baby Lamb Rack Grilled With Pepper and Honey Sauce, Tiger Beer, Mixed Fresh Fruits,  26.0
 27.98
+2021-11-05 20:49:20
+Staff: a 3
+Customer: ian
+Pax: 4
+2
+Item: Calamasi juice 5.8
+Package: Seafood Bacon Roll Tossed with Salad Cream, Donut with Seafood Paste, 'Mee Goreng' - Fried Noodles Malay Style, Tiger Beer, Tiger Beer, Heineken, Heineken, Sweet Yam Paste with Gingko Nuts, Mixed Fresh Fruits, 'Chendol'-Shaved Ice with 'Gula Melaka',  100.0
+93.10

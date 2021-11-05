@@ -2,8 +2,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuManager {
-	
-	/** 
+
+	/**
 	 * @auther HuTianrun
 	 * @throws IOException
 	 */
@@ -25,6 +25,10 @@ public class MenuManager {
 			System.out.println("[9] package manage");
 			System.out.println("[10] exit");
 			System.out.printf("Please enter your choice: ");
+			while (!sc.hasNextInt()) {
+				System.out.println("ERROR: Please use integers only!");
+				sc.next();
+			}
 			choice = sc.nextInt();
 
 			switch (choice) {

@@ -13,8 +13,7 @@ public class TableManager {
     private static Table[] tableList = new Table[tableNum];
     private static int tableCnt = 0;
 
-    
-    /** 
+    /**
      * @auther HuTianrun
      * @throws IOException
      */
@@ -30,6 +29,10 @@ public class TableManager {
             System.out.println("[5] exit");
 
             System.out.println("Please enter your choice:");
+            while (!sc.hasNextInt()) {
+                System.out.println("ERROR: Please use integers only!");
+                sc.next();
+            }
             choice = sc.nextInt();
             switch (choice) {
             case 1:
@@ -37,6 +40,10 @@ public class TableManager {
                 break;
             case 2:
                 System.out.println("Please enter the capacity: ");
+                while (!sc.hasNextInt()) {
+                    System.out.println("ERROR: Please use integers only!");
+                    sc.next();
+                }
                 int capacity = sc.nextInt();
                 addTable(capacity);
                 break;
@@ -58,8 +65,7 @@ public class TableManager {
         }
     }
 
-    
-    /** 
+    /**
      * @auther HuTianrun
      * @param capacity
      * @return Table
@@ -73,6 +79,10 @@ public class TableManager {
         Scanner sc = new Scanner(System.in);
         displayTableList();
         System.out.println("Please enter the table you want to remove: ");
+        while (!sc.hasNextInt()) {
+            System.out.println("ERROR: Please use integers only!");
+            sc.next();
+        }
         int choice = sc.nextInt();
         if (choice < 0 || choice >= tableCnt) {
             System.out.println("Invalid enter");
@@ -83,8 +93,7 @@ public class TableManager {
         --tableCnt;
     }
 
-    
-    /** 
+    /**
      * @auther HuTianrun
      * @param peopleNum
      * @param time
@@ -104,6 +113,10 @@ public class TableManager {
             return null;
 
         System.out.println("Please choose the table you want: ");
+        while (!sc.hasNextInt()) {
+            System.out.println("ERROR: Please use integers only!");
+            sc.next();
+        }
         int id = sc.nextInt();
         if (!tableList[id].checkAvailable(peopleNum, time)) {
             System.out.println("Not valid id, please enter again: ");
@@ -113,8 +126,7 @@ public class TableManager {
         return tableList[id];
     }
 
-    
-    /** 
+    /**
      * @auther HuTianrun
      * @param table
      * @param time
@@ -123,8 +135,7 @@ public class TableManager {
         table.removeTime(time);
     }
 
-    
-    /** 
+    /**
      * @auther HuTianrun
      * @throws IOException
      */
@@ -138,8 +149,7 @@ public class TableManager {
         writer.close();
     }
 
-    
-    /** 
+    /**
      * @auther HuTianrun
      * @throws IOException
      */

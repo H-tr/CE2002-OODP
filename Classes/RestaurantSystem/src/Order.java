@@ -1,6 +1,3 @@
-import java.util.*;
-import javax.swing.UIDefaults.ProxyLazyValue;
-
 public class Order extends Event {
 
 	private final int maxItemNum = 500;

@@ -3,6 +3,11 @@ public class Drinks extends Item {
         super(name, description, price);
     }
 
+    
+    /** 
+     * @auther HuTianrun
+     * @return String
+     */
     public String getType() {
         return "Drinks";
     };

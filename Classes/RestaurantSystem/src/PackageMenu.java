@@ -9,7 +9,12 @@ public class PackageMenu {
     private static int pacCnt = 0; // used to point the first empty slot of the package menu
     private static Package[] packageMenu = new Package[maxPackageNum]; // package menu
 
-    public static void addPackage() { // ** requires initialization of the package class **
+    
+	/** 
+	 * @auther HuTianrun
+	 * @param removePackage(
+	 */
+	public static void addPackage() { // ** requires initialization of the package class **
 		Scanner sc = new Scanner(System.in);
 		Package temp = packageMenu[pacCnt++] = new Package();
 		System.out.println("Please enter the number of items: ");
@@ -18,6 +23,11 @@ public class PackageMenu {
 			temp.addItem();
 	}
 
+	
+	/** 
+	 * @auther HuTianrun
+	 * @return Package
+	 */
 	public static Package removePackage() {
 		Scanner sc = new Scanner(System.in);
 		PackageMenu.showPackage();
@@ -37,6 +47,11 @@ public class PackageMenu {
 					+ "\n\titems: " + packageMenu[i].getItem());
 	}
 
+	
+	/** 
+	 * @auther HuTianrun
+	 * @return Package
+	 */
 	public static Package getPackage() {
 		Scanner sc = new Scanner(System.in);
 		showPackage();
@@ -80,7 +95,12 @@ public class PackageMenu {
 		} while (ch < 6);
 	}
 
-    public static void storePacList() throws IOException {
+    
+	/** 
+	 * @auther HuTianrun
+	 * @throws IOException
+	 */
+	public static void storePacList() throws IOException {
 		FileWriter writer = new FileWriter("PackageMenu.txt");
 		for (int i = 0; i < pacCnt; ++i) {
 			writer.write("Package\n");
@@ -93,7 +113,12 @@ public class PackageMenu {
 		writer.close();
     }
 
-    public static void getPacList() throws IOException {
+    
+	/** 
+	 * @auther HuTianrun
+	 * @throws IOException
+	 */
+	public static void getPacList() throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader("PackageMenu.txt"));
 		try {
 			String line = br.readLine();

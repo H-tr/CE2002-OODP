@@ -1,6 +1,3 @@
-import java.util.Calendar;
-import java.util.*;
-
 public class Reservation extends Event{
 
 	private Timing reserveDate;

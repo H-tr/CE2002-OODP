@@ -64,6 +64,7 @@ public class ItemMenu {
 	}
 
 	/**
+	 * @auther HuTianrun
 	 * @return Item
 	 */
 	public static Item removeItem() {
@@ -138,6 +139,7 @@ public class ItemMenu {
 	}
 
 	/**
+	 * @auther HuTianrun
 	 * @return Item
 	 */
 	public static Item getItem() {
@@ -176,6 +178,7 @@ public class ItemMenu {
 	}
 
 	/**
+	 * @auther HuTianrun
 	 * @param i
 	 * @param j
 	 * @return Item
@@ -197,6 +200,7 @@ public class ItemMenu {
 	}
 
 	/**
+	 * @auther HuTianrun
 	 * @throws IOException
 	 */
 	static void getItemList() throws IOException {
@@ -249,6 +253,7 @@ public class ItemMenu {
 	}
 
 	/**
+	 * @auther HuTianrun
 	 * @throws IOException
 	 */
 	static void storeItemList() throws IOException {
@@ -271,6 +276,7 @@ public class ItemMenu {
 	}
 
 	/**
+	 * @auther HuTianrun
 	 * @param item
 	 * @return int
 	 */

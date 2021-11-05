@@ -11,14 +11,31 @@ public class Table {
 	private int seatCapacity;
 	private Timing timeOccupied = null;
 
+	
+	/** 
+	 * @auther HuTianrun
+	 * @param seatCapacity
+	 */
 	public void setSeatCapacity(int seatCapacity) {
 		this.seatCapacity = seatCapacity;
 	}
 
+	
+	/** 
+	 * @auther HuTianrun
+	 * @return int
+	 */
 	public int getSeatCapacity() {
 		return this.seatCapacity;
 	}
 
+	
+	/** 
+	 * @auther HuTianrun
+	 * @param Num
+	 * @param time
+	 * @return boolean
+	 */
 	public boolean checkAvailable(int Num, Timing time) {
 		removePastOccupy();
 		if (Num > this.seatCapacity)
@@ -31,6 +48,11 @@ public class Table {
 		return true;
 	}
 
+	
+	/** 
+	 * @auther HuTianrun
+	 * @param time
+	 */
 	public void addTimeOccupy(Timing time) {
 		if (timeOccupied == null) // no item in the linked list
 			timeOccupied = time;
@@ -53,6 +75,11 @@ public class Table {
 		}
 	}
 
+	
+	/** 
+	 * @auther HuTianrun
+	 * @param time
+	 */
 	public void removeTime(Timing time) {
 		Timing temp, pre = null;
 		for (temp = timeOccupied; temp != null && temp != time; temp = temp.next) {
@@ -92,6 +119,11 @@ public class Table {
 		}
 	}
 
+	
+	/** 
+	 * @auther HuTianrun
+	 * @return String
+	 */
 	public String timingList() {
 		String result = "";
 		for (Timing temp = timeOccupied; temp != null; temp = temp.next) {
@@ -102,7 +134,7 @@ public class Table {
 			case BREAKFAST:
 				result += " 1";
 				break;
-			case LAUNCH:
+			case LUNCH:
 				result += " 2";
 				break;
 			case DINNER:

@@ -2,6 +2,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuManager {
+	
+	/** 
+	 * @auther HuTianrun
+	 * @throws IOException
+	 */
 	public static void menuManage() throws IOException {
 		ItemMenu.getItemList();
 		PackageMenu.getPacList();

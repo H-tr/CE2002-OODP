@@ -3,6 +3,12 @@ public class Dessert extends Item {
         super(name, description, price);
     }
 
+    
+    /** 
+     * return the type this item class
+     * @auther HuTianrun
+     * @return String
+     */
     public String getType() {
         return "Dessert";
     };

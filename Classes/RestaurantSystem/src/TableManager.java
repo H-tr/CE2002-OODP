@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,6 +13,11 @@ public class TableManager {
     private static Table[] tableList = new Table[tableNum];
     private static int tableCnt = 0;
 
+    
+    /** 
+     * @auther HuTianrun
+     * @throws IOException
+     */
     public static void tableManage() throws IOException {
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -54,6 +58,12 @@ public class TableManager {
         }
     }
 
+    
+    /** 
+     * @auther HuTianrun
+     * @param capacity
+     * @return Table
+     */
     public static Table addTable(int capacity) {
         Table temp = tableList[tableCnt++] = new Table(capacity);
         return temp;
@@ -64,11 +74,22 @@ public class TableManager {
         displayTableList();
         System.out.println("Please enter the table you want to remove: ");
         int choice = sc.nextInt();
+        if (choice < 0 || choice >= tableCnt) {
+            System.out.println("Invalid enter");
+            return;
+        }
         for (int i = choice; i < tableCnt - 1; ++i)
             tableList[i] = tableList[i + 1];
         --tableCnt;
     }
 
+    
+    /** 
+     * @auther HuTianrun
+     * @param peopleNum
+     * @param time
+     * @return Table
+     */
     public static Table assignTable(int peopleNum, Timing time) {
         Scanner sc = new Scanner(System.in);
         boolean valid = false;
@@ -92,10 +113,21 @@ public class TableManager {
         return tableList[id];
     }
 
+    
+    /** 
+     * @auther HuTianrun
+     * @param table
+     * @param time
+     */
     public static void removeTime(Table table, Timing time) {
         table.removeTime(time);
     }
 
+    
+    /** 
+     * @auther HuTianrun
+     * @throws IOException
+     */
     public static void storeList() throws IOException {
         FileWriter writer = new FileWriter("Table.txt");
         for (int i = 0; i < tableCnt; ++i) {
@@ -106,6 +138,11 @@ public class TableManager {
         writer.close();
     }
 
+    
+    /** 
+     * @auther HuTianrun
+     * @throws IOException
+     */
     public static void getList() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("Table.txt"));
         try {
@@ -135,7 +172,7 @@ public class TableManager {
                             time = new Timing(date, Timing.MealTime.BREAKFAST);
                             break;
                         case 2:
-                            time = new Timing(date, Timing.MealTime.LAUNCH);
+                            time = new Timing(date, Timing.MealTime.LUNCH);
                             break;
                         case 3:
                             time = new Timing(date, Timing.MealTime.DINNER);

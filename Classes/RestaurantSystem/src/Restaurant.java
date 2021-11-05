@@ -1,15 +1,9 @@
 import java.io.IOException;
-import java.lang.annotation.Target;
-import java.rmi.server.ExportException;
-import java.sql.Time;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.*;
-
-import javax.naming.spi.ResolveResult;
 
 public class Restaurant {
 
@@ -453,9 +447,6 @@ public class Restaurant {
 		strEnd = strEnd + " " + sc.next();
 		start = dateFormat.parse(strStart);
 		end = dateFormat.parse(strEnd);
-		System.out.println("DEBUG 1");
-		System.out.println(start);
-		System.out.println(end);
 		String[] report = new String[3];
 		BufferedReader br = new BufferedReader(new FileReader("Orders.txt"));
 		try {
@@ -468,7 +459,6 @@ public class Restaurant {
 			int tempIndex = 0;
 			String[] stuffArray = new String[100];
 			int[] stuffCountArray = new int[100];
-			System.out.println("DEBUG 2");
 			while (line != null) {
 				date = dateFormat.parse(line);
 				if (date.before(end) && date.after(start)) {
@@ -512,7 +502,6 @@ public class Restaurant {
 				}
 				line = br.readLine();
 			}
-			System.out.println("DEBUG 3");
 			if (index != 0) {
 				for (int i = 0; i < index; i++) {
 					stuff = stuff + stuffArray[i] + "\n" + " Amount Sold: " + stuffCountArray[i] + "\n";
@@ -520,14 +509,12 @@ public class Restaurant {
 			} else {
 				stuff = "No items sold during this period!";
 			}
-			System.out.println("DEBUG 4");
 			String strStart1 = dateFormat.format(start);
 			String strEnd1 = dateFormat.format(end);
 			report[0] = strStart1 + " to " + strEnd1;
 			report[1] = stuff;
 			String totalPrice = String.valueOf(price);
 			report[2] = totalPrice;
-			System.out.println("DEBUG 5");
 		} finally {
 			br.close();
 		}

@@ -90,14 +90,23 @@ public class OrderManager {
 		System.out.println(order.getStaff().getJobTitle() + " " + order.getStaff().getName());
 
 		System.out.println("The items are: ");
-		for (int i = 0; i < order.itemCount; ++i)
-			System.out.println(i + ":\t" + order.orderItems[i].getName() + "\n\tprince: "
-					+ order.orderItems[i].getPrice() + "\n\ttype: " + order.orderItems[i].getType());
-
+		for (int i = 0; i < order.itemCount; ++i) {
+			if (order.orderItems[i] != null) {
+				System.out.println(i + ":\t" + order.orderItems[i].getName() + "\n\tprice: "
+						+ order.orderItems[i].getPrice() + "\n\ttype: " + order.orderItems[i].getType());
+			} else {
+				order.removeItemPackage("item", i);
+			}
+		}
 		System.out.println("The packages are: ");
-		for (int i = 0; i < order.packageCount; ++i)
-			System.out.println(i + ":\t" + order.orderPackages[i].getDescription() + ":\tprince: "
-					+ order.orderPackages[i].getPrice() + ":\titems: " + order.orderPackages[i].getItem());
+		for (int i = 0; i < order.packageCount; ++i) {
+			if (order.orderPackages[i] != null) {
+				System.out.println(i + ":\t" + order.orderPackages[i].getDescription() + ":\tprice: "
+						+ order.orderPackages[i].getPrice() + ":\titems: " + order.orderPackages[i].getItem());
+			} else {
+				order.removeItemPackage("package", i);
+			}
+		}
 	}
 
 	public String printOrderInvoice(boolean isMember, Staff staff) {

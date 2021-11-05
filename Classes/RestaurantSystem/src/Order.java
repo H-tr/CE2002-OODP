@@ -31,13 +31,19 @@ public class Order extends Event {
 		this.staff = staff;
 	}
 
+	public int getItemCount() {
+		return itemCount;
+	}
+
+	public int getPackageCount() {
+		return packageCount;
+	}
+
 	public String[] getItems() {
 		String[] items = new String[this.itemCount];
 		int i;
 		for (i = 0; i < itemCount; i++) {
-			System.out.println(
-					items[i] = "Item [" + (i + 1) + "]: " + orderItems[i].getName() + " " + orderItems[i].getPrice());
-			items[i] = "Item [" + (i + 1) + "]: " + orderItems[i].getName() + " " + orderItems[i].getPrice();
+			items[i] = "Item: " + orderItems[i].getName() + " " + orderItems[i].getPrice();
 		}
 		return items;
 	}
@@ -46,12 +52,19 @@ public class Order extends Event {
 		String[] packages = new String[this.packageCount];
 		int i;
 		for (i = 0; i < packageCount; i++) {
-			System.out.println(
-					"Package [" + (i + 1) + "]: " + orderPackages[i].getItem() + " " + orderPackages[i].getPrice());
-			packages[i] = "Package [" + (i + 1) + "]: " + orderPackages[i].getItem() + " "
-					+ orderPackages[i].getPrice();
+			packages[i] = "Package: " + orderPackages[i].getItem() + " " + orderPackages[i].getPrice();
 		}
 		return packages;
 	}
 
+	public double getTotal() {
+		double total = 0.00;
+		for (int i = 0; i < itemCount; i++) {
+			total += orderItems[i].getPrice();
+		}
+		for (int i = 0; i < packageCount; i++) {
+			total += orderPackages[i].getPrice();
+		}
+		return total;
+	}
 }

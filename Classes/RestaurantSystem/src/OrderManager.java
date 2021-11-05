@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -99,7 +100,7 @@ public class OrderManager {
 					+ order.orderPackages[i].getPrice() + ":\titems: " + order.orderPackages[i].getItem());
 	}
 
-	public void printOrderInvoice(boolean isMember, Staff staff) {
+	public String printOrderInvoice(boolean isMember, Staff staff) {
 		double totalPay = 0;
 		DecimalFormat f = new DecimalFormat("##.00");
 		Calendar cal = Calendar.getInstance();
@@ -128,23 +129,24 @@ public class OrderManager {
 		}
 		System.out.println("****************************************************");
 		System.out.println("Total\t\t" + f.format(totalPay));
-		return;
+		return f.format(totalPay);
 	}
 
-	public void saveOrder() throws IOException {
+	public void saveOrder(String total) throws IOException {
 		String[] itemList = order.getItems();
 		String[] packageList = order.getPackages();
 
-		Calendar cal = Calendar.getInstance();
-		Date date = cal.getTime();
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		Calendar cal1 = Calendar.getInstance();
+		Date date = cal1.getTime();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String strDate = dateFormat.format(date);
 
-		FileWriter writer = new FileWriter("Orders.txt");
-		writer.write(strDate);
-		writer.write(order.getStaff().getEmployeeId() + "\n");
-		writer.write(order.getCustName() + "\n");
-		writer.write(order.getPax() + "\n");
+		FileWriter writer = new FileWriter("Orders.txt", true);
+		writer.write(strDate + "\n");
+		writer.write("Staff: " + order.getStaff().getName() + " " + order.getStaff().getEmployeeId() + "\n");
+		writer.write("Customer: " + order.getCustName() + "\n");
+		writer.write("Pax: " + order.getPax() + "\n");
+		writer.write(order.getItemCount() + order.getPackageCount() + "\n");
 		if (itemList[0] != null) {
 			for (int i = 0; i < order.itemCount; i++) {
 				writer.write(itemList[i] + "\n");
@@ -155,6 +157,7 @@ public class OrderManager {
 				writer.write(packageList[i] + "\n");
 			}
 		}
+		writer.write(total + "\n");
 		writer.close();
 	}
 }

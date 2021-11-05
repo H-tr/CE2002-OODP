@@ -2,7 +2,10 @@ import java.io.IOException;
 import java.lang.annotation.Target;
 import java.rmi.server.ExportException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.*;
 
 import javax.naming.spi.ResolveResult;
@@ -46,7 +49,7 @@ public class Restaurant {
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
 		Date date = cal.getTime();
-		System.out.println("Which meal? [1] breakfast [2] launch [3] dinner");
+		System.out.println("Which meal? [1] breakfast [2] lunch [3] dinner");
 		ch = sc.nextInt();
 		Timing time = null;
 		Table table = null;
@@ -236,12 +239,9 @@ public class Restaurant {
 			return;
 		}
 		int u;
-		for (u = 0; u<eventCounter; u++)
-		{
-			if (events[u].returnType() == "Reservation")
-			{
-				if (events[u].getCustName().equals(event.getCustName()))
-				{
+		for (u = 0; u < eventCounter; u++) {
+			if (events[u].returnType() == "Reservation") {
+				if (events[u].getCustName().equals(event.getCustName())) {
 					Reservation R = (Reservation) events[u];
 					TableManager.removeTime(R.getTable(), R.getReserveDate());
 					track = events[u];
@@ -258,7 +258,7 @@ public class Restaurant {
 		}
 		eventCounter--;
 
-		System.out.println("Reservation for " + track.getCustName()+ " has been deleted!");
+		System.out.println("Reservation for " + track.getCustName() + " has been deleted!");
 	}
 
 	public void deleteOrder(Event event) {
@@ -284,7 +284,7 @@ public class Restaurant {
 		}
 		eventCounter--;
 
-		System.out.println("Order for " + track.getCustName()+ " has been deleted!");
+		System.out.println("Order for " + track.getCustName() + " has been deleted!");
 	}
 
 	public void editOrder(Event Order) throws IOException {
@@ -375,7 +375,7 @@ public class Restaurant {
 		Date date = cal.getTime();
 
 		if (checkExpiry(date)) {
-			System.out.println("ERROR: input a date that is after today");
+			System.out.println("ERROR: Input a date that is after today");
 			return;
 		}
 
@@ -408,8 +408,10 @@ public class Restaurant {
 		if (choice == 1) {
 			isMember = true;
 		}
-		OM.saveOrder();
-		OM.printOrderInvoice(isMember, staff);
+		String total;
+		total = OM.printOrderInvoice(isMember, staff);
+		OM.saveOrder(total);
+		sc.close();
 	}
 
 	public void cleanReservation() {
@@ -432,4 +434,101 @@ public class Restaurant {
 		}
 	}
 
+	public void revenueReport() throws ParseException, IOException {
+
+		Date start, end;
+		String strStart, strEnd;
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println("Enter the START date and time (yyyy-mm-dd hh:mm:ss): ");
+		strStart = sc.next();
+		strStart = strStart + " " + sc.next();
+		System.out.println("Enter the END date and time (yyyy-mm-dd hh:mm:ss): ");
+		strEnd = sc.next();
+		strEnd = strEnd + " " + sc.next();
+		start = dateFormat.parse(strStart);
+		end = dateFormat.parse(strEnd);
+		System.out.println("DEBUG 1");
+		System.out.println(start);
+		System.out.println(end);
+		String[] report = new String[3];
+		BufferedReader br = new BufferedReader(new FileReader("Orders.txt"));
+		try {
+			String line = br.readLine();
+			Date date;
+			int num;
+			String stuff = "";
+			double price = 0.00;
+			int index = 0;
+			int tempIndex = 0;
+			String[] stuffArray = new String[100];
+			int[] stuffCountArray = new int[100];
+			System.out.println("DEBUG 2");
+			while (line != null) {
+				date = dateFormat.parse(line);
+				if (date.before(end) && date.after(start)) {
+					line = br.readLine();
+					line = br.readLine();
+					line = br.readLine();
+					line = br.readLine();
+					num = Integer.parseInt(line);
+					while (num != 0) {
+						line = br.readLine();
+						if (!Arrays.stream(stuffArray).anyMatch(line::equals)) {
+							stuffArray[index] = line;
+							stuffCountArray[index] = 1;
+							index++;
+						} else {
+							tempIndex = 0;
+							while (!stuffArray[tempIndex].equals(line)) {
+								tempIndex++;
+							}
+							if (tempIndex != 100) {
+								stuffCountArray[tempIndex] += 1;
+							}
+						}
+						num--;
+					}
+					line = br.readLine();
+					if (line != null) {
+						price += Double.parseDouble(line);
+					}
+				} else {
+					line = br.readLine();
+					line = br.readLine();
+					line = br.readLine();
+					line = br.readLine();
+					num = Integer.parseInt(line);
+					while (num != 0) {
+						line = br.readLine();
+						num--;
+					}
+					line = br.readLine();
+				}
+				line = br.readLine();
+			}
+			System.out.println("DEBUG 3");
+			if (index != 0) {
+				for (int i = 0; i < index; i++) {
+					stuff = stuff + stuffArray[i] + "\n" + " Amount Sold: " + stuffCountArray[i] + "\n";
+				}
+			} else {
+				stuff = "No items sold during this period!";
+			}
+			System.out.println("DEBUG 4");
+			String strStart1 = dateFormat.format(start);
+			String strEnd1 = dateFormat.format(end);
+			report[0] = strStart1 + " to " + strEnd1;
+			report[1] = stuff;
+			String totalPrice = String.valueOf(price);
+			report[2] = totalPrice;
+			System.out.println("DEBUG 5");
+		} finally {
+			br.close();
+		}
+		System.out.println("==============Revenue Report==============");
+		for (int i = 0; i < 3; i++) {
+			System.out.println(report[i]);
+			System.out.println("==========================================");
+		}
+	}
 }

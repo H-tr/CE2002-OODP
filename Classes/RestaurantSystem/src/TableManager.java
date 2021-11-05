@@ -27,21 +27,21 @@ public class TableManager {
 
             System.out.println("Please enter your choice:");
             choice = sc.nextInt();
-            switch(choice) {
-                case 1:
-                    displayTableList();
-                    break;
-                case 2:
-                    System.out.println("Please enter the capacity: ");
-                    int capacity = sc.nextInt();
-                    addTable(capacity);
-                    break;
-                case 3:
-                    removeTable();
-                    break;
-                case 4:
-                    storeList();
-                    break;
+            switch (choice) {
+            case 1:
+                displayTableList();
+                break;
+            case 2:
+                System.out.println("Please enter the capacity: ");
+                int capacity = sc.nextInt();
+                addTable(capacity);
+                break;
+            case 3:
+                removeTable();
+                break;
+            case 4:
+                storeList();
+                break;
             }
         } while (choice < 6);
     }
@@ -108,10 +108,10 @@ public class TableManager {
 
     public static void getList() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("Table.txt"));
-		try {
-			String line = br.readLine();
+        try {
+            String line = br.readLine();
             Table temp = null;
-			while (line != null) {
+            while (line != null) {
                 if (line.equals("Table")) {
                     line = br.readLine();
                     temp = addTable(Integer.parseInt(line));
@@ -123,7 +123,7 @@ public class TableManager {
                         int month = Integer.parseInt(con[1]);
                         int day = Integer.parseInt(con[2]);
                         int ch = Integer.parseInt(con[3]);
-                        cal.set(year, month-1, day);
+                        cal.set(year, month - 1, day);
                         cal.set(Calendar.HOUR_OF_DAY, 0);
                         cal.set(Calendar.MINUTE, 0);
                         cal.set(Calendar.SECOND, 0);
@@ -131,27 +131,26 @@ public class TableManager {
                         Date date = cal.getTime();
                         Timing time = null;
                         switch (ch) {
-                            case 1:
-                                time = new Timing(date, Timing.MealTime.BREAKFAST);
-                                break;
-                            case 2:
-                                time = new Timing(date, Timing.MealTime.LAUNCH);
-                                break;
-                            case 3:
-                                time = new Timing(date, Timing.MealTime.DINNER);
+                        case 1:
+                            time = new Timing(date, Timing.MealTime.BREAKFAST);
+                            break;
+                        case 2:
+                            time = new Timing(date, Timing.MealTime.LAUNCH);
+                            break;
+                        case 3:
+                            time = new Timing(date, Timing.MealTime.DINNER);
                         }
                         if (time == null) {
                             System.out.println("Error input");
                             return;
-                        }
-                        else
+                        } else
                             temp.addTimeOccupy(time);
                         line = br.readLine();
                     }
                 }
             }
-		} finally {
-			br.close();
-		}
+        } finally {
+            br.close();
+        }
     }
 }

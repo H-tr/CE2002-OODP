@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuManager {
-    public static void menuManage() throws IOException {
+	public static void menuManage() throws IOException {
 		ItemMenu.getItemList();
 		PackageMenu.getPacList();
 		System.out.println("Create a menu.");
@@ -14,7 +14,7 @@ public class MenuManager {
 			System.out.println("[3] display the items");
 			System.out.println("[4] add a package");
 			System.out.println("[5] remove a package");
-			System.out.println("[6] diaplay the packages");
+			System.out.println("[6] display the packages");
 			System.out.println("[7] store menu list");
 			System.out.println("[8] save");
 			System.out.println("[9] package manage");
@@ -23,33 +23,33 @@ public class MenuManager {
 			choice = sc.nextInt();
 
 			switch (choice) {
-				case 1:
-					ItemMenu.addItem();
-					break;
-				case 2:
-					ItemMenu.removeItem();
-					break;
-				case 3:
-					ItemMenu.showItems();
-					break;
-				case 4:
-					PackageMenu.addPackage();
-					break;
-				case 5:
-					PackageMenu.removePackage();
-					break;
-				case 6:
-					PackageMenu.showPackage();
-					break;
-				case 7:
-					ItemMenu.storeItemList();
-					PackageMenu.storePacList();
-					break;
-				case 8:
-					ItemMenu.getItemList();
-                    break;
-				case 9:
-					PackageMenu.packageManager();
+			case 1:
+				ItemMenu.addItem();
+				break;
+			case 2:
+				ItemMenu.removeItem();
+				break;
+			case 3:
+				ItemMenu.showItems();
+				break;
+			case 4:
+				PackageMenu.addPackage();
+				break;
+			case 5:
+				PackageMenu.removePackage();
+				break;
+			case 6:
+				PackageMenu.showPackage();
+				break;
+			case 7:
+				ItemMenu.storeItemList();
+				PackageMenu.storePacList();
+				break;
+			case 8:
+				ItemMenu.getItemList();
+				break;
+			case 9:
+				PackageMenu.packageManager();
 			}
 		} while (choice < 10);
 	}

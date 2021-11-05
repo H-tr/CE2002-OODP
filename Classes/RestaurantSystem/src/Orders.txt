@@ -1,0 +1,39 @@
+2021-09-20 01:14:27
+Staff: Chiam 1
+Customer: Ian
+Pax: 2
+3
+Item: Coke Zero 3.8
+Item: Mixed Fresh Fruits 4.0
+Package: Baby Lamb Rack Grilled With Pepper and Honey Sauce, Tiger Beer, Mixed Fresh Fruits,  26.0
+29.744
+2021-09-01 01:19:59
+Staff: Chiam 1
+Customer: Ian
+Pax: 2
+3
+Item: Lychee 5.8
+Item: 'Chendol'-Shaved Ice with 'Gula Melaka' 4.5
+Package: Seafood Bacon Roll Tossed with Salad Cream, Donut with Seafood Paste, 'Mee Goreng' - Fried Noodles Malay Style, Tiger Beer, Tiger Beer, Heineken, Heineken, Sweet Yam Paste with Gingko Nuts, Mixed Fresh Fruits, 'Chendol'-Shaved Ice with 'Gula Melaka',  100.0
+97.06
+2021-11-05 14:16:49
+Staff: Chiam 1
+Customer: Poon
+Pax: 2
+3
+Item: Siam Coconut 6.8
+Item: Siam Coconut 6.8
+Package: Baby Lamb Rack Grilled With Pepper and Honey Sauce, Tiger Beer, Mixed Fresh Fruits,  26.0
+34.85
+2021-11-05 14:41:51
+Staff: Chiam 1
+Customer: Pablo
+Pax: 3
+6
+Item: Beef Fillet with Black Pepper Sauce 14.0
+Item: Scallops Wrapped in Yam Ring 20.0
+Item: Barley 3.8
+Item: Sprite 3.8
+Item: Coke Zero 3.8
+Package: Beef Fillet with Black Pepper Sauce, Siam Coconut, Sweet Yam Paste with Gingko Nuts,  25.0
+61.95

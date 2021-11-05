@@ -1,10 +1,11 @@
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         Scanner sc = new Scanner(System.in);
 
         /*----------------------------- Getting info from Staff--------------------------------*/
@@ -43,7 +44,7 @@ public class App {
             System.out.println("[1] Access menu item ");
             System.out.println("[2] Manage the table in restaurant ");
             System.out.println("[3] Serve the customer ");
-            System.out.println("[4] Revernue report");
+            System.out.println("[4] Revenue report");
 
             System.out.println("Please enter your choice: ");
             choice = sc.nextInt();
@@ -117,7 +118,6 @@ public class App {
                     }
                     restaurant.finaliseOrder(order, staff);
                     restaurant.deleteOrder(order);
-                    // TODO Save (Event) order into a text file somewhere (CHIAM CHUEN PLS)
                     break;
                 case 5:
                     restaurant.printReservations();
@@ -149,13 +149,14 @@ public class App {
                     break;
 
                 }
+                break;
 
             case 4:
 
                 // Retrieve Orders from Revenue report
                 // Display individual sale items
                 // Total revenue
-
+                restaurant.revenueReport();
                 break;
 
             }

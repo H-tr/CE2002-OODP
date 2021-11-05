@@ -4,18 +4,18 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Table {
-	public Table (int seatCapacity) {
+	public Table(int seatCapacity) {
 		this.seatCapacity = seatCapacity;
 	}
 
 	private int seatCapacity;
 	private Timing timeOccupied = null;
 
-	public void setSeatCapacity (int seatCapacity) {
-		this.seatCapacity =  seatCapacity;
+	public void setSeatCapacity(int seatCapacity) {
+		this.seatCapacity = seatCapacity;
 	}
 
-	public int getSeatCapacity () {
+	public int getSeatCapacity() {
 		return this.seatCapacity;
 	}
 
@@ -32,20 +32,21 @@ public class Table {
 	}
 
 	public void addTimeOccupy(Timing time) {
-		if (timeOccupied == null)	// no item in the linked list
+		if (timeOccupied == null) // no item in the linked list
 			timeOccupied = time;
 		else {
 			Timing temp;
 			Timing pre = null;
-			for (temp = timeOccupied; temp != null && temp.smallerThan(time); temp = temp.next) { // temp is the first node greater than time
+			for (temp = timeOccupied; temp != null && temp.smallerThan(time); temp = temp.next) { // temp is the first
+																									// node greater than
+																									// time
 				pre = temp;
 			}
 
-			if (pre == null) {	// time would be the first node in linked list
+			if (pre == null) { // time would be the first node in linked list
 				time.next = timeOccupied;
 				timeOccupied = time;
-			}
-			else {	// insert time into suitable place
+			} else { // insert time into suitable place
 				time.next = temp;
 				pre.next = time;
 			}
@@ -60,9 +61,9 @@ public class Table {
 		if (temp == time) {
 			if (temp == timeOccupied)
 				timeOccupied = temp.next;
-			else 
+			else
 				pre.next = temp.next;
-			System.out.println("Remove time successfally!");
+			System.out.println("Remove time successfully!");
 		} else if (temp == null)
 			System.out.println("No valid time in this table");
 	}
@@ -73,11 +74,11 @@ public class Table {
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.SECOND, 0);
 		cal.set(Calendar.MILLISECOND, 0);
-		Date date = cal.getTime();  
+		Date date = cal.getTime();
 		for (Timing temp = timeOccupied; temp != null; temp = temp.next) {
 			if (date.compareTo(temp.date) > 0)
 				timeOccupied = temp.next;
-			else 
+			else
 				break;
 		}
 	}
@@ -85,8 +86,8 @@ public class Table {
 	public void displayOccupiedTime() {
 		removePastOccupy();
 		for (Timing temp = timeOccupied; temp != null; temp = temp.next) {
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
-            String strDate = dateFormat.format(temp.date);
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String strDate = dateFormat.format(temp.date);
 			System.out.printf(strDate + " " + temp.time + ", ");
 		}
 	}
@@ -94,8 +95,8 @@ public class Table {
 	public String timingList() {
 		String result = "";
 		for (Timing temp = timeOccupied; temp != null; temp = temp.next) {
-			DateFormat dateFormat = new SimpleDateFormat("yyyy MM dd");  
-            String strDate = dateFormat.format(temp.date);
+			DateFormat dateFormat = new SimpleDateFormat("yyyy MM dd");
+			String strDate = dateFormat.format(temp.date);
 			result += strDate;
 			switch (temp.time) {
 			case BREAKFAST:

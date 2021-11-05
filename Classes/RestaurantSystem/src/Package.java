@@ -1,18 +1,19 @@
 import java.util.Scanner;
+
 public class Package {
 
 	public Package(String description, double price) {
 		this.description = description;
 		this.price = price;
 	}
-	
+
 	private double price;
 	private Item[] item = new Item[max];
 	private static final int max = 20;
 	private String description;
 
 	private int itemCnt = 0;
-	
+
 	public Package() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter the description of this package:");
@@ -23,8 +24,8 @@ public class Package {
 
 	public void displayPackage() { // display item inside package
 		for (int i = 0; i < itemCnt; ++i) {
-			System.out.println(i + ":\t" + item[i].getName() + "\n\tprince: " + item[i].getPrice()
-			+ "\n\ttype: " + item[i].getType());
+			System.out.println(i + ":\t" + item[i].getName() + "\n\tprice: " + item[i].getPrice() + "\n\ttype: "
+					+ item[i].getType());
 		}
 	}
 
@@ -32,7 +33,7 @@ public class Package {
 		item[itemCnt++] = ItemMenu.getItem();
 	}
 
-	public void addItem(int i, int j) {		// used when adding items from plain file
+	public void addItem(int i, int j) { // used when adding items from plain file
 		item[itemCnt++] = ItemMenu.getItem(i, j);
 	}
 
@@ -42,7 +43,7 @@ public class Package {
 		System.out.println("\nPlease enter the item you want to remove: ");
 		int ch = sc.nextInt();
 		for (int i = ch; i < itemCnt - 1; ++i) {
-			item[i] = item[i+1];
+			item[i] = item[i + 1];
 		}
 		itemCnt--;
 	}
@@ -50,16 +51,18 @@ public class Package {
 	public void setDescription() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter the new description: ");
-		//String dummychar = sc.next();
+		// String dummychar = sc.next();
 		this.description = sc.nextLine();
 	}
 
 	public String getDescription() {
 		return description;
 	}
+
 	public double getPrice() {
 		return this.price;
 	}
+
 	public void setPrice() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter the new price: ");
@@ -86,15 +89,15 @@ public class Package {
 	public int getInfo(int j) {
 		int info = 0;
 		switch (item[j].getType()) {
-			case "Main Course":
-				info = 0;
-				break;
-			case "Drinks":
-				info = 1;
-				break;
-			case "Dessert":
-				info = 2;
-				break;
+		case "Main Course":
+			info = 0;
+			break;
+		case "Drinks":
+			info = 1;
+			break;
+		case "Dessert":
+			info = 2;
+			break;
 		}
 		return info;
 	}

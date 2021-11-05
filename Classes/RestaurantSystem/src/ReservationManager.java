@@ -2,8 +2,8 @@ public class ReservationManager {
 
     private Reservation reservation;
 
-    public ReservationManager(Reservation r) {
-        this.reservation = r;
+    public ReservationManager(Reservation reservation) {
+        this.reservation = reservation;
     }
 
     public void viewReservation() {

@@ -2,9 +2,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuManager {
-	
-	/** 
+
+	/**
 	 * This is the control class to manage the menu.
+	 * 
 	 * @author HuTianrun
 	 * @throws IOException
 	 */
@@ -23,7 +24,7 @@ public class MenuManager {
 			System.out.println("[5] remove a package");
 			System.out.println("[6] display the packages");
 			System.out.println("[7] store menu list");
-			System.out.println("[8] save");
+			System.out.println("[8] get items from database");
 			System.out.println("[9] package manage");
 			System.out.println("[10] exit");
 			System.out.printf("Please enter your choice: ");

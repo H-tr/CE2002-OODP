@@ -155,9 +155,12 @@ public class OrderManager {
 
 	
 	/** 
+<<<<<<< HEAD
 	 * print order invoice
 	 * @author Ian Chan
 	 * @author Chiam Chuen
+=======
+>>>>>>> 72c6b4c4fba5fe6f4c2d8da1a630b06234104065
 	 * @param isMember
 	 * @param staff
 	 * @return String
@@ -196,8 +199,11 @@ public class OrderManager {
 
 	
 	/** 
+<<<<<<< HEAD
 	 * Save order
 	 * @author Chiam Chuen
+=======
+>>>>>>> 72c6b4c4fba5fe6f4c2d8da1a630b06234104065
 	 * @param total
 	 * @throws IOException
 	 */

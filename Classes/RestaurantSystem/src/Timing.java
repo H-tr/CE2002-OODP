@@ -2,9 +2,9 @@ import java.util.Date;
 
 public class Timing {
     enum MealTime {BREAKFAST, LUNCH, DINNER};
-    public Date date;
-    public MealTime time;
-    public Timing next = null;
+    protected Date date;
+    protected MealTime time;
+    protected Timing next = null;
 
     Timing(Date date, MealTime time) {
         this.date = date;

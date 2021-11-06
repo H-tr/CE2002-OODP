@@ -15,6 +15,7 @@ public class MenuManager {
 		Scanner sc = new Scanner(System.in);
 		int choice;
 		do {
+			System.out.println("<<<<< EDIT MENU >>>>>");
 			System.out.println("[1] add an item to the menu");
 			System.out.println("[2] remove an item");
 			System.out.println("[3] display the items");
@@ -26,6 +27,10 @@ public class MenuManager {
 			System.out.println("[9] package manage");
 			System.out.println("[10] exit");
 			System.out.printf("Please enter your choice: ");
+			while (!sc.hasNextInt()) {
+				System.out.println("ERROR: Please use integers only!");
+				sc.next();
+			}
 			choice = sc.nextInt();
 
 			switch (choice) {

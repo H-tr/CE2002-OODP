@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
@@ -18,11 +19,16 @@ public class App {
         /*----------------------------- Getting info from Staff--------------------------------*/
 
         Restaurant restaurant = new Restaurant();
+        restaurant.cleanReservation();
 
         System.out.println("Welcome to Restaurant Reservation and Point of Sale System (RRPSS)");
-        System.out.println("Please input your staff ID: ");
-
-        int staff_ID = sc.nextInt();
+        System.out.println("Please input your staff ID (integers only): ");
+        int staff_ID;
+        while (!sc.hasNextInt()) {
+            System.out.println("Please reenter your ID using integers ONLY");
+            sc.next();
+        }
+        staff_ID = sc.nextInt();
 
         // Check restaurant if there is a Staff with this ID?
         // If have: Retrieve information from restaurant
@@ -47,6 +53,7 @@ public class App {
         int choice;
 
         do {
+            System.out.println("<<<<< MAIN MENU >>>>>");
             System.out.println("Choose one of the 3 options: ");
             System.out.println("[1] Access menu item ");
             System.out.println("[2] Manage the table in restaurant ");
@@ -54,7 +61,15 @@ public class App {
             System.out.println("[4] Revenue report");
 
             System.out.println("Please enter your choice: ");
+            while (!sc.hasNextInt()) { // Error checking for wrong input field: INTEGER
+                System.out.println("ERROR: Please use integers only!");
+                sc.next();
+            }
             choice = sc.nextInt();
+            while (!(choice > 0 && choice < 5)) {
+                System.out.println("Please reenter your choice");
+                choice = sc.nextInt();
+            }
 
             switch (choice) {
             case 1:
@@ -65,6 +80,7 @@ public class App {
                 break;
             case 3:
                 int ch;
+                System.out.println("<<<<< SERVICE MENU >>>>>");
                 System.out.println("[1] Create an order");
                 System.out.println("[2] Create a reservation");
                 System.out.println("[3] Remove a reservation");
@@ -76,10 +92,18 @@ public class App {
                 System.out.println("[9] Remove past reservations");
                 System.out.println("[10] Exit");
                 System.out.println("Please enter your choice: ");
+                while (!sc.hasNextInt()) {
+                    System.out.println("ERROR: Please use integers only!");
+                    sc.next();
+                }
                 ch = sc.nextInt();
                 switch (ch) {
                 case 1:
                     System.out.println("Do you have a reservation? [1]yes [2]no");
+                    while (!sc.hasNextInt()) {
+                        System.out.println("ERROR: Please use integers only!");
+                        sc.next();
+                    }
                     int hasRes = sc.nextInt();
                     switch (hasRes) {
                     case 1:
@@ -164,7 +188,6 @@ public class App {
                 break;
 
             case 4:
-
                 // Retrieve Orders from Revenue report
                 // Display individual sale items
                 // Total revenue

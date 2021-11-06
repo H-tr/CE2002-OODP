@@ -9,6 +9,7 @@ public class App {
      * App is the user interface for staff to use. It is divided into three parts: restaurant management, customer service, and display revenue report. Considering if a staff login this system, he can choose manage the restaurant resources, serve customer, or display revenue. If he manage the resources, he can handle menu and restaurant. If he serve the customer, he can create an order, reservation, terminal the order, cancel the reservation or so on.
      * @author Ian Chan
      * @author Hu Tianrun
+     * @author Chiam Chuen
      * @param args
      * @throws IOException
      * @throws ParseException
@@ -142,7 +143,7 @@ public class App {
                     restaurant.deleteReservation(reservation);
                     // DONE do it with restaurant
                     break;
-                case 4:
+                case 4: // Finialise Order
                     Event order = restaurant.searchOrder();
                     if (order == null) {
                         System.out.println("=====Unable to find order!=====");
@@ -151,10 +152,10 @@ public class App {
                     restaurant.finaliseOrder(order, staff);
                     restaurant.deleteOrder(order);
                     break;
-                case 5:
+                case 5: //Print all Reservations
                     restaurant.printReservations();
                     break;
-                case 6:
+                case 6: //Print all Orders
                     restaurant.printOrders();
                     break;
 

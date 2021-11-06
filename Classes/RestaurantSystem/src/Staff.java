@@ -3,6 +3,10 @@ public class Staff extends Person {
 	private int employeeId;
 	private String jobTitle;
 	
+	/**
+	 * @author Ian Chan
+	 * @param employeeId
+	 */
 	public Staff(String name, String gender, int employeeId, String jobtitle )
 	{
 		super(name, gender);
@@ -10,11 +14,16 @@ public class Staff extends Person {
 		this.jobTitle = jobtitle;
 	}
 
+	/**
+	 * @author Ian Chan
+	 * @param employeeId
+	 */
 	public int getEmployeeId() {
 		return this.employeeId;
 	}
 
 	/**
+	 * @author Ian Chan
 	 * @param employeeId
 	 */
 	public void setEmployeeId(int employeeId) {
@@ -22,12 +31,16 @@ public class Staff extends Person {
 		return;
 	}
 
+	/**
+	 * @author Ian Chan
+	 * @param employeeId
+	 */
 	public String getJobTitle() {
 		return this.jobTitle;
 	}
 
 	/**
-	 * 
+	 * @author Ian Chan
 	 * @param jobTitle
 	 */
 	public void setJobTitle(String jobTitle) {

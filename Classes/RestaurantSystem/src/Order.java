@@ -20,6 +20,7 @@ public class Order extends Event {
 
 	
 	/** 
+	 * To tell user this Event is an Order
 	 * @author Ian Chan
 	 * @return String
 	 */

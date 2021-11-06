@@ -12,7 +12,7 @@ public class OrderManager {
 
 	/**
 	 * Pass an order into this class
-	 * @author Chiam Chuen
+	 * @author Ian Chan
 	 * @param Order
 	 */
 	public OrderManager(Order Order) {
@@ -21,7 +21,7 @@ public class OrderManager {
 	
 	/** 
 	 * Get the order
-	 * @author Chiam Chuen
+	 * @author Ian Chan
 	 * @return Order
 	 */
 	public Order getOrder() {
@@ -155,12 +155,9 @@ public class OrderManager {
 
 	
 	/** 
-<<<<<<< HEAD
-	 * print order invoice
+	 * Prints out the template order invoice with taxes, memebership included, returning total bill as string
 	 * @author Ian Chan
 	 * @author Chiam Chuen
-=======
->>>>>>> 72c6b4c4fba5fe6f4c2d8da1a630b06234104065
 	 * @param isMember
 	 * @param staff
 	 * @return String
@@ -199,11 +196,8 @@ public class OrderManager {
 
 	
 	/** 
-<<<<<<< HEAD
 	 * Save order
 	 * @author Chiam Chuen
-=======
->>>>>>> 72c6b4c4fba5fe6f4c2d8da1a630b06234104065
 	 * @param total
 	 * @throws IOException
 	 */

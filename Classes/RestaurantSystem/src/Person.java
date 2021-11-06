@@ -10,6 +10,7 @@ public class Person {
 
 	
 	/** 
+	 * @author Ian Chan
 	 * @return String
 	 */
 	public String getName()
@@ -20,6 +21,7 @@ public class Person {
 	
 	
 	/** 
+	 * @author Ian Chan
 	 * @param name
 	 */
 	public void setName(String name)
@@ -30,6 +32,7 @@ public class Person {
 
 	
 	/** 
+	 * @author Ian Chan
 	 * @return String
 	 */
 	public String getGender() {
@@ -39,6 +42,7 @@ public class Person {
 	
 	
 	/** 
+	 * @author Ian Chan
 	 * @param gender
 	 */
 	public void setGender(String gender) {

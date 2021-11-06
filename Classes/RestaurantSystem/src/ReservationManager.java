@@ -7,8 +7,8 @@ public class ReservationManager {
     }
 
     /**
+     * Prints out information about the Reservation
      * @author Ian Chan
-     * @author Chiam Chuen
      */
     public void viewReservation() {
         System.out.println("=================================================");
@@ -22,8 +22,8 @@ public class ReservationManager {
 
     
     /** 
+     * Gives timing to reservation class
      * @author Ian Chan
-     * @author Ciam Chuen
      * @param date
      * @return Reservation
      */
@@ -34,6 +34,7 @@ public class ReservationManager {
 
     
     /** 
+     * returns reservation
      * @author Ian Chan
      * @return Reservation
      */

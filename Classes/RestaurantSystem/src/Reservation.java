@@ -29,6 +29,7 @@ public class Reservation extends Event{
 
 	
 	/** 
+	 * Used to show this is a reservation class (From array of Events)
 	 * @author Ian Chan
 	 * @return String
 	 */

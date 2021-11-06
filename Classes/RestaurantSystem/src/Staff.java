@@ -15,7 +15,6 @@ public class Staff extends Person {
 	}
 
 	/**
-	 * 
 	 * @param employeeId
 	 */
 	public void setEmployeeId(int employeeId) {

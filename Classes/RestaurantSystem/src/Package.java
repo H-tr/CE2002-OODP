@@ -1,7 +1,11 @@
 import java.util.Scanner;
 
 public class Package {
-
+	/**
+	 * @author HuTianrun
+	 * @param description
+	 * @param price
+	 */
 	public Package(String description, double price) {
 		this.description = description;
 		this.price = price;
@@ -14,6 +18,10 @@ public class Package {
 
 	private int itemCnt = 0;
 
+	/**
+	 * Build a package by asking user the description of package and price
+	 * @author HuTianrun
+	 */
 	public Package() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter the description of this package:");
@@ -24,7 +32,8 @@ public class Package {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Display the item inside package
+	 * @author HuTianrun
 	 * @param ++i
 	 */
 	public void displayPackage() { // display item inside package
@@ -34,13 +43,18 @@ public class Package {
 		}
 	}
 
+	/**
+	 * Add an item into package
+	 * @author HuTianrun
+	 */
 	public void addItem() {
 		item[itemCnt++] = ItemMenu.getItem();
 	}
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Add an item into package, this method is used for reading from text file
+	 * @author HuTianrun
 	 * @param i
 	 * @param ItemMenu.getItem(i
 	 * @param removeItem(
@@ -49,6 +63,10 @@ public class Package {
 		item[itemCnt++] = ItemMenu.getItem(i, j);
 	}
 
+	/**
+	 * Remove an item from this package
+	 * @author HuTianrun
+	 */
 	public void removeItem() {
 		displayPackage();
 		Scanner sc = new Scanner(System.in);
@@ -64,6 +82,10 @@ public class Package {
 		itemCnt--;
 	}
 
+	/**
+	 * Reset the description of the package
+	 * @author HuTianrun
+	 */
 	public void setDescription() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter the new description: ");
@@ -73,7 +95,8 @@ public class Package {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Get description of the package
+	 * @author HuTianrun
 	 * @return String
 	 */
 	public String getDescription() {
@@ -82,13 +105,18 @@ public class Package {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Get price of the package
+	 * @author HuTianrun
 	 * @return double
 	 */
 	public double getPrice() {
 		return this.price;
 	}
 
+	/**
+	 * Reset a new price of the package
+	 * @author HuTianrun
+	 */
 	public void setPrice() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter the new price: ");
@@ -97,7 +125,8 @@ public class Package {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Get the total number of items inside the package. This method is used for reading and storing to text file
+	 * @author HuTianrun
 	 * @return int
 	 */
 	public int getItemCnt() {
@@ -106,7 +135,8 @@ public class Package {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Get the list of items as a string from package. This method is used for storing to text file
+	 * @author HuTianrun
 	 * @return String
 	 */
 	public String getItem() {
@@ -120,7 +150,8 @@ public class Package {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Get an item from this package. This method is used for reading from text file
+	 * @author HuTianrun
 	 * @param i
 	 * @return Item
 	 */
@@ -130,7 +161,8 @@ public class Package {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Get the type of items in this package. This method is used for storing the text file
+	 * @author HuTianrun
 	 * @param j
 	 * @return int
 	 */

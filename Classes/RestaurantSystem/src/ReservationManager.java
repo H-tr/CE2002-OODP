@@ -6,6 +6,10 @@ public class ReservationManager {
         this.reservation = r;
     }
 
+    /**
+     * @author Ian Chan
+     * @author Chiam Chuen
+     */
     public void viewReservation() {
         System.out.println("=================================================");
         Timing time = reservation.getReserveDate();
@@ -16,11 +20,23 @@ public class ReservationManager {
 
     }
 
+    
+    /** 
+     * @author Ian Chan
+     * @author Ciam Chuen
+     * @param date
+     * @return Reservation
+     */
     public Reservation addReservation(Timing date) {
         reservation.setReserveDate(date);
         return reservation;
     }
 
+    
+    /** 
+     * @author Ian Chan
+     * @return Reservation
+     */
     public Reservation getReservation() {
         return reservation;
     }

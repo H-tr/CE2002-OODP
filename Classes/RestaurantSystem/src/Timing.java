@@ -13,7 +13,8 @@ public class Timing {
 
     
     /** 
-     * @auther HuTianrun
+     * Check whether two timing are equal
+     * @author HuTianrun
      * @param temp
      * @return boolean
      */
@@ -28,7 +29,8 @@ public class Timing {
 
     
     /** 
-     * @auther HuTianrun
+     * Compare two timing
+     * @author HuTianrun
      * @param temp
      * @return boolean
      */
@@ -46,7 +48,8 @@ public class Timing {
     }
     
     /** 
-     * @auther HuTianrun
+     * Get date
+     * @author HuTianrun
      * @return Date
      */
     public Date getDate() {
@@ -54,7 +57,8 @@ public class Timing {
     }
     
     /** 
-     * @auther HuTianrun
+     * Get time
+     * @author HuTianrun
      * @return MealTime
      */
     public MealTime getTime() {

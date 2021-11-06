@@ -10,16 +10,31 @@ public class OrderManager {
 
 	private Order order;
 
+	/**
+	 * Pass an order into this class
+	 * @author Chiam Chuen
+	 * @param Order
+	 */
 	public OrderManager(Order Order) {
-
 		this.order = Order;
-
 	}
-
+	
+	/** 
+	 * Get the order
+	 * @author Chiam Chuen
+	 * @return Order
+	 */
 	public Order getOrder() {
 		return order;
 	}
 
+	
+	/** 
+	 * add a new package or item to order
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 * @throws IOException
+	 */
 	public void addToOrder() throws IOException {
 		Scanner sc = new Scanner(System.in);
 		boolean exit = false;
@@ -44,12 +59,26 @@ public class OrderManager {
 		}
 	}
 
+	
+	/** 
+	 * add an item to order
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 * @throws IOException
+	 */
 	public void addItem() throws IOException {
 		ItemMenu.getItemList();
 		order.orderItems[order.itemCount] = ItemMenu.getItem();
 		order.itemCount++;
 	}
 
+	
+	/** 
+	 * add a package to order
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 * @throws IOException
+	 */
 	public void addPackage() throws IOException {
 		ItemMenu.getItemList();
 		PackageMenu.getPacList();
@@ -57,6 +86,13 @@ public class OrderManager {
 		order.packageCount++;
 	}
 
+	
+	/** 
+	 * remove an item from order
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 * @return Item
+	 */
 	public Item removeItem() {
 		Scanner sc = new Scanner(System.in);
 		viewOrder();
@@ -69,6 +105,13 @@ public class OrderManager {
 		return rt;
 	}
 
+	
+	/** 
+	 * remove the package from order
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 * @return Package
+	 */
 	public Package removePackage() {
 		Scanner sc = new Scanner(System.in);
 		viewOrder();
@@ -81,8 +124,12 @@ public class OrderManager {
 		return rt;
 	}
 
+	/**
+	 * view the order
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 */
 	public void viewOrder() {
-
 		System.out.printf("Order taken by: ");
 		System.out.println(order.getStaff().getJobTitle() + " " + order.getStaff().getName());
 
@@ -106,6 +153,15 @@ public class OrderManager {
 		}
 	}
 
+	
+	/** 
+	 * print order invoice
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 * @param isMember
+	 * @param staff
+	 * @return String
+	 */
 	public String printOrderInvoice(boolean isMember, Staff staff) {
 		double totalPay = 0;
 		DecimalFormat f = new DecimalFormat("##.00");
@@ -138,6 +194,13 @@ public class OrderManager {
 		return f.format(totalPay);
 	}
 
+	
+	/** 
+	 * Save order
+	 * @author Chiam Chuen
+	 * @param total
+	 * @throws IOException
+	 */
 	public void saveOrder(String total) throws IOException {
 		String[] itemList = order.getItems();
 		String[] packageList = order.getPackages();

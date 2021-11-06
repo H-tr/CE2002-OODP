@@ -15,7 +15,8 @@ public class TableManager {
 
     
     /** 
-     * @auther HuTianrun
+     * Manage the table in restaurant
+     * @author HuTianrun
      * @throws IOException
      */
     public static void tableManage() throws IOException {
@@ -60,7 +61,8 @@ public class TableManager {
 
     
     /** 
-     * @auther HuTianrun
+     * Add a table into table list
+     * @author HuTianrun
      * @param capacity
      * @return Table
      */
@@ -69,6 +71,9 @@ public class TableManager {
         return temp;
     }
 
+    /**
+     * Remove the table from table list
+     */
     public static void removeTable() {
         Scanner sc = new Scanner(System.in);
         displayTableList();
@@ -85,7 +90,8 @@ public class TableManager {
 
     
     /** 
-     * @auther HuTianrun
+     * Assign a table with number of people and time to the customer
+     * @author HuTianrun
      * @param peopleNum
      * @param time
      * @return Table
@@ -115,7 +121,8 @@ public class TableManager {
 
     
     /** 
-     * @auther HuTianrun
+     * Remove time for a specific table
+     * @author HuTianrun
      * @param table
      * @param time
      */
@@ -125,7 +132,8 @@ public class TableManager {
 
     
     /** 
-     * @auther HuTianrun
+     * Store the table list to text file
+     * @author HuTianrun
      * @throws IOException
      */
     public static void storeList() throws IOException {
@@ -140,7 +148,8 @@ public class TableManager {
 
     
     /** 
-     * @auther HuTianrun
+     * Get list from text file
+     * @author HuTianrun
      * @throws IOException
      */
     public static void getList() throws IOException {

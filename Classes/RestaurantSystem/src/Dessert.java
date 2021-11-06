@@ -5,8 +5,8 @@ public class Dessert extends Item {
 
     
     /** 
-     * return the type this item class
-     * @auther HuTianrun
+     * return the type of this class
+     * @author HuTianrun
      * @return String
      */
     public String getType() {

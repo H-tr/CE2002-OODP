@@ -9,15 +9,29 @@ public class Reservation extends Event{
 		super.setTable(table);
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @return Timing
+	 */
 	public Timing getReserveDate() {
 		return reserveDate;
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @param date
+	 */
 	public void setReserveDate(Timing date) {
 		reserveDate = date;
-		
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @return String
+	 */
 	public String returnType()
 	{
 		return "Reservation";

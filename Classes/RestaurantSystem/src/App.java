@@ -3,6 +3,15 @@ import java.text.ParseException;
 import java.util.Scanner;
 
 public class App {
+    
+    /** 
+     * App is the user interface for staff to use. It is divided into three parts: restaurant management, customer service, and display revenue report. Considering if a staff login this system, he can choose manage the restaurant resources, serve customer, or display revenue. If he manage the resources, he can handle menu and restaurant. If he serve the customer, he can create an order, reservation, terminal the order, cancel the reservation or so on.
+     * @author Ian Chan
+     * @author Hu Tianrun
+     * @param args
+     * @throws IOException
+     * @throws ParseException
+     */
     public static void main(String[] args) throws IOException, ParseException {
         Scanner sc = new Scanner(System.in);
 

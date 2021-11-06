@@ -5,7 +5,8 @@ public class Drinks extends Item {
 
     
     /** 
-     * @auther HuTianrun
+     * return the type of this class
+     * @author HuTianrun
      * @return String
      */
     public String getType() {

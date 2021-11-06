@@ -4,7 +4,8 @@ import java.util.Scanner;
 public class MenuManager {
 	
 	/** 
-	 * @auther HuTianrun
+	 * This is the control class to manage the menu.
+	 * @author HuTianrun
 	 * @throws IOException
 	 */
 	public static void menuManage() throws IOException {

@@ -14,6 +14,13 @@ public class Restaurant {
 
 	Scanner sc = new Scanner(System.in);
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @param reservation
+	 * @param staff
+	 * @throws IOException
+	 */
 	public void createOrder_reserved(Event reservation, Staff staff) throws IOException {
 		String custName = reservation.getCustName();
 		int pax = reservation.getPax();
@@ -35,6 +42,14 @@ public class Restaurant {
 
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @author HuTianrun
+	 * @author Chiam Chuen
+	 * @param staff
+	 * @throws IOException
+	 */
 	public void createOrder_unreserved(Staff staff) throws IOException {
 		int ch;
 		System.out.println("Input Customer's Name: ");
@@ -56,7 +71,7 @@ public class Restaurant {
 			time = new Timing(date, Timing.MealTime.BREAKFAST);
 			break;
 		case 2:
-			time = new Timing(date, Timing.MealTime.LAUNCH);
+			time = new Timing(date, Timing.MealTime.LUNCH);
 			break;
 		case 3:
 			time = new Timing(date, Timing.MealTime.DINNER);
@@ -85,6 +100,11 @@ public class Restaurant {
 		return;
 	}
 
+	/**
+	 * @author Ian Chan
+	 * @author HuTianrun
+	 * @author Chiam Chuen
+	 */
 	public void createReservation() {
 		int ch;
 		System.out.println("Please enter the number of people:");
@@ -119,7 +139,7 @@ public class Restaurant {
 			time = new Timing(date, Timing.MealTime.BREAKFAST);
 			break;
 		case 2:
-			time = new Timing(date, Timing.MealTime.LAUNCH);
+			time = new Timing(date, Timing.MealTime.LUNCH);
 			break;
 		case 3:
 			time = new Timing(date, Timing.MealTime.DINNER);
@@ -145,6 +165,10 @@ public class Restaurant {
 
 	}
 
+	/**
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 */
 	public void printReservations() {
 		int u;
 		int counter = 1;
@@ -166,6 +190,10 @@ public class Restaurant {
 		return;
 	}
 
+	/**
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 */
 	public void printOrders() {
 		int u;
 		int counter = 1;
@@ -189,6 +217,12 @@ public class Restaurant {
 		}
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @author Ian Chan
+	 * @return Event
+	 */
 	public Event searchReservation() {
 		System.out.println("Please enter your name: ");
 		String custName = sc.next();
@@ -210,6 +244,12 @@ public class Restaurant {
 
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @author Ian Chan
+	 * @return Event
+	 */
 	public Event searchOrder() {
 		System.out.println("Please enter your name: ");
 		String custName = sc.next();
@@ -231,6 +271,12 @@ public class Restaurant {
 
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @author Ian Chan
+	 * @param event
+	 */
 	public void deleteReservation(Event event) {
 		Event track = null;
 		if (event == null) {
@@ -260,6 +306,12 @@ public class Restaurant {
 		System.out.println("Reservation for " + track.getCustName() + " has been deleted!");
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @author Ian Chan
+	 * @param event
+	 */
 	public void deleteOrder(Event event) {
 		Event track = null;
 		if (event == null) {
@@ -289,6 +341,13 @@ public class Restaurant {
 		System.out.println("Order for " + track.getCustName() + " has been deleted!");
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @author Ian Chan
+	 * @param Order
+	 * @throws IOException
+	 */
 	public void editOrder(Event Order) throws IOException {
 		Order o = (Order) Order;
 		OrderManager OM = new OrderManager(o);
@@ -324,6 +383,13 @@ public class Restaurant {
 
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 * @param date
+	 * @return boolean
+	 */
 	public boolean checkExpiry(Date date) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -334,6 +400,13 @@ public class Restaurant {
 		return date.before(cur_date);
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 * @param event
+	 * @return boolean
+	 */
 	public boolean checkCurrentDate(Event event) {
 
 		Calendar cal = Calendar.getInstance();
@@ -354,6 +427,12 @@ public class Restaurant {
 		return false;
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 * @param reservation
+	 */
 	public void editReservation(Event reservation) {
 		Timing time = null;
 		int ch;
@@ -388,7 +467,7 @@ public class Restaurant {
 			time = new Timing(date, Timing.MealTime.BREAKFAST);
 			break;
 		case 2:
-			time = new Timing(date, Timing.MealTime.LAUNCH);
+			time = new Timing(date, Timing.MealTime.LUNCH);
 			break;
 		case 3:
 			time = new Timing(date, Timing.MealTime.DINNER);
@@ -400,6 +479,14 @@ public class Restaurant {
 		RM.viewReservation();
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 * @param order
+	 * @param staff
+	 * @throws IOException
+	 */
 	public void finaliseOrder(Event order, Staff staff) throws IOException {
 		Order O = (Order) order;
 		OrderManager OM = new OrderManager(O);
@@ -415,6 +502,10 @@ public class Restaurant {
 		OM.saveOrder(total);
 	}
 
+	/**
+	 * @author Ian Chan
+	 * @author Chiam Chuen
+	 */
 	public void cleanReservation() {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -435,6 +526,12 @@ public class Restaurant {
 		}
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @throws ParseException
+	 * @throws IOException
+	 */
 	public void revenueReport() throws ParseException, IOException {
 
 		Date start, end;

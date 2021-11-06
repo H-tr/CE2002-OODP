@@ -13,7 +13,8 @@ public class Table {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Set seat capacity of the table
+	 * @author HuTianrun
 	 * @param seatCapacity
 	 */
 	public void setSeatCapacity(int seatCapacity) {
@@ -22,7 +23,8 @@ public class Table {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Get seat capacity of the table
+	 * @author HuTianrun
 	 * @return int
 	 */
 	public int getSeatCapacity() {
@@ -31,7 +33,8 @@ public class Table {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Check whether this table is available in both number of people and time
+	 * @author HuTianrun
 	 * @param Num
 	 * @param time
 	 * @return boolean
@@ -50,7 +53,8 @@ public class Table {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Add a time in occupied time list to show that table is occupied 
+	 * @author HuTianrun
 	 * @param time
 	 */
 	public void addTimeOccupy(Timing time) {
@@ -59,9 +63,7 @@ public class Table {
 		else {
 			Timing temp;
 			Timing pre = null;
-			for (temp = timeOccupied; temp != null && temp.smallerThan(time); temp = temp.next) { // temp is the first
-																									// node greater than
-																									// time
+			for (temp = timeOccupied; temp != null && temp.smallerThan(time); temp = temp.next) { // temp is the first node greater than time
 				pre = temp;
 			}
 
@@ -77,7 +79,8 @@ public class Table {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Remove occupied time of this table when corresponding reservation is removed
+	 * @author HuTianrun
 	 * @param time
 	 */
 	public void removeTime(Timing time) {
@@ -95,6 +98,10 @@ public class Table {
 			System.out.println("No valid time in this table");
 	}
 
+	/**
+	 * Remove all the past occupied time in the table
+	 * @author HuTianrun
+	 */
 	public void removePastOccupy() {
 		Calendar cal = Calendar.getInstance(); // locale-specific
 		cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -110,6 +117,10 @@ public class Table {
 		}
 	}
 
+	/**
+	 * Display all the occupied time of this table
+	 * @author HuTianrun
+	 */
 	public void displayOccupiedTime() {
 		removePastOccupy();
 		for (Timing temp = timeOccupied; temp != null; temp = temp.next) {
@@ -121,7 +132,8 @@ public class Table {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Return all the occupied time of this table as a string. This method is used to store table into text file
+	 * @author HuTianrun
 	 * @return String
 	 */
 	public String timingList() {

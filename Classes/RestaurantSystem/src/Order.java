@@ -18,26 +18,56 @@ public class Order extends Event {
 		super.setTable(table);
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @return String
+	 */
 	public String returnType() {
 		return "Order";
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @return Staff
+	 */
 	public Staff getStaff() {
 		return staff;
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @param staff
+	 */
 	public void setStaff(Staff staff) {
 		this.staff = staff;
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @return int
+	 */
 	public int getItemCount() {
 		return itemCount;
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @return int
+	 */
 	public int getPackageCount() {
 		return packageCount;
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @return String[]
+	 */
 	public String[] getItems() {
 		String[] items = new String[this.itemCount];
 		int i;
@@ -47,6 +77,11 @@ public class Order extends Event {
 		return items;
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @return String[]
+	 */
 	public String[] getPackages() {
 		String[] packages = new String[this.packageCount];
 		int i;
@@ -56,6 +91,11 @@ public class Order extends Event {
 		return packages;
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @return double
+	 */
 	public double getTotal() {
 		double total = 0.00;
 		for (int i = 0; i < itemCount; i++) {
@@ -67,14 +107,30 @@ public class Order extends Event {
 		return total;
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @return Timing
+	 */
 	public Timing getOrderedTime() {
 		return orderedTime;
 	}
 
+	
+	/** 
+	 * @author Ian Chan
+	 * @param orderedTime
+	 */
 	public void setOrderedTime(Timing orderedTime) {
 		this.orderedTime = orderedTime;
 	}
 
+	
+	/** 
+	 * @author Chiam Chuen
+	 * @param s
+	 * @param index
+	 */
 	public void removeItemPackage(String s, int index) {
 		if (s.equals("item")) {
 			for (int i = index; i < itemCount; i++) {

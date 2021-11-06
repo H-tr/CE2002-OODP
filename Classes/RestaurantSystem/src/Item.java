@@ -11,7 +11,8 @@ public abstract class Item {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * get item name
+	 * @author HuTianrun
 	 * @return String
 	 */
 	public String getName() {
@@ -20,7 +21,8 @@ public abstract class Item {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * set item name
+	 * @author HuTianrun
 	 * @param name
 	 */
 	public void setName(String name) {
@@ -29,7 +31,8 @@ public abstract class Item {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * get item description
+	 * @author HuTianrun
 	 * @return String
 	 */
 	public String getDescription() {
@@ -38,7 +41,8 @@ public abstract class Item {
 	
 	
 	/** 
-	 * @auther HuTianrun
+	 * set item description
+	 * @author HuTianrun
 	 * @param description
 	 */
 	public void setDescription(String description) {
@@ -47,7 +51,8 @@ public abstract class Item {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * get item price
+	 * @author HuTianrun
 	 * @return double
 	 */
 	public double getPrice() {
@@ -56,7 +61,8 @@ public abstract class Item {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * set item price
+	 * @author HuTianrun
 	 * @param price
 	 */
 	public void setPrice(double price) {

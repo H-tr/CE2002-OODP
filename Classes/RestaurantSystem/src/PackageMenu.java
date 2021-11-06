@@ -11,8 +11,8 @@ public class PackageMenu {
 
     
 	/** 
-	 * @auther HuTianrun
-	 * @param removePackage(
+	 * This static class store a list of package. This method could add a new package to package list. It requires initialization of the package class
+	 * @author HuTianrun
 	 */
 	public static void addPackage() { // ** requires initialization of the package class **
 		Scanner sc = new Scanner(System.in);
@@ -25,7 +25,8 @@ public class PackageMenu {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * Remove the package from package list
+	 * @author HuTianrun
 	 * @return Package
 	 */
 	public static Package removePackage() {
@@ -41,6 +42,10 @@ public class PackageMenu {
 		return rt;
 	}
 
+	/**
+	 * Display all the packages available
+	 * @author HuTianrun
+	 */
     public static void showPackage() {
 		for (int i = 0; i < pacCnt; ++i)
 			System.out.println(i + ":\t" + packageMenu[i].getDescription() + "\n\tprince: " + packageMenu[i].getPrice()
@@ -49,7 +54,8 @@ public class PackageMenu {
 
 	
 	/** 
-	 * @auther HuTianrun
+	 * User choose a package and return that package
+	 * @author HuTianrun
 	 * @return Package
 	 */
 	public static Package getPackage() {
@@ -60,6 +66,10 @@ public class PackageMenu {
 		return packageMenu[PackageID];
 	}
 
+	/**
+	 * The control method that manage a specific package in the package list
+	 * @author HuTianrun
+	 */
 	public static void packageManager() {
 		Scanner sc = new Scanner(System.in);
 		showPackage();
@@ -97,7 +107,8 @@ public class PackageMenu {
 
     
 	/** 
-	 * @auther HuTianrun
+	 * Store the package list into text file
+	 * @author HuTianrun
 	 * @throws IOException
 	 */
 	public static void storePacList() throws IOException {
@@ -115,7 +126,8 @@ public class PackageMenu {
 
     
 	/** 
-	 * @auther HuTianrun
+	 * Read the package list from text file to the array list in class
+	 * @author HuTianrun
 	 * @throws IOException
 	 */
 	public static void getPacList() throws IOException {

@@ -15,6 +15,10 @@ public class ItemMenu {
 	private static int drinksCnt = 0; // used to point the first empty slot of item menu
 	private static int dessertCnt = 0; // used to point the first empty slot of item menu
 
+	/**
+	 * Item list is storage list that will store all the item information. This function is to add an item into item list, used to manage the item
+	 * @author HuTianrun
+	 */
 	public static void addItem() {
 		String dummychar; // make sure scan works well
 		String type;
@@ -64,7 +68,8 @@ public class ItemMenu {
 	}
 
 	/**
-	 * @auther HuTianrun
+	 * Remove the item from list
+	 * @author HuTianrun
 	 * @return Item
 	 */
 	public static Item removeItem() {
@@ -111,6 +116,10 @@ public class ItemMenu {
 		return rt;
 	}
 
+	/**
+	 * Display the item list
+	 * @author HuTianrun
+	 */
 	public static void showItems() {
 		System.out.println("\n\t\tThe main course list:");
 		showMainCourse();
@@ -120,18 +129,30 @@ public class ItemMenu {
 		showDessert();
 	}
 
-	static void showMainCourse() {
+	/**
+	 * Display the main course list
+	 * @author HuTianrun
+	 */
+	private static void showMainCourse() {
 		for (int i = 0; i < mainCourseCnt; ++i)
 			System.out.println(i + ":\t" + mainCourseMenu[i].getName() + "\n\tprice: " + mainCourseMenu[i].getPrice()
 					+ "\n\ttype: " + mainCourseMenu[i].getDescription() + "\n");
 	}
 
+	/**
+	 * Display the drinks list
+	 * @author HuTianrun
+	 */
 	private static void showDrinks() {
 		for (int i = 0; i < drinksCnt; ++i)
 			System.out.println(i + ":\t" + drinksMenu[i].getName() + "\n\tprice: " + drinksMenu[i].getPrice()
 					+ "\n\ttype: " + drinksMenu[i].getDescription() + "\n");
 	}
 
+	/**
+	 * Display the dessert list
+	 * @author HuTianrun
+	 */
 	private static void showDessert() {
 		for (int i = 0; i < dessertCnt; ++i)
 			System.out.println(i + ":\t" + dessertMenu[i].getName() + "\n\tprice: " + dessertMenu[i].getPrice()
@@ -139,7 +160,8 @@ public class ItemMenu {
 	}
 
 	/**
-	 * @auther HuTianrun
+	 * Get an item from menu
+	 * @author HuTianrun
 	 * @return Item
 	 */
 	public static Item getItem() {
@@ -178,7 +200,8 @@ public class ItemMenu {
 	}
 
 	/**
-	 * @auther HuTianrun
+	 * Another get item method, used in reading the text file.
+	 * @author HuTianrun
 	 * @param i
 	 * @param j
 	 * @return Item
@@ -200,7 +223,8 @@ public class ItemMenu {
 	}
 
 	/**
-	 * @auther HuTianrun
+	 * Read the item list that stored in text file. This method makes sure previous data can be gotten when we open the system.
+	 * @author HuTianrun
 	 * @throws IOException
 	 */
 	static void getItemList() throws IOException {
@@ -253,7 +277,8 @@ public class ItemMenu {
 	}
 
 	/**
-	 * @auther HuTianrun
+	 * Store the item list into text file. This method makes sure the data will not lost after close the system
+	 * @author HuTianrun
 	 * @throws IOException
 	 */
 	static void storeItemList() throws IOException {
@@ -276,7 +301,8 @@ public class ItemMenu {
 	}
 
 	/**
-	 * @auther HuTianrun
+	 * This is an auxiliary method to store and get information from text file.
+	 * @author HuTianrun
 	 * @param item
 	 * @return int
 	 */

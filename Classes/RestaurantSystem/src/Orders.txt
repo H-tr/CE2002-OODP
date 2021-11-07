@@ -103,3 +103,11 @@ Item: Mixed Fresh Fruits 4.0
 Item: 'Mee Goreng' - Fried Noodles Malay Style 20.0
 Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
 38.72
+2021-11-07 15:34:35
+Staff: John 1234
+Customer: Tim
+Pax: 2
+2
+Item: Cod Fish Steamed with Preserved Radish and Diced Chilli 22.0
+Item: Ice Lemon Tea 3.8
+22.70

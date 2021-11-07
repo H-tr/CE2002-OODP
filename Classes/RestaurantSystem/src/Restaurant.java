@@ -15,9 +15,9 @@ public class Restaurant {
 
 	Scanner sc = new Scanner(System.in);
 
-	
-	/** 
+	/**
 	 * To craete an Order when customer has a reservation (Table assigned already)
+	 * 
 	 * @author Ian Chan
 	 * @param reservation
 	 * @param staff
@@ -44,9 +44,10 @@ public class Restaurant {
 
 	}
 
-	
-	/** 
-	 * To create an Order when Customer does not have a Reservation (There is a need to assign a Table)
+	/**
+	 * To create an Order when Customer does not have a Reservation (There is a need
+	 * to assign a Table)
+	 * 
 	 * @author Ian Chan
 	 * @author HuTianrun
 	 * @param staff
@@ -104,6 +105,7 @@ public class Restaurant {
 
 	/**
 	 * Create a reservation for the customer ( Assignment of table is needed )
+	 * 
 	 * @author Ian Chan
 	 * @author HuTianrun
 	 */
@@ -168,7 +170,9 @@ public class Restaurant {
 	}
 
 	/**
-	 * For each reservation, print it out with the name of customer and when the reservation is for
+	 * For each reservation, print it out with the name of customer and when the
+	 * reservation is for
+	 * 
 	 * @author Ian Chan
 	 */
 	public void printReservations() {
@@ -193,7 +197,9 @@ public class Restaurant {
 	}
 
 	/**
-	 * Print out the orders of all customers with the Customer's name and the Items and packages in the Order
+	 * Print out the orders of all customers with the Customer's name and the Items
+	 * and packages in the Order
+	 * 
 	 * @author Ian Chan
 	 * @author Chiam Chuen
 	 */
@@ -220,9 +226,10 @@ public class Restaurant {
 		}
 	}
 
-	
-	/** 
-	 * Using the name of the customer, search through the Event array in Restaurant to find the reservation with that name
+	/**
+	 * Using the name of the customer, search through the Event array in Restaurant
+	 * to find the reservation with that name
+	 * 
 	 * @author Chiam Chuen
 	 * @author Ian Chan
 	 * @return Event
@@ -247,9 +254,10 @@ public class Restaurant {
 
 	}
 
-	
-	/** 
-	 * Using the name of the customer, search through the Event array in Restaurant to find the order with that name
+	/**
+	 * Using the name of the customer, search through the Event array in Restaurant
+	 * to find the order with that name
+	 * 
 	 * @author Chiam Chuen
 	 * @author Ian Chan
 	 * @return Event
@@ -275,9 +283,10 @@ public class Restaurant {
 
 	}
 
-	
-	/** 
-	 * Taking an Event as parameter(Usually from search the search method), delete the reservation corresponding to that
+	/**
+	 * Taking an Event as parameter(Usually from search the search method), delete
+	 * the reservation corresponding to that
+	 * 
 	 * @author Chiam Chuen
 	 * @author Ian Chan
 	 * @param event
@@ -311,9 +320,10 @@ public class Restaurant {
 		System.out.println("Reservation for " + track.getCustName() + " has been deleted!");
 	}
 
-	
-	/** 
-	 * Taking an Event as parameter(Usually from search the search method), delete the Order corresponding to that
+	/**
+	 * Taking an Event as parameter(Usually from search the search method), delete
+	 * the Order corresponding to that
+	 * 
 	 * @author Chiam Chuen
 	 * @author Ian Chan
 	 * @param event
@@ -347,9 +357,10 @@ public class Restaurant {
 		System.out.println("Order for " + track.getCustName() + " has been deleted!");
 	}
 
-	
-	/** 
-	 * Edit the Order by adding or removing items/packages, uses name to locate Order
+	/**
+	 * Edit the Order by adding or removing items/packages, uses name to locate
+	 * Order
+	 * 
 	 * @author Ian Chan
 	 * @param Order
 	 * @throws IOException
@@ -363,7 +374,7 @@ public class Restaurant {
 			System.out.println("What would you like to edit?");
 			System.out.println("[1] Remove Item");
 			System.out.println("[2] Remove Package");
-			System.out.println("[3] Add Order");
+			System.out.println("[3] Add Item");
 			System.out.println("[4] Add Package");
 			System.out.println("[5] Exit");
 			int choice = sc.nextInt();
@@ -376,7 +387,7 @@ public class Restaurant {
 				OM.removePackage();
 				break;
 			case 3:
-				OM.addToOrder();
+				OM.addItem();
 				break;
 			case 4:
 				OM.addPackage();
@@ -389,9 +400,10 @@ public class Restaurant {
 
 	}
 
-	
-	/** 
-	 * Check if date in parameter is before the current date or not (True = Before, False = After)
+	/**
+	 * Check if date in parameter is before the current date or not (True = Before,
+	 * False = After)
+	 * 
 	 * @author Ian Chan
 	 * @param date
 	 * @return boolean
@@ -406,9 +418,9 @@ public class Restaurant {
 		return date.before(cur_date);
 	}
 
-	
-	/** 
+	/**
 	 * Check if Reservation is for today or not
+	 * 
 	 * @author Ian Chan
 	 * @param event
 	 * @return boolean
@@ -433,9 +445,9 @@ public class Restaurant {
 		return false;
 	}
 
-	
-	/** 
+	/**
 	 * Using the Event (Reservation) in parameter, edit the date of reservation
+	 * 
 	 * @author Ian Chan
 	 * @param reservation
 	 */
@@ -485,10 +497,10 @@ public class Restaurant {
 		RM.viewReservation();
 	}
 
-	
-	/** 
-	 * Does 2 things: 1. Prints invoice
-	 * 				  2. Saves Order in text file for Revenue Report
+	/**
+	 * Does 2 things: 1. Prints invoice 2. Saves Order in text file for Revenue
+	 * Report
+	 * 
 	 * @author Ian Chan
 	 * @author Chiam Chuen
 	 * @param order
@@ -512,6 +524,7 @@ public class Restaurant {
 
 	/**
 	 * Method will remove all Reservations that are past todays date
+	 * 
 	 * @author Ian Chan
 	 */
 	public void cleanReservation() {
@@ -534,9 +547,12 @@ public class Restaurant {
 		}
 	}
 
-	
-	/** 
-	 * Takes in start and end date, where all orders in that duration that are stored in the text file will be read from and each number of items/packages thata re bought are shown and total revenue taking into account membership discount and taxes is produced.
+	/**
+	 * Takes in start and end date, where all orders in that duration that are
+	 * stored in the text file will be read from and each number of items/packages
+	 * thata re bought are shown and total revenue taking into account membership
+	 * discount and taxes is produced.
+	 * 
 	 * @author Chiam Chuen
 	 * @throws ParseException
 	 * @throws IOException

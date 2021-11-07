@@ -94,3 +94,12 @@ Item: Siam Coconut 6.8
 Package: Beef Fillet with Black Pepper Sauce, Siam Coconut, Sweet Yam Paste with Gingko Nuts,  25.0
 Package: Seafood Bacon Roll Tossed with Salad Cream, Donut with Seafood Paste, 'Mee Goreng' - Fried Noodles Malay Style, Tiger Beer, Tiger Beer, Heineken, Heineken, Sweet Yam Paste with Gingko Nuts, Mixed Fresh Fruits, 'Chendol'-Shaved Ice with 'Gula Melaka',  100.0
 131.30
+2021-11-06 22:29:07
+Staff: John 1234
+Customer: Tim
+Pax: 2
+3
+Item: Mixed Fresh Fruits 4.0
+Item: 'Mee Goreng' - Fried Noodles Malay Style 20.0
+Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
+38.72

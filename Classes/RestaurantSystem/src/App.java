@@ -4,9 +4,15 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
-    
-    /** 
-     * App is the user interface for staff to use. It is divided into three parts: restaurant management, customer service, and display revenue report. Considering if a staff login this system, he can choose manage the restaurant resources, serve customer, or display revenue. If he manage the resources, he can handle menu and restaurant. If he serve the customer, he can create an order, reservation, terminal the order, cancel the reservation or so on.
+
+    /**
+     * App is the user interface for staff to use. It is divided into three parts:
+     * restaurant management, customer service, and display revenue report.
+     * Considering if a staff login this system, he can choose manage the restaurant
+     * resources, serve customer, or display revenue. If he manage the resources, he
+     * can handle menu and restaurant. If he serve the customer, he can create an
+     * order, reservation, terminal the order, cancel the reservation or so on.
+     * 
      * @author Ian Chan
      * @author Hu Tianrun
      * @author Chiam Chuen
@@ -69,6 +75,10 @@ public class App {
             choice = sc.nextInt();
             while (!(choice > 0 && choice < 5)) {
                 System.out.println("Please reenter your choice");
+                while (!sc.hasNextInt()) { // Error checking for wrong input field: INTEGER
+                    System.out.println("ERROR: Please use integers only!");
+                    sc.next();
+                }
                 choice = sc.nextInt();
             }
 
@@ -152,10 +162,10 @@ public class App {
                     restaurant.finaliseOrder(order, staff);
                     restaurant.deleteOrder(order);
                     break;
-                case 5: //Print all Reservations
+                case 5: // Print all Reservations
                     restaurant.printReservations();
                     break;
-                case 6: //Print all Orders
+                case 6: // Print all Orders
                     restaurant.printOrders();
                     break;
 

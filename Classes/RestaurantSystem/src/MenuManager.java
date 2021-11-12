@@ -10,8 +10,8 @@ public class MenuManager {
 	 * @throws IOException
 	 */
 	public static void menuManage() throws IOException {
-		ItemMenu.getItemList();
-		PackageMenu.getPacList();
+		// ItemMenu.getItemList();
+		// PackageMenu.getPacList();
 		System.out.println("Create a menu.");
 		Scanner sc = new Scanner(System.in);
 		int choice;

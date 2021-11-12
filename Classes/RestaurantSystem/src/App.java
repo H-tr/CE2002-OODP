@@ -3,6 +3,8 @@ import java.text.ParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+
 public class App {
     
     /** 
@@ -15,13 +17,23 @@ public class App {
      * @throws ParseException
      */
     public static void main(String[] args) throws IOException, ParseException {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in); 
+        
+        Restaurant restaurant = new Restaurant();
+
+        BackgroundMethod thread = new BackgroundMethod();
+        thread.setDaemon(true);
+        thread.start();
+
+        java.awt.EventQueue.invokeLater(new MyRunnable(restaurant) {
+            public void run() {
+                JFrame jFrame = new JFrame();
+                jFrame.setSize(200, 200);
+                jFrame.setVisible(true);
+            }
+        });
 
         /*----------------------------- Getting info from Staff--------------------------------*/
-
-        Restaurant restaurant = new Restaurant();
-        restaurant.cleanReservation();
-
         System.out.println("Welcome to Restaurant Reservation and Point of Sale System (RRPSS)");
         System.out.println("Please input your staff ID (integers only): ");
         int staff_ID;
@@ -88,8 +100,8 @@ public class App {
                 System.out.println("[4] Finish an order");
                 System.out.println("[5] View reservations");
                 System.out.println("[6] View orders");
-                System.out.println("[7] edit reservation");
-                System.out.println("[8] edit orders");
+                System.out.println("[7] Edit reservation");
+                System.out.println("[8] Edit orders");
                 System.out.println("[9] Remove past reservations");
                 System.out.println("[10] Exit");
                 System.out.println("Please enter your choice: ");

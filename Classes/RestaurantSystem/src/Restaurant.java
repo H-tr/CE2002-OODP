@@ -6,6 +6,10 @@ import java.io.FileReader;
 import java.text.DecimalFormat;
 import java.util.*;
 
+enum MealTime {BREAKFAST, LUNCH, DINNER};
+
+/**     Comments on class */ 
+
 public class Restaurant {
 
 	private final int maxEventNum = 500;
@@ -163,6 +167,7 @@ public class Restaurant {
 		events[eventCounter] = RM.getReservation();
 
 		eventCounter++;
+
 		return;
 
 	}
@@ -515,21 +520,58 @@ public class Restaurant {
 	 * @author Ian Chan
 	 */
 	public void cleanReservation() {
-		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.HOUR_OF_DAY, 0);
-		cal.set(Calendar.MINUTE, 0);
-		cal.set(Calendar.SECOND, 0);
-		cal.set(Calendar.MILLISECOND, 0);
-		Date cur_date = cal.getTime();
+		//Calendar cal = Calendar.getInstance();
+		//cal.set(Calendar.HOUR_OF_DAY, 0);
+		//cal.set(Calendar.MINUTE, 0);
+		//cal.set(Calendar.SECOND, 0);
+		//cal.set(Calendar.MILLISECOND, 0);
+		//Date cur_date = cal.getTime();
 
 		int u;
 		for (u = 0; u < eventCounter; u++) {
 			if (events[u].returnType() == "Reservation") {
 				Reservation r = (Reservation) events[u];
-				Date date = r.getReserveDate().date;
-				if (date.before(cur_date)) {
-					deleteReservation(events[u]);
+
+				Calendar cal = Calendar.getInstance();	//Get current time
+				Date cur_date = cal.getTime();
+
+				Date date = r.getReserveDate().date;	//Get reserved date and time
+				Calendar reserve_date = Calendar.getInstance();
+				reserve_date.setTime(date);
+
+				Timing T = r.getReserveDate();			//Prep for mealtime comparison
+
+				if (MealTime.BREAKFAST.toString().equals(T.time.toString()))
+				{
+					reserve_date.set(Calendar.HOUR_OF_DAY, 11);
+					date = reserve_date.getTime();
+					if (date.before(cur_date)) {
+					
+						deleteReservation(events[u]);
+
+					}
 				}
+				if (MealTime.LUNCH.toString().equals(T.time.toString()))
+				{
+					reserve_date.set(Calendar.HOUR_OF_DAY, 15);
+					date = reserve_date.getTime();
+					if (date.before(cur_date)) {
+					
+						deleteReservation(events[u]);
+
+					}
+				}
+				if (MealTime.DINNER.toString().equals(T.time.toString()))
+				{
+					reserve_date.set(Calendar.HOUR_OF_DAY, 23);
+					date = reserve_date.getTime();
+					if (date.before(cur_date)) {
+					
+						deleteReservation(events[u]);
+
+					}
+				}
+				
 			}
 		}
 	}

@@ -184,7 +184,7 @@ public class OrderManager {
 		System.out.println("****************************************************");
 		System.out.println("Subtotal\t\t" + f.format(totalPay));
 		totalPay *= 1.1;
-		System.out.println("Tax(10%)\t\t" + f.format(totalPay));
+		System.out.println("GST(10%)\t\t" + f.format(totalPay));
 		if (isMember) {
 			totalPay *= 0.8;
 			System.out.println("Member discount(80%)\t" + f.format(totalPay));

@@ -27,11 +27,11 @@ public class App {
         
         Restaurant restaurant = new Restaurant();
 
-        BackgroundMethod thread = new BackgroundMethod();
+        PeriodicRefresh thread = new PeriodicRefresh(restaurant);
         thread.setDaemon(true);
         thread.start();
 
-        java.awt.EventQueue.invokeLater(new MyRunnable(restaurant) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 JFrame jFrame = new JFrame();
                 jFrame.setSize(200, 200);

@@ -587,6 +587,7 @@ public class Restaurant {
 				
 			}
 		}
+		System.out.println("======= Clean Completed =======");
 	}
 
 	/**

@@ -12,15 +12,17 @@ public class OrderManager {
 
 	/**
 	 * Pass an order into this class
+	 * 
 	 * @author Ian Chan
 	 * @param Order
 	 */
 	public OrderManager(Order Order) {
 		this.order = Order;
 	}
-	
-	/** 
+
+	/**
 	 * Get the order
+	 * 
 	 * @author Ian Chan
 	 * @return Order
 	 */
@@ -28,9 +30,9 @@ public class OrderManager {
 		return order;
 	}
 
-	
-	/** 
+	/**
 	 * add a new package or item to order
+	 * 
 	 * @author Ian Chan
 	 * @author Chiam Chuen
 	 * @throws IOException
@@ -59,9 +61,9 @@ public class OrderManager {
 		}
 	}
 
-	
-	/** 
+	/**
 	 * add an item to order
+	 * 
 	 * @author Ian Chan
 	 * @author Chiam Chuen
 	 * @throws IOException
@@ -72,9 +74,9 @@ public class OrderManager {
 		order.itemCount++;
 	}
 
-	
-	/** 
+	/**
 	 * add a package to order
+	 * 
 	 * @author Ian Chan
 	 * @author Chiam Chuen
 	 * @throws IOException
@@ -86,9 +88,9 @@ public class OrderManager {
 		order.packageCount++;
 	}
 
-	
-	/** 
+	/**
 	 * remove an item from order
+	 * 
 	 * @author Ian Chan
 	 * @author Chiam Chuen
 	 * @return Item
@@ -105,9 +107,9 @@ public class OrderManager {
 		return rt;
 	}
 
-	
-	/** 
+	/**
 	 * remove the package from order
+	 * 
 	 * @author Ian Chan
 	 * @author Chiam Chuen
 	 * @return Package
@@ -126,6 +128,7 @@ public class OrderManager {
 
 	/**
 	 * view the order
+	 * 
 	 * @author Ian Chan
 	 * @author Chiam Chuen
 	 */
@@ -153,9 +156,10 @@ public class OrderManager {
 		}
 	}
 
-	
-	/** 
-	 * Prints out the template order invoice with taxes, memebership included, returning total bill as string
+	/**
+	 * Prints out the template order invoice with taxes, memebership included,
+	 * returning total bill as string
+	 * 
 	 * @author Ian Chan
 	 * @author Chiam Chuen
 	 * @param isMember
@@ -183,20 +187,22 @@ public class OrderManager {
 		}
 		System.out.println("****************************************************");
 		System.out.println("Subtotal\t\t" + f.format(totalPay));
-		totalPay *= 1.1;
-		System.out.println("Tax(10%)\t\t" + f.format(totalPay));
 		if (isMember) {
 			totalPay *= 0.8;
-			System.out.println("Member discount(80%)\t" + f.format(totalPay));
+			System.out.println("Member discount(20%)\t" + f.format(totalPay));
 		}
+		totalPay *= 1.1;
+		System.out.println("Service Tax(10%)\t" + f.format(totalPay));
+		totalPay *= 1.07;
+		System.out.println("GST (7%)\t\t" + f.format(totalPay));
 		System.out.println("****************************************************");
-		System.out.println("Total\t\t" + f.format(totalPay));
+		System.out.println("Total\t\t\t" + f.format(totalPay));
 		return f.format(totalPay);
 	}
 
-	
-	/** 
+	/**
 	 * Save order
+	 * 
 	 * @author Chiam Chuen
 	 * @param total
 	 * @throws IOException

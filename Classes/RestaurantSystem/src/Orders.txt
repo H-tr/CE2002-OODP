@@ -142,3 +142,19 @@ Pax: 2
 1
 Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
 17.60
+2021-11-12 22:04:28
+Staff: John 1234
+Customer: Tim
+Pax: 2
+2
+Item: Ice Lemon Tea 3.8
+Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
+22.41
+2021-11-12 22:07:45
+Staff: John 1234
+Customer: Tim
+Pax: 2
+2
+Item: Ice Lemon Tea 3.8
+Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
+22.41

@@ -540,6 +540,11 @@ public class Restaurant {
 
 	/**
 	 * Method will remove all Reservations that are past todays date
+	 * The Method will also check when the reservation was made for and checks it with the current date time
+	 * BREAKFAST reservations expire at 11am
+	 * LUNCH reservations expire at 3pm
+	 * DINNER reservations expire at 11pm
+	 * Upon expiry, the reservation is deleted
 	 * 
 	 * @author Ian Chan
 	 */

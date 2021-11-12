@@ -1,3 +1,10 @@
+/**    
+ * This entity class is a subclass of the Event entity class, and stores all information relevant to a order such as DateTime, Customer Name, Pax, Table and Staff.
+ * In particular, it stores two arrays of items and packages respectively that is managed by the OrderManager class.
+ * @author Ian Chan
+ * @author Chiam Chuen
+ */
+
 public class Order extends Event {
 
 	private final int maxItemNum = 500;

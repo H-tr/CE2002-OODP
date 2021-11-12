@@ -6,6 +6,17 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+
+/**    
+ * This control class provides all functionality related to the Order entity.
+ * This includes a separate UI used to manage the items and packages within the Order entity.
+ * Some additional methods include functionality to display an invoice and saving the Order to our order.txt file for archiving.
+ * @author Ian Chan
+ * @author Chiam Chuen
+ * @throws IOException
+ * @throws ParseException
+ */
+
 public class OrderManager {
 
 	private Order order;
@@ -187,11 +198,6 @@ public class OrderManager {
 		}
 		System.out.println("****************************************************");
 		System.out.println("Subtotal\t\t" + f.format(totalPay));
-<<<<<<< HEAD
-		totalPay *= 1.1;
-		System.out.println("GST(10%)\t\t" + f.format(totalPay));
-=======
->>>>>>> 9aeaf5807cc103c67eb7d7e505b376aa5e24ad98
 		if (isMember) {
 			totalPay *= 0.8;
 			System.out.println("Member discount(20%)\t" + f.format(totalPay));

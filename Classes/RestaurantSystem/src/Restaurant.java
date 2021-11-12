@@ -8,7 +8,18 @@ import java.util.*;
 
 enum MealTime {BREAKFAST, LUNCH, DINNER};
 
-/**     Comments on class */ 
+/**    
+ * This control class stores an array of active event objects that are either used as reservations or orders, 
+ * and calls the respective reservation/order manager classes to alter them. 
+ * It essentially functions as an event manager while providing functionality to the App class,
+ * and has its own methods to create, edit, search and delete these events.
+ * Some additional functionality includes verifying the reservations and generating a revenue report by reading the orders.txt file which is our archive.
+ * @author Ian Chan
+ * @author Chiam Chuen
+ * @throws IOException
+ * @throws ParseException
+ */
+
 
 public class Restaurant {
 

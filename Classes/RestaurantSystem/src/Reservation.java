@@ -1,7 +1,17 @@
+/**    
+ * This entity class is a subclass of the Event entity class, and stores all information relevant to a reservation such as DateTime, Customer Name, Pax and Table.
+ * @author Ian Chan
+ * @param args
+ */
+
 public class Reservation extends Event{
 
 	private Timing reserveDate;
 
+	/** 
+	 * Contructor for Reservation
+	 * @author Ian Chan
+	 */
 	public Reservation(int pax, String custName, Table table)
 	{
 		super.setCustName(custName);

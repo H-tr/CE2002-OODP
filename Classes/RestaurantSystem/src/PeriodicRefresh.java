@@ -1,17 +1,11 @@
 import javax.swing.JFrame;
 
 /**
-     * App is the user interface for staff to use. It is divided into three parts:
-     * restaurant management, customer service, and display revenue report.
-     * Considering if a staff login this system, he can choose manage the restaurant
-     * resources, serve customer, or display revenue. If he manage the resources, he
-     * can handle menu and restaurant. If he serve the customer, he can create an
-     * order, reservation, terminal the order, cancel the reservation or so on.
+     * PeriodicRefresh is the class that is responsible for running the cleanReservation() method every set interval time
+     * It will take in the restaurant class as its attribute to be able to use the cleanReservation()
+     * run() is what calls the cleanReservation() and adds the period interval
      * 
      * @author Ian Chan
-     * @author Hu Tianrun
-     * @author Chiam Chuen
-     * @param args
      
 */
 
@@ -19,17 +13,26 @@ public class PeriodicRefresh extends Thread {
 
     private Restaurant restaurant;
 
+    /** 
+     * Constructor for PeriodicRefresh class
+     * @author Ian Chan
+     */
     PeriodicRefresh(Restaurant restaurant)
     {
         this.restaurant = restaurant;
     }
 
+    /** 
+     * Method that runs in the background while the application is active
+     * Method will call the cleanReservation function and then wait for 10min(600000ms) and then repeat
+     * @author Ian Chan
+     */
     @Override
     public void run() {
         while (true) {
             restaurant.cleanReservation();
             try {
-                Thread.sleep(30000);
+                Thread.sleep(600000);   //10min in ms period
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

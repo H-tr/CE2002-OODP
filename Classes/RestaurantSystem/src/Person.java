@@ -1,3 +1,9 @@
+/**    
+ * This entity class provides all basic information from which the Staff entity can be extended from. 
+ * The basic information includes Name and Gender.
+ * @author Ian Chan
+ */
+
 public class Person {
 
 	private String name;

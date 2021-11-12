@@ -1,3 +1,11 @@
+/**    
+ * This control class provides basic functionality through methods relevant to the Reservation entity.
+ * @author Ian Chan
+ * @author Chiam Chuen
+ * @throws IOException
+ * @throws ParseException
+ */
+
 public class ReservationManager {
 
     private Reservation reservation;

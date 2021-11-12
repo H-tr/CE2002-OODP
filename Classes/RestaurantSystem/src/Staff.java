@@ -1,3 +1,9 @@
+
+/**    
+ * This entity class is a subclass of the Person entity class, and stores additional information such as Employee Id and Job Title/Description.
+ * @author Ian Chan
+ */
+
 public class Staff extends Person {
 
 	private int employeeId;

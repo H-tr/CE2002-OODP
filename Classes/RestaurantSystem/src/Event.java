@@ -1,3 +1,10 @@
+/**    
+ * This entity class provides all basic information from which the Order and Reservation entities can be extended from.
+ * This basic information includes Customer Name, Pax, and Table.
+ * Event class is an abstract class that requires returnType to be declared in any subclass (To identify between Order and Restaurant)
+ * @author Ian Chan
+ */
+
 public abstract class Event {
     private Table table;
     private int pax;

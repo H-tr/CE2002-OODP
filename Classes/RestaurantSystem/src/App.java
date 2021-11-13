@@ -3,6 +3,19 @@ import java.text.ParseException;
 import java.util.Scanner;
 import javax.swing.JFrame;
 
+/**
+ * App is the user interface for staff to use. It is divided into three parts:
+ * restaurant management, customer service, and display revenue report.
+ * Considering if a staff login this system, he can choose manage the restaurant
+ * resources, serve customer, or display revenue. If he manage the resources, he
+ * can handle menu and restaurant. If he serve the customer, he can create an
+ * order, reservation, terminal the order, cancel the reservation or so on.
+ * 
+ * @author Ian Chan
+ * @author Hu Tianrun
+ * @author Chiam Chuen
+ */
+public class App {
 
     /**
      * App is the user interface for staff to use. It is divided into three parts:
@@ -12,21 +25,15 @@ import javax.swing.JFrame;
      * can handle menu and restaurant. If he serve the customer, he can create an
      * order, reservation, terminal the order, cancel the reservation or so on.
      * 
-     * @author Ian Chan
-     * @author Hu Tianrun
-     * @author Chiam Chuen
- */
-public class App {
-    
-    /** 
-     * App is the user interface for staff to use. It is divided into three parts: restaurant management, customer service, and display revenue report. Considering if a staff login this system, he can choose manage the restaurant resources, serve customer, or display revenue. If he manage the resources, he can handle menu and restaurant. If he serve the customer, he can create an order, reservation, terminal the order, cancel the reservation or so on.
      * @param args
      * @throws IOException
      * @throws ParseException
      */
     public static void main(String[] args) throws IOException, ParseException {
-        Scanner sc = new Scanner(System.in); 
-        
+        Scanner sc = new Scanner(System.in);
+        ItemMenu.getItemList();
+        PackageMenu.getPacList();
+
         Restaurant restaurant = new Restaurant();
 
         PeriodicRefresh thread = new PeriodicRefresh(restaurant);

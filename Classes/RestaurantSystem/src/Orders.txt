@@ -103,56 +103,9 @@ Item: Mixed Fresh Fruits 4.0
 Item: 'Mee Goreng' - Fried Noodles Malay Style 20.0
 Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
 38.72
-2021-11-07 15:34:35
-Staff: John 1234
-Customer: Tim
-Pax: 2
-2
-Item: Cod Fish Steamed with Preserved Radish and Diced Chilli 22.0
-Item: Ice Lemon Tea 3.8
-22.70
-2021-11-07 15:56:44
-Staff: John 1234
-Customer: Tim
-Pax: 2
-2
-Item: Ice Lemon Tea 3.8
-Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
-20.94
-2021-11-07 16:21:21
-Staff: John 1234
-Customer: Tim
-Pax: 2
-2
-Item: Ice Lemon Tea 3.8
-Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
-20.94
-2021-11-07 16:37:56
-Staff: John 1234
-Customer: Tim
-Pax: 2
-2
-Item: Ice Lemon Tea 3.8
-Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
-20.94
-2021-11-12 14:07:12
-Staff: John 1234
-Customer: Tim
-Pax: 2
-1
-Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
-17.60
-2021-11-12 22:04:28
-Staff: John 1234
-Customer: Tim
-Pax: 2
-2
-Item: Ice Lemon Tea 3.8
-Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
-22.41
-2021-11-12 22:07:45
-Staff: John 1234
-Customer: Tim
+2021-11-13 19:04:10
+Staff: john 1234
+Customer: Tom
 Pax: 2
 2
 Item: Ice Lemon Tea 3.8

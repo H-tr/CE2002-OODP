@@ -6,21 +6,25 @@ import java.io.FileReader;
 import java.text.DecimalFormat;
 import java.util.*;
 
-enum MealTime {BREAKFAST, LUNCH, DINNER};
+enum MealTime {
+	BREAKFAST, LUNCH, DINNER
+};
 
-/**    
- * This control class stores an array of active event objects that are either used as reservations or orders, 
- * and calls the respective reservation/order manager classes to alter them. 
- * It essentially functions as an event manager while providing functionality to the App class,
- * and has its own methods to create, edit, search and delete these events.
- * Some additional functionality includes verifying the reservations and generating a revenue report by reading the orders.txt file which is our archive.
+/**
+ * This control class stores an array of active event objects that are either
+ * used as reservations or orders, and calls the respective reservation/order
+ * manager classes to alter them. It essentially functions as an event manager
+ * while providing functionality to the App class, and has its own methods to
+ * create, edit, search and delete these events. Some additional functionality
+ * includes verifying the reservations and generating a revenue report by
+ * reading the orders.txt file which is our archive.
+ * 
  * @author Ian Chan
  * @author Chiam Chuen
  * @author Hu Tianrun
  * @throws IOException
  * @throws ParseException
  */
-
 
 public class Restaurant {
 
@@ -33,6 +37,7 @@ public class Restaurant {
 
 	/**
 	 * To craete an Order when customer has a reservation (Table assigned already)
+	 * 
 	 * @param reservation
 	 * @param staff
 	 * @throws IOException
@@ -61,6 +66,7 @@ public class Restaurant {
 	/**
 	 * To create an Order when Customer does not have a Reservation (There is a need
 	 * to assign a Table)
+	 * 
 	 * @param staff
 	 * @throws IOException
 	 */
@@ -233,6 +239,7 @@ public class Restaurant {
 	/**
 	 * Using the name of the customer, search through the Event array in Restaurant
 	 * to find the reservation with that name
+	 * 
 	 * @return Event
 	 */
 	public Event searchReservation() {
@@ -258,6 +265,7 @@ public class Restaurant {
 	/**
 	 * Using the name of the customer, search through the Event array in Restaurant
 	 * to find the order with that name
+	 * 
 	 * @return Event
 	 */
 	public Event searchOrder() {
@@ -284,6 +292,7 @@ public class Restaurant {
 	/**
 	 * Taking an Event as parameter(Usually from search the search method), delete
 	 * the reservation corresponding to that
+	 * 
 	 * @param event
 	 */
 	public void deleteReservation(Event event) {
@@ -308,7 +317,7 @@ public class Restaurant {
 			return;
 		}
 		for (int j = u; j < eventCounter; j++) {
-			events[u] = events[u + 1];
+			events[j] = events[j + 1];
 		}
 		eventCounter--;
 
@@ -318,6 +327,7 @@ public class Restaurant {
 	/**
 	 * Taking an Event as parameter(Usually from search the search method), delete
 	 * the Order corresponding to that
+	 * 
 	 * @param event
 	 */
 	public void deleteOrder(Event event) {
@@ -342,7 +352,7 @@ public class Restaurant {
 			System.out.println("ERROR: There is no such Order!");
 		}
 		for (int j = u; j < eventCounter; j++) {
-			events[u] = events[u + 1];
+			events[j] = events[j + 1];
 		}
 		eventCounter--;
 
@@ -352,6 +362,7 @@ public class Restaurant {
 	/**
 	 * Edit the Order by adding or removing items/packages, uses name to locate
 	 * Order
+	 * 
 	 * @param Order
 	 * @throws IOException
 	 */
@@ -393,6 +404,7 @@ public class Restaurant {
 	/**
 	 * Check if date in parameter is before the current date or not (True = Before,
 	 * False = After)
+	 * 
 	 * @param date
 	 * @return boolean
 	 */
@@ -408,6 +420,7 @@ public class Restaurant {
 
 	/**
 	 * Check if Reservation is for today or not
+	 * 
 	 * @param event
 	 * @return boolean
 	 */
@@ -433,6 +446,7 @@ public class Restaurant {
 
 	/**
 	 * Using the Event (Reservation) in parameter, edit the date of reservation
+	 * 
 	 * @param reservation
 	 */
 	public void editReservation(Event reservation) {
@@ -484,6 +498,7 @@ public class Restaurant {
 	/**
 	 * Does 2 things: 1. Prints invoice 2. Saves Order in text file for Revenue
 	 * Report
+	 * 
 	 * @param order
 	 * @param staff
 	 * @throws IOException
@@ -504,66 +519,62 @@ public class Restaurant {
 	}
 
 	/**
-	 * Method will remove all Reservations that are past todays date
-	 * The Method will also check when the reservation was made for and checks it with the current date time
-	 * BREAKFAST reservations expire at 11am
-	 * LUNCH reservations expire at 3pm
-	 * DINNER reservations expire at 11pm
-	 * Upon expiry, the reservation is deleted
+	 * Method will remove all Reservations that are past todays date The Method will
+	 * also check when the reservation was made for and checks it with the current
+	 * date time BREAKFAST reservations expire at 11am LUNCH reservations expire at
+	 * 3pm DINNER reservations expire at 11pm Upon expiry, the reservation is
+	 * deleted
 	 */
 	public void cleanReservation() {
-		//Calendar cal = Calendar.getInstance();
-		//cal.set(Calendar.HOUR_OF_DAY, 0);
-		//cal.set(Calendar.MINUTE, 0);
-		//cal.set(Calendar.SECOND, 0);
-		//cal.set(Calendar.MILLISECOND, 0);
-		//Date cur_date = cal.getTime();
+		// Calendar cal = Calendar.getInstance();
+		// cal.set(Calendar.HOUR_OF_DAY, 0);
+		// cal.set(Calendar.MINUTE, 0);
+		// cal.set(Calendar.SECOND, 0);
+		// cal.set(Calendar.MILLISECOND, 0);
+		// Date cur_date = cal.getTime();
 
 		int u;
-		for (u = 0; u < eventCounter; u++) {
+		for (u = eventCounter - 1; u >= 0; u--) {
 			if (events[u].returnType() == "Reservation") {
 				Reservation r = (Reservation) events[u];
 
-				Calendar cal = Calendar.getInstance();	//Get current time
+				Calendar cal = Calendar.getInstance(); // Get current time
 				Date cur_date = cal.getTime();
 
-				Date date = r.getReserveDate().date;	//Get reserved date and time
+				Date date = r.getReserveDate().date; // Get reserved date and time
 				Calendar reserve_date = Calendar.getInstance();
 				reserve_date.setTime(date);
 
-				Timing T = r.getReserveDate();			//Prep for mealtime comparison
+				Timing T = r.getReserveDate(); // Prep for mealtime comparison
 
-				if (MealTime.BREAKFAST.toString().equals(T.time.toString()))
-				{
+				if (MealTime.BREAKFAST.toString().equals(T.time.toString())) {
 					reserve_date.set(Calendar.HOUR_OF_DAY, 11);
 					date = reserve_date.getTime();
 					if (date.before(cur_date)) {
-					
+
 						deleteReservation(events[u]);
 
 					}
 				}
-				if (MealTime.LUNCH.toString().equals(T.time.toString()))
-				{
+				if (MealTime.LUNCH.toString().equals(T.time.toString())) {
 					reserve_date.set(Calendar.HOUR_OF_DAY, 15);
 					date = reserve_date.getTime();
 					if (date.before(cur_date)) {
-					
+
 						deleteReservation(events[u]);
 
 					}
 				}
-				if (MealTime.DINNER.toString().equals(T.time.toString()))
-				{
+				if (MealTime.DINNER.toString().equals(T.time.toString())) {
 					reserve_date.set(Calendar.HOUR_OF_DAY, 23);
 					date = reserve_date.getTime();
 					if (date.before(cur_date)) {
-					
+
 						deleteReservation(events[u]);
 
 					}
 				}
-				
+
 			}
 		}
 		System.out.println("======= Clean Completed =======");
@@ -574,6 +585,7 @@ public class Restaurant {
 	 * stored in the text file will be read from and each number of items/packages
 	 * thata re bought are shown and total revenue taking into account membership
 	 * discount and taxes is produced.
+	 * 
 	 * @throws ParseException
 	 * @throws IOException
 	 */

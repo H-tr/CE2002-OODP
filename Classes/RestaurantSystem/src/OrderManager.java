@@ -6,11 +6,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-
-/**    
+/**
  * This control class provides all functionality related to the Order entity.
- * This includes a separate UI used to manage the items and packages within the Order entity.
- * Some additional methods include functionality to display an invoice and saving the Order to our order.txt file for archiving.
+ * This includes a separate UI used to manage the items and packages within the
+ * Order entity. Some additional methods include functionality to display an
+ * invoice and saving the Order to our order.txt file for archiving.
+ * 
  * @author Ian Chan
  * @author Chiam Chuen
  * @throws IOException
@@ -23,6 +24,7 @@ public class OrderManager {
 
 	/**
 	 * Pass an order into this class
+	 * 
 	 * @param Order
 	 */
 	public OrderManager(Order Order) {
@@ -31,6 +33,7 @@ public class OrderManager {
 
 	/**
 	 * Get the order
+	 * 
 	 * @return Order
 	 */
 	public Order getOrder() {
@@ -39,6 +42,7 @@ public class OrderManager {
 
 	/**
 	 * add a new package or item to order
+	 * 
 	 * @throws IOException
 	 */
 	public void addToOrder() throws IOException {
@@ -67,27 +71,27 @@ public class OrderManager {
 
 	/**
 	 * add an item to order
+	 * 
 	 * @throws IOException
 	 */
 	public void addItem() throws IOException {
-		ItemMenu.getItemList();
 		order.orderItems[order.itemCount] = ItemMenu.getItem();
 		order.itemCount++;
 	}
 
 	/**
 	 * add a package to order
+	 * 
 	 * @throws IOException
 	 */
 	public void addPackage() throws IOException {
-		ItemMenu.getItemList();
-		PackageMenu.getPacList();
 		order.orderPackages[order.packageCount] = PackageMenu.getPackage();
 		order.packageCount++;
 	}
 
 	/**
 	 * remove an item from order
+	 * 
 	 * @return Item
 	 */
 	public Item removeItem() {
@@ -104,6 +108,7 @@ public class OrderManager {
 
 	/**
 	 * remove the package from order
+	 * 
 	 * @return Package
 	 */
 	public Package removePackage() {
@@ -148,6 +153,7 @@ public class OrderManager {
 	/**
 	 * Prints out the template order invoice with taxes, memebership included,
 	 * returning total bill as string
+	 * 
 	 * @param isMember
 	 * @param staff
 	 * @return String
@@ -188,6 +194,7 @@ public class OrderManager {
 
 	/**
 	 * Save order
+	 * 
 	 * @param total
 	 * @throws IOException
 	 */

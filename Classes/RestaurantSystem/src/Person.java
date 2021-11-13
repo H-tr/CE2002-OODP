@@ -1,3 +1,9 @@
+/**    
+ * This entity class provides all basic information from which the Staff entity can be extended from. 
+ * The basic information includes Name and Gender.
+ * @author Ian Chan
+ */
+
 public class Person {
 
 	private String name;
@@ -7,21 +13,19 @@ public class Person {
 		this.name = name;
 		this.gender = gender;
 	}
-
 	
 	/** 
-	 * @author Ian Chan
+	 * Get name
 	 * @return String
 	 */
 	public String getName()
 	{
 		return this.name;
 	}
-
 	
 	
 	/** 
-	 * @author Ian Chan
+	 * Set name
 	 * @param name
 	 */
 	public void setName(String name)
@@ -29,20 +33,17 @@ public class Person {
 		this.name = name;
 		return;
 	}
-
 	
 	/** 
-	 * @author Ian Chan
+	 * Get gender
 	 * @return String
 	 */
 	public String getGender() {
 		return this.gender;
 	}
 	
-	
-	
 	/** 
-	 * @author Ian Chan
+	 * Set gender
 	 * @param gender
 	 */
 	public void setGender(String gender) {

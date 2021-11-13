@@ -1,8 +1,12 @@
 import java.util.Scanner;
-
+/**
+ * Each package contains a set of items. It provides a set for customers to choose from.
+ * Inside this package class, you can see the methods to control the list.
+ * @author Hu Tianrun
+ */
 public class Package {
 	/**
-	 * @author HuTianrun
+	 * Constructor of package. It takes in description and price.
 	 * @param description
 	 * @param price
 	 */
@@ -20,7 +24,6 @@ public class Package {
 
 	/**
 	 * Build a package by asking user the description of package and price
-	 * @author HuTianrun
 	 */
 	public Package() {
 		Scanner sc = new Scanner(System.in);
@@ -33,8 +36,6 @@ public class Package {
 	
 	/** 
 	 * Display the item inside package
-	 * @author HuTianrun
-	 * @param ++i
 	 */
 	public void displayPackage() { // display item inside package
 		for (int i = 0; i < itemCnt; ++i) {
@@ -45,7 +46,6 @@ public class Package {
 
 	/**
 	 * Add an item into package
-	 * @author HuTianrun
 	 */
 	public void addItem() {
 		item[itemCnt++] = ItemMenu.getItem();
@@ -54,7 +54,6 @@ public class Package {
 	
 	/** 
 	 * Add an item into package, this method is used for reading from text file
-	 * @author HuTianrun
 	 * @param i
 	 * @param ItemMenu.getItem(i
 	 * @param removeItem(
@@ -65,7 +64,6 @@ public class Package {
 
 	/**
 	 * Remove an item from this package
-	 * @author HuTianrun
 	 */
 	public void removeItem() {
 		displayPackage();
@@ -84,7 +82,6 @@ public class Package {
 
 	/**
 	 * Reset the description of the package
-	 * @author HuTianrun
 	 */
 	public void setDescription() {
 		Scanner sc = new Scanner(System.in);
@@ -96,7 +93,6 @@ public class Package {
 	
 	/** 
 	 * Get description of the package
-	 * @author HuTianrun
 	 * @return String
 	 */
 	public String getDescription() {
@@ -106,7 +102,6 @@ public class Package {
 	
 	/** 
 	 * Get price of the package
-	 * @author HuTianrun
 	 * @return double
 	 */
 	public double getPrice() {
@@ -115,7 +110,6 @@ public class Package {
 
 	/**
 	 * Reset a new price of the package
-	 * @author HuTianrun
 	 */
 	public void setPrice() {
 		Scanner sc = new Scanner(System.in);
@@ -126,7 +120,6 @@ public class Package {
 	
 	/** 
 	 * Get the total number of items inside the package. This method is used for reading and storing to text file
-	 * @author HuTianrun
 	 * @return int
 	 */
 	public int getItemCnt() {
@@ -136,7 +129,6 @@ public class Package {
 	
 	/** 
 	 * Get the list of items as a string from package. This method is used for storing to text file
-	 * @author HuTianrun
 	 * @return String
 	 */
 	public String getItem() {
@@ -151,7 +143,6 @@ public class Package {
 	
 	/** 
 	 * Get an item from this package. This method is used for reading from text file
-	 * @author HuTianrun
 	 * @param i
 	 * @return Item
 	 */
@@ -162,7 +153,6 @@ public class Package {
 	
 	/** 
 	 * Get the type of items in this package. This method is used for storing the text file
-	 * @author HuTianrun
 	 * @param j
 	 * @return int
 	 */

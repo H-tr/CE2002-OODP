@@ -94,3 +94,67 @@ Item: Siam Coconut 6.8
 Package: Beef Fillet with Black Pepper Sauce, Siam Coconut, Sweet Yam Paste with Gingko Nuts,  25.0
 Package: Seafood Bacon Roll Tossed with Salad Cream, Donut with Seafood Paste, 'Mee Goreng' - Fried Noodles Malay Style, Tiger Beer, Tiger Beer, Heineken, Heineken, Sweet Yam Paste with Gingko Nuts, Mixed Fresh Fruits, 'Chendol'-Shaved Ice with 'Gula Melaka',  100.0
 131.30
+2021-11-06 22:29:07
+Staff: John 1234
+Customer: Tim
+Pax: 2
+3
+Item: Mixed Fresh Fruits 4.0
+Item: 'Mee Goreng' - Fried Noodles Malay Style 20.0
+Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
+38.72
+2021-11-07 15:34:35
+Staff: John 1234
+Customer: Tim
+Pax: 2
+2
+Item: Cod Fish Steamed with Preserved Radish and Diced Chilli 22.0
+Item: Ice Lemon Tea 3.8
+22.70
+2021-11-07 15:56:44
+Staff: John 1234
+Customer: Tim
+Pax: 2
+2
+Item: Ice Lemon Tea 3.8
+Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
+20.94
+2021-11-07 16:21:21
+Staff: John 1234
+Customer: Tim
+Pax: 2
+2
+Item: Ice Lemon Tea 3.8
+Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
+20.94
+2021-11-07 16:37:56
+Staff: John 1234
+Customer: Tim
+Pax: 2
+2
+Item: Ice Lemon Tea 3.8
+Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
+20.94
+2021-11-12 14:07:12
+Staff: John 1234
+Customer: Tim
+Pax: 2
+1
+Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
+17.60
+2021-11-12 22:04:28
+Staff: John 1234
+Customer: Tim
+Pax: 2
+2
+Item: Ice Lemon Tea 3.8
+Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
+22.41
+2021-11-12 22:07:45
+Staff: John 1234
+Customer: Tim
+Pax: 2
+2
+Item: Ice Lemon Tea 3.8
+Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
+22.41

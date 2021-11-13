@@ -5,7 +5,12 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
-
+/**
+ * This is a static control class to edit the table.
+ * All control functions about table can found here
+ * It also contain a list of table.
+ * @author Hu Tianrun
+ */
 public class TableManager {
 
     private static final int tableNum = 50;
@@ -60,6 +65,9 @@ public class TableManager {
         } while (choice < 5);
     }
 
+    /**
+     * Display table list
+     */
     public static void displayTableList() {
         for (int i = 0; i < tableCnt; ++i) {
             System.out.printf("Table " + i + ", Capacity: " + tableList[i].getSeatCapacity() + " Occupied time: ");
@@ -71,7 +79,6 @@ public class TableManager {
     
     /** 
      * Add a table into table list
-     * @author HuTianrun
      * @param capacity
      * @return Table
      */
@@ -104,7 +111,6 @@ public class TableManager {
     
     /** 
      * Assign a table with number of people and time to the customer
-     * @author HuTianrun
      * @param peopleNum
      * @param time
      * @return Table
@@ -139,7 +145,6 @@ public class TableManager {
     
     /** 
      * Remove time for a specific table
-     * @author HuTianrun
      * @param table
      * @param time
      */
@@ -150,7 +155,6 @@ public class TableManager {
     
     /** 
      * Store the table list to text file
-     * @author HuTianrun
      * @throws IOException
      */
     public static void storeList() throws IOException {
@@ -166,7 +170,6 @@ public class TableManager {
     
     /** 
      * Get list from text file
-     * @author HuTianrun
      * @throws IOException
      */
     public static void getList() throws IOException {

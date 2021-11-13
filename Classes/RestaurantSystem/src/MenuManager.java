@@ -1,17 +1,20 @@
 import java.io.IOException;
 import java.util.Scanner;
-
+/**
+ * MenuManager is the class to control the operation of both ItemMenu and PackageMenu. 
+ * Staff and users could not use the function in menu directly. They must use them from this control class.
+ * This control class contain all the control functions about the items and packages.
+ * @author Hu Tianrun
+ */
 public class MenuManager {
 
 	/**
 	 * This is the control class to manage the menu.
-	 * 
-	 * @author HuTianrun
 	 * @throws IOException
 	 */
 	public static void menuManage() throws IOException {
-		ItemMenu.getItemList();
-		PackageMenu.getPacList();
+		// ItemMenu.getItemList();
+		// PackageMenu.getPacList();
 		System.out.println("Create a menu.");
 		Scanner sc = new Scanner(System.in);
 		int choice;

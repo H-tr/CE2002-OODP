@@ -6,33 +6,39 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+
+/**    
+ * This control class provides all functionality related to the Order entity.
+ * This includes a separate UI used to manage the items and packages within the Order entity.
+ * Some additional methods include functionality to display an invoice and saving the Order to our order.txt file for archiving.
+ * @author Ian Chan
+ * @author Chiam Chuen
+ * @throws IOException
+ * @throws ParseException
+ */
+
 public class OrderManager {
 
 	private Order order;
 
 	/**
 	 * Pass an order into this class
-	 * @author Ian Chan
 	 * @param Order
 	 */
 	public OrderManager(Order Order) {
 		this.order = Order;
 	}
-	
-	/** 
+
+	/**
 	 * Get the order
-	 * @author Ian Chan
 	 * @return Order
 	 */
 	public Order getOrder() {
 		return order;
 	}
 
-	
-	/** 
+	/**
 	 * add a new package or item to order
-	 * @author Ian Chan
-	 * @author Chiam Chuen
 	 * @throws IOException
 	 */
 	public void addToOrder() throws IOException {
@@ -59,11 +65,8 @@ public class OrderManager {
 		}
 	}
 
-	
-	/** 
+	/**
 	 * add an item to order
-	 * @author Ian Chan
-	 * @author Chiam Chuen
 	 * @throws IOException
 	 */
 	public void addItem() throws IOException {
@@ -72,11 +75,8 @@ public class OrderManager {
 		order.itemCount++;
 	}
 
-	
-	/** 
+	/**
 	 * add a package to order
-	 * @author Ian Chan
-	 * @author Chiam Chuen
 	 * @throws IOException
 	 */
 	public void addPackage() throws IOException {
@@ -86,11 +86,8 @@ public class OrderManager {
 		order.packageCount++;
 	}
 
-	
-	/** 
+	/**
 	 * remove an item from order
-	 * @author Ian Chan
-	 * @author Chiam Chuen
 	 * @return Item
 	 */
 	public Item removeItem() {
@@ -105,11 +102,8 @@ public class OrderManager {
 		return rt;
 	}
 
-	
-	/** 
+	/**
 	 * remove the package from order
-	 * @author Ian Chan
-	 * @author Chiam Chuen
 	 * @return Package
 	 */
 	public Package removePackage() {
@@ -126,8 +120,6 @@ public class OrderManager {
 
 	/**
 	 * view the order
-	 * @author Ian Chan
-	 * @author Chiam Chuen
 	 */
 	public void viewOrder() {
 		System.out.printf("Order taken by: ");
@@ -153,11 +145,9 @@ public class OrderManager {
 		}
 	}
 
-	
-	/** 
-	 * Prints out the template order invoice with taxes, memebership included, returning total bill as string
-	 * @author Ian Chan
-	 * @author Chiam Chuen
+	/**
+	 * Prints out the template order invoice with taxes, memebership included,
+	 * returning total bill as string
 	 * @param isMember
 	 * @param staff
 	 * @return String
@@ -183,21 +173,21 @@ public class OrderManager {
 		}
 		System.out.println("****************************************************");
 		System.out.println("Subtotal\t\t" + f.format(totalPay));
-		totalPay *= 1.1;
-		System.out.println("Tax(10%)\t\t" + f.format(totalPay));
 		if (isMember) {
 			totalPay *= 0.8;
-			System.out.println("Member discount(80%)\t" + f.format(totalPay));
+			System.out.println("Member discount(20%)\t" + f.format(totalPay));
 		}
+		totalPay *= 1.1;
+		System.out.println("Service Tax(10%)\t" + f.format(totalPay));
+		totalPay *= 1.07;
+		System.out.println("GST (7%)\t\t" + f.format(totalPay));
 		System.out.println("****************************************************");
-		System.out.println("Total\t\t" + f.format(totalPay));
+		System.out.println("Total\t\t\t" + f.format(totalPay));
 		return f.format(totalPay);
 	}
 
-	
-	/** 
+	/**
 	 * Save order
-	 * @author Chiam Chuen
 	 * @param total
 	 * @throws IOException
 	 */

@@ -1,3 +1,11 @@
+/**    
+ * This control class provides basic functionality through methods relevant to the Reservation entity.
+ * @author Ian Chan
+ * @author Chiam Chuen
+ * @throws IOException
+ * @throws ParseException
+ */
+
 public class ReservationManager {
 
     private Reservation reservation;
@@ -8,7 +16,6 @@ public class ReservationManager {
 
     /**
      * Prints out information about the Reservation
-     * @author Ian Chan
      */
     public void viewReservation() {
         System.out.println("=================================================");
@@ -23,7 +30,6 @@ public class ReservationManager {
     
     /** 
      * Gives timing to reservation class
-     * @author Ian Chan
      * @param date
      * @return Reservation
      */
@@ -35,7 +41,6 @@ public class ReservationManager {
     
     /** 
      * returns reservation
-     * @author Ian Chan
      * @return Reservation
      */
     public Reservation getReservation() {

@@ -1,3 +1,10 @@
+/**    
+ * This entity class is a subclass of the Event entity class, and stores all information relevant to a order such as DateTime, Customer Name, Pax, Table and Staff.
+ * In particular, it stores two arrays of items and packages respectively that is managed by the OrderManager class.
+ * @author Ian Chan
+ * @author Chiam Chuen
+ */
+
 public class Order extends Event {
 
 	private final int maxItemNum = 500;
@@ -21,8 +28,6 @@ public class Order extends Event {
 	
 	/** 
 	 * To tell user this Event is an Order
-	 * @author Ian Chan
-	 * @return String
 	 */
 	public String returnType() {
 		return "Order";
@@ -30,7 +35,7 @@ public class Order extends Event {
 
 	
 	/** 
-	 * @author Ian Chan
+	 * Get staff
 	 * @return Staff
 	 */
 	public Staff getStaff() {
@@ -39,7 +44,7 @@ public class Order extends Event {
 
 	
 	/** 
-	 * @author Ian Chan
+	 * Set staff
 	 * @param staff
 	 */
 	public void setStaff(Staff staff) {
@@ -48,7 +53,7 @@ public class Order extends Event {
 
 	
 	/** 
-	 * @author Chiam Chuen
+	 * Get the number of items
 	 * @return int
 	 */
 	public int getItemCount() {
@@ -57,7 +62,7 @@ public class Order extends Event {
 
 	
 	/** 
-	 * @author Chiam Chuen
+	 * Get the number of packages
 	 * @return int
 	 */
 	public int getPackageCount() {
@@ -66,7 +71,7 @@ public class Order extends Event {
 
 	
 	/** 
-	 * @author Chiam Chuen
+	 * Get the string of items to print out
 	 * @return String[]
 	 */
 	public String[] getItems() {
@@ -80,7 +85,7 @@ public class Order extends Event {
 
 	
 	/** 
-	 * @author Chiam Chuen
+	 * Get the string of packages to print out
 	 * @return String[]
 	 */
 	public String[] getPackages() {
@@ -94,7 +99,7 @@ public class Order extends Event {
 
 	
 	/** 
-	 * @author Chiam Chuen
+	 * Get total price
 	 * @return double
 	 */
 	public double getTotal() {
@@ -110,7 +115,7 @@ public class Order extends Event {
 
 	
 	/** 
-	 * @author Ian Chan
+	 * Get ordered time
 	 * @return Timing
 	 */
 	public Timing getOrderedTime() {
@@ -119,7 +124,7 @@ public class Order extends Event {
 
 	
 	/** 
-	 * @author Ian Chan
+	 * Set ordered time
 	 * @param orderedTime
 	 */
 	public void setOrderedTime(Timing orderedTime) {
@@ -128,7 +133,7 @@ public class Order extends Event {
 
 	
 	/** 
-	 * @author Chiam Chuen
+	 * Remove an item from package
 	 * @param s
 	 * @param index
 	 */

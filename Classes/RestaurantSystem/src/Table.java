@@ -3,6 +3,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Each table is read from the text file while user open this system
+ * They contains a list of occupied time that is synchronous with reservation and order
+ * User is only able to edit this class from the manager class
+ * @author Hu Tianrun
+ */
+
 public class Table {
 	public Table(int seatCapacity) {
 		this.seatCapacity = seatCapacity;
@@ -14,7 +21,6 @@ public class Table {
 	
 	/** 
 	 * Set seat capacity of the table
-	 * @author HuTianrun
 	 * @param seatCapacity
 	 */
 	public void setSeatCapacity(int seatCapacity) {
@@ -24,7 +30,6 @@ public class Table {
 	
 	/** 
 	 * Get seat capacity of the table
-	 * @author HuTianrun
 	 * @return int
 	 */
 	public int getSeatCapacity() {
@@ -34,7 +39,6 @@ public class Table {
 	
 	/** 
 	 * Check whether this table is available in both number of people and time
-	 * @author HuTianrun
 	 * @param Num
 	 * @param time
 	 * @return boolean
@@ -54,7 +58,6 @@ public class Table {
 	
 	/** 
 	 * Add a time in occupied time list to show that table is occupied 
-	 * @author HuTianrun
 	 * @param time
 	 */
 	public void addTimeOccupy(Timing time) {
@@ -80,7 +83,6 @@ public class Table {
 	
 	/** 
 	 * Remove occupied time of this table when corresponding reservation is removed
-	 * @author HuTianrun
 	 * @param time
 	 */
 	public void removeTime(Timing time) {
@@ -100,7 +102,6 @@ public class Table {
 
 	/**
 	 * Remove all the past occupied time in the table
-	 * @author HuTianrun
 	 */
 	public void removePastOccupy() {
 		Calendar cal = Calendar.getInstance(); // locale-specific
@@ -119,7 +120,6 @@ public class Table {
 
 	/**
 	 * Display all the occupied time of this table
-	 * @author HuTianrun
 	 */
 	public void displayOccupiedTime() {
 		removePastOccupy();
@@ -133,7 +133,6 @@ public class Table {
 	
 	/** 
 	 * Return all the occupied time of this table as a string. This method is used to store table into text file
-	 * @author HuTianrun
 	 * @return String
 	 */
 	public String timingList() {

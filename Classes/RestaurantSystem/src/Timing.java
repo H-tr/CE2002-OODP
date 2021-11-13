@@ -1,5 +1,10 @@
 import java.util.Date;
 
+/** 
+ * Timing class is used to store in table class, order class and reservation class.
+ * User can get information about the occupied time of a table in this class.
+ * @author Hu Tianrun
+ */
 public class Timing {
     enum MealTime {BREAKFAST, LUNCH, DINNER};
     protected Date date;
@@ -14,7 +19,6 @@ public class Timing {
     
     /** 
      * Check whether two timing are equal
-     * @author HuTianrun
      * @param temp
      * @return boolean
      */
@@ -30,7 +34,6 @@ public class Timing {
     
     /** 
      * Compare two timing
-     * @author HuTianrun
      * @param temp
      * @return boolean
      */
@@ -49,7 +52,6 @@ public class Timing {
     
     /** 
      * Get date
-     * @author HuTianrun
      * @return Date
      */
     public Date getDate() {
@@ -58,7 +60,6 @@ public class Timing {
     
     /** 
      * Get time
-     * @author HuTianrun
      * @return MealTime
      */
     public MealTime getTime() {

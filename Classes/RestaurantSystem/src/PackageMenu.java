@@ -4,15 +4,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * PackageMenu contains all the package instances. 
+ * It has a list of packages. It can add packages or remove packages from it. 
+ * Customer would choose package from it.
+ * @author Hu Tianrun
+ */
 public class PackageMenu {
-    private static final int maxPackageNum = 50; // max package menu size
-    private static int pacCnt = 0; // used to point the first empty slot of the package menu
-    private static Package[] packageMenu = new Package[maxPackageNum]; // package menu
+	private static final int maxPackageNum = 50; // max package menu size
+	private static int pacCnt = 0; // used to point the first empty slot of the package menu
+	private static Package[] packageMenu = new Package[maxPackageNum]; // package menu
 
-    
-	/** 
-	 * This static class store a list of package. This method could add a new package to package list. It requires initialization of the package class
-	 * @author HuTianrun
+	/**
+	 * This static class store a list of package. This method could add a new
+	 * package to package list. It requires initialization of the package class
 	 */
 	public static void addPackage() { // ** requires initialization of the package class **
 		Scanner sc = new Scanner(System.in);
@@ -23,10 +28,8 @@ public class PackageMenu {
 			temp.addItem();
 	}
 
-	
-	/** 
+	/**
 	 * Remove the package from package list
-	 * @author HuTianrun
 	 * @return Package
 	 */
 	public static Package removePackage() {
@@ -44,18 +47,15 @@ public class PackageMenu {
 
 	/**
 	 * Display all the packages available
-	 * @author HuTianrun
 	 */
-    public static void showPackage() {
+	public static void showPackage() {
 		for (int i = 0; i < pacCnt; ++i)
-			System.out.println(i + ":\t" + packageMenu[i].getDescription() + "\n\tprince: " + packageMenu[i].getPrice()
+			System.out.println(i + ":\t" + packageMenu[i].getDescription() + "\n\tprice: " + packageMenu[i].getPrice()
 					+ "\n\titems: " + packageMenu[i].getItem());
 	}
 
-	
-	/** 
+	/**
 	 * User choose a package and return that package
-	 * @author HuTianrun
 	 * @return Package
 	 */
 	public static Package getPackage() {
@@ -68,7 +68,6 @@ public class PackageMenu {
 
 	/**
 	 * The control method that manage a specific package in the package list
-	 * @author HuTianrun
 	 */
 	public static void packageManager() {
 		Scanner sc = new Scanner(System.in);
@@ -86,29 +85,27 @@ public class PackageMenu {
 			System.out.println("Please enter your choice: ");
 			ch = sc.nextInt();
 			switch (ch) {
-				case 1:
-					temp.displayPackage();
-					break;
-				case 2:
-					temp.addItem();
-					break;
-				case 3:
-					temp.removeItem();
-					break;
-				case 4:
-					temp.setDescription();
-					break;
-				case 5:
-					temp.setPrice();
-					break;
+			case 1:
+				temp.displayPackage();
+				break;
+			case 2:
+				temp.addItem();
+				break;
+			case 3:
+				temp.removeItem();
+				break;
+			case 4:
+				temp.setDescription();
+				break;
+			case 5:
+				temp.setPrice();
+				break;
 			}
 		} while (ch < 6);
 	}
 
-    
-	/** 
+	/**
 	 * Store the package list into text file
-	 * @author HuTianrun
 	 * @throws IOException
 	 */
 	public static void storePacList() throws IOException {
@@ -122,12 +119,10 @@ public class PackageMenu {
 			}
 		}
 		writer.close();
-    }
+	}
 
-    
-	/** 
+	/**
 	 * Read the package list from text file to the array list in class
-	 * @author HuTianrun
 	 * @throws IOException
 	 */
 	public static void getPacList() throws IOException {
@@ -149,10 +144,11 @@ public class PackageMenu {
 					int j = Integer.parseInt(parts[1]);
 					temp.addItem(i, j);
 					line = br.readLine();
-				};
+				}
+				;
 			}
 		} finally {
 			br.close();
 		}
-    }
+	}
 }

@@ -1,3 +1,10 @@
+/**
+ * Item has three types: Main course, Drinks and Dessert. These three type are inherited from Item class. 
+ * In the Item class, there are some basic information about every item including name, description and price.
+ * Customers could choose those item.
+ * @author Hu Tianrun
+ */
+
 public abstract class Item {
 	private String name;
 	private String description;
@@ -12,7 +19,6 @@ public abstract class Item {
 	
 	/** 
 	 * get item name
-	 * @author HuTianrun
 	 * @return String
 	 */
 	public String getName() {
@@ -22,7 +28,6 @@ public abstract class Item {
 	
 	/** 
 	 * set item name
-	 * @author HuTianrun
 	 * @param name
 	 */
 	public void setName(String name) {
@@ -32,7 +37,6 @@ public abstract class Item {
 	
 	/** 
 	 * get item description
-	 * @author HuTianrun
 	 * @return String
 	 */
 	public String getDescription() {
@@ -42,7 +46,6 @@ public abstract class Item {
 	
 	/** 
 	 * set item description
-	 * @author HuTianrun
 	 * @param description
 	 */
 	public void setDescription(String description) {
@@ -52,7 +55,6 @@ public abstract class Item {
 	
 	/** 
 	 * get item price
-	 * @author HuTianrun
 	 * @return double
 	 */
 	public double getPrice() {
@@ -62,13 +64,16 @@ public abstract class Item {
 	
 	/** 
 	 * set item price
-	 * @author HuTianrun
 	 * @param price
 	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
+	/**
+	 * Abstract method. It can get the type from every subclass. 
+	 * @return
+	 */
 	public abstract String getType();
 	
 }

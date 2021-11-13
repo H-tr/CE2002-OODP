@@ -29,7 +29,7 @@ public class PeriodicRefresh extends Thread {
         while (true) {
             restaurant.cleanReservation();
             try {
-                Thread.sleep(600000);   //10min in ms period
+                Thread.sleep(600000);   //10min in ms period (600000)
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

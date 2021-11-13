@@ -43,6 +43,7 @@ public class Restaurant {
 		Table table = reservation.getTable();
 
 		Reservation r = (Reservation) reservation;
+		r.getTable().addTimeOccupy(r.getReserveDate());
 
 		Order O = new Order(pax, custName, table);
 		O.setStaff(staff);
@@ -282,8 +283,8 @@ public class Restaurant {
 	}
 
 	/**
-	 * Taking an Event as parameter(Usually from search the search method), delete
-	 * the reservation corresponding to that
+	 * Taking an Event as parameter(Usually from search the search method), 
+	 * delete the reservation corresponding to that
 	 * @param event
 	 */
 	public void deleteReservation(Event event) {
@@ -308,7 +309,7 @@ public class Restaurant {
 			return;
 		}
 		for (int j = u; j < eventCounter; j++) {
-			events[u] = events[u + 1];
+			events[j] = events[j + 1];
 		}
 		eventCounter--;
 
@@ -342,7 +343,7 @@ public class Restaurant {
 			System.out.println("ERROR: There is no such Order!");
 		}
 		for (int j = u; j < eventCounter; j++) {
-			events[u] = events[u + 1];
+			events[j] = events[j + 1];
 		}
 		eventCounter--;
 
@@ -437,9 +438,11 @@ public class Restaurant {
 	 */
 	public void editReservation(Event reservation) {
 		Timing time = null;
+		Timing old_time = null;
 		int ch;
 		Reservation r = (Reservation) reservation;
 		ReservationManager RM = new ReservationManager(r);
+		old_time = r.getReserveDate();
 
 		System.out.println("Edit the details: ");
 
@@ -476,6 +479,8 @@ public class Restaurant {
 		}
 
 		RM.addReservation(time);
+		r.getTable().removeTime(old_time);
+		r.getTable().addTimeOccupy(time);
 
 		System.out.println("New details: ");
 		RM.viewReservation();
@@ -520,7 +525,7 @@ public class Restaurant {
 		//Date cur_date = cal.getTime();
 
 		int u;
-		for (u = 0; u < eventCounter; u++) {
+		for (u = eventCounter-1; u >= 0; u--) {
 			if (events[u].returnType() == "Reservation") {
 				Reservation r = (Reservation) events[u];
 

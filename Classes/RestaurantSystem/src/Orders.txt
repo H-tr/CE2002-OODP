@@ -111,3 +111,37 @@ Pax: 2
 Item: Ice Lemon Tea 3.8
 Package: Beef Fillet with Black Pepper Sauce, Calamasi juice, Mixed Fresh Fruits,  20.0
 22.41
+2021-11-13 18:08:06
+Staff: a 123
+Customer: ian
+Pax: 1
+0
+.00
+2021-11-13 19:13:25
+Staff: a 1
+Customer: ian3
+Pax: 4
+1
+Package: Baby Lamb Rack Grilled With Pepper and Honey Sauce, Tiger Beer, Mixed Fresh Fruits,  26.0
+24.48
+2021-11-13 19:17:03
+Staff: a 123
+Customer: ian
+Pax: 4
+1
+Package: Baby Lamb Rack Grilled With Pepper and Honey Sauce, Tiger Beer, Mixed Fresh Fruits,  26.0
+24.48
+2021-11-13 19:29:38
+Staff: a 1
+Customer: tom
+Pax: 4
+1
+Package: Baby Lamb Rack Grilled With Pepper and Honey Sauce, Tiger Beer, Mixed Fresh Fruits,  26.0
+24.48
+2021-11-13 19:44:43
+Staff: a 3
+Customer: ian
+Pax: 4
+1
+Item: Orange juice 5.8
+5.46
